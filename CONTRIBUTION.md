@@ -20,7 +20,7 @@ locally
 
 * Use the present tense ("Add feature" not "Added feature")
 * Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
-* Limit the first line to 72 characters or less
+* Limit the first line to 50 characters or less
 * Do not end your subject line with a period
 * Begin all subject lines with a capital letter
 * Consider starting the commit message with an applicable emoji:
@@ -52,14 +52,14 @@ locally
   (use `rebase -i`)
 * Should pass the continuous server tests
 * Should contain same description than the commit itself
-* Use :+1: and :-1: for final review feedback
+* Use :+1: `:+1:` and :-1: `:-1:` for final review feedback
 
 ### Branching model
 
 #### Branches name
 
 * Default branch is `develop`
-* Should respect the following format: `[feature|bug|test]/[ticket id]-[short description]`
+* Should respect the following format: `[feature|bug|test|refactor|style|doc]/[ticket id]-[short description]`
 
 **Example**
 * `feature/42-AddHeatmapChart`
