@@ -10,11 +10,12 @@
 
 > Front-end application to visualize climbing data
 
-* Table of climbing routes
-* Markdown support for notes
+**Features**
+* Table and timeline of climbing routes
+* Markdown support for routes notes
 * Map of routes using Google Map API
 * Charts generated with D3.js
-* Offline mode (read only)
+* Offline mode
 * Responsive design
 
 Demo
@@ -24,7 +25,7 @@ Hosted demo is available on heroku at [climbing-memo.herokuapp.com](http://climb
 
 [![App screenshot](http://goo.gl/kaM5Sw)](http://climbing-memo.herokuapp.com)
 
-Quick Start
+Get started
 -----
 
 Make sure to have `npm`, `grunt` and `bower` installed.
@@ -33,13 +34,14 @@ Create a [firebase account](https://www.firebase.com/) and configure your databa
 
 
 ```sh
-$ npm install && npm start
+$ npm install && grunt serve
 ```
 
-Developement
------
+To run a production server use `npm start` and to run the unit tests use `grunt test`
+Before contributing please read the [guidelines](https://github.com/10alab/Siurana/blob/develop/CONTRIBUTION.md)
 
-To start a developement server `grunt serve` and to run unit-tests `grunt test`
+Technologies
+-----
 
 **Technologies:**
 
