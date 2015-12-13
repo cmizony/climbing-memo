@@ -1,5 +1,12 @@
 'user strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.directive:overviewChart
+* @description
+* # overviewChart
+* Directive of the climbingMemo
+*/
 angular.module('climbingMemo')
 .directive('overviewChart', function(overviewChartSvc, $modal, utilsChartSvc) {
   // Private 5 digit chart ID

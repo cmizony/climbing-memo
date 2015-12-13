@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.controller:overviewCtrl
+* @description
+* # overviewCtrl
+* Controller of the climbingMemo
+*/
 angular.module('climbingMemo')
 .controller('overviewCtrl', function($scope, $localStorage, $log,
 $rootScope, utilsChartSvc, utilsRouteSvc) {
@@ -16,7 +23,11 @@ $rootScope, utilsChartSvc, utilsRouteSvc) {
     })
   })
 
-  // Init Controller
+  /**
+  * Initialize Controller
+  * @method initController
+  * @param {Object} data
+  */
   $scope.initController = function(data) {
     var arrayRoutes = _.toArray(data)
     var arraySectors = utilsChartSvc.arrayGroupBy(arrayRoutes,"sector")

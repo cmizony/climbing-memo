@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.controller:mapCtrl
+* @description
+* # mapCtrl
+* Controller of the climbingMemo
+*/
 angular.module('climbingMemo')
 .controller('mapCtrl', function($localStorage, $log, $scope,
 $rootScope, mapChartSvc, utilsRouteSvc) {

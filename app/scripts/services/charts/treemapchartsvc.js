@@ -1,8 +1,8 @@
 'use strict'
 
 /**
-* @ngdoc service
-* @name climbingMemo.treemapChartSvc
+* @module climbingMemo
+* @name climbingMemo.service:treemapChartSvc
 * @description
 * # treemapChartSvc
 * Service in the climbingMemo.

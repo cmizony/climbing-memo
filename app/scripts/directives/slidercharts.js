@@ -1,8 +1,8 @@
 'use strict'
 
 /**
-* @ngdoc type
-* @name climbingMemo.type:sliderCharts
+* @module climbingMemo
+* @name climbingMemo.directive:sliderCharts
 * @description
 * # sliderCharts
 */

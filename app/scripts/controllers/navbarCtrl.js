@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.controller:navbarCtrl
+* @description
+* # navbarCtrl
+* Controller of the climbingMemo
+*/
 angular.module('climbingMemo')
 .controller('navbarCtrl', function($scope, $location, $rootScope,
 utilsRouteSvc, $localStorage, notificationService) {

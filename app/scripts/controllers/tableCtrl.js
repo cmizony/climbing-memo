@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.controller:tableCtrl
+* @description
+* # tableCtrl
+* Controller of the climbingMemo
+*/
 angular.module('climbingMemo')
 .controller('tableCtrl', function($scope, $rootScope, $modal, utilsChartSvc,
 utilsRouteSvc, DTOptionsBuilder) {

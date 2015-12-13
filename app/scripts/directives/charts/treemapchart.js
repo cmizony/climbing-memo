@@ -1,7 +1,7 @@
 'use strict'
 
 /**
-* @ngdoc directive
+* @module climbingMemo
 * @name climbingMemo.directive:treemapChart
 * @description
 * # treemapChart

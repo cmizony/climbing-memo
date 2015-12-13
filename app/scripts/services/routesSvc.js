@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.factory:routesSvc
+* @description
+* # routesSvc
+* Factory of the climbingMemo
+*/
 angular.module('climbingMemo')
 .factory('routesSvc', function routeSvc($http, DATABASE_URL, $rootScope,
 $localStorage) {

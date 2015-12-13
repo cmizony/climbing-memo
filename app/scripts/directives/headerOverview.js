@@ -1,5 +1,14 @@
 'user strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.directive:headerOverview
+* @description
+* # headerOverview
+* Directive of the climbingMemo
+* @example
+* <header-overview></header-overview>
+*/
 angular.module('climbingMemo')
 .directive('headerOverview', function() {
   return {

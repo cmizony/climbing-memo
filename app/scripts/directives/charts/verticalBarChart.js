@@ -1,5 +1,12 @@
 'user strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.directive:verticalBarChart
+* @description
+* # verticalBarChart
+* Directive of the climbingMemo
+*/
 angular.module('climbingMemo')
 .directive('verticalBarChart', function(verticalBarChartSvc, utilsChartSvc,
 $modal, $window) {
