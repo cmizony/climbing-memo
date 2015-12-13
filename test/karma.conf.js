@@ -82,6 +82,7 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
       'bower_components/angular-touch/angular-touch.js',
       // endbower
+      'app/scripts/app.module.js',
       'app/scripts/**/*.js',
       // 'test/mock#<{(||)}>#*.js',
       'test/spec/**/*.js',
