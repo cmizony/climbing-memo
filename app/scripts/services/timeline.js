@@ -1,8 +1,8 @@
 'use strict'
 
 /**
-* @ngdoc service
-* @name climbingMemo.timeline
+* @module climbingMemo
+* @name climbingMemo.service:timelineSvc
 * @description
 * # timeline
 * Service in the climbingMemo.
@@ -12,7 +12,6 @@ angular.module('climbingMemo')
 
   /**
   * Pre-process data to be rendered on a timeline
-  *
   * @params {Array} Flat routes objects
   * @return {Object} Tree of properties
   */

@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.service:horizontalBarChartSvc
+* @description
+* # horizontalBarChartSvc
+* Service of the climbingMemo
+*/
 angular.module('climbingMemo')
 .service('horizontalBarChartSvc', function horizontalBarChartSvc(utilsChartSvc) {
   /**

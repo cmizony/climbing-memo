@@ -38,6 +38,8 @@ $ npm install && grunt serve
 To run a production server use `npm start` and to run the unit tests use `grunt test`
 Before contributing please read the [guidelines](https://github.com/10alab/Siurana/blob/develop/CONTRIBUTION.md)
 
+To generate the documentation run `grunt jsdoc` and browse `dist/doc/index.html`
+
 Technologies
 -----
 

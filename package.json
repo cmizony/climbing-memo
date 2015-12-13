@@ -52,5 +52,9 @@
     "start": "node server.js",
     "test": "grunt test",
     "postinstall": "bower install && ./node_modules/.bin/grunt build"
+  },
+  "devDependencies": {
+    "grunt-jsdoc": "^1.1.0",
+    "ink-docstrap": "^1.0.2"
   }
 }

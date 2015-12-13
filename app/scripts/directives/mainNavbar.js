@@ -1,5 +1,12 @@
 'user strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.directive:mainNavbar
+* @description
+* # mainNavbar
+* Directive of the climbingMemo
+*/
 angular.module('climbingMemo')
 .directive('mainNavbar', function() {
   return {

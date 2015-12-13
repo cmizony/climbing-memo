@@ -1,8 +1,24 @@
 'use strict'
 
-angular.module('climbingMemo', ['ngRoute','ui.bootstrap','hc.marked',
-'jlareau.pnotify', 'ngStorage', 'uiGmapgoogle-maps', 'datatables', 'ngTouch',
-'datatables.bootstrap', 'angular-timeline', 'angular-scroll-animate'])
+/**
+* @module climbingMemo
+* @name climbingMemo.app:climbingMemo
+* @description
+* Angular module climbingMemo
+*/
+angular.module('climbingMemo', [
+  'ngRoute',
+  'ui.bootstrap',
+  'hc.marked',
+  'jlareau.pnotify',
+  'ngStorage',
+  'uiGmapgoogle-maps',
+  'datatables',
+  'ngTouch',
+  'datatables.bootstrap',
+  'angular-timeline',
+  'angular-scroll-animate'
+])
 
 angular.module('climbingMemo')
 .config(function($routeProvider) {

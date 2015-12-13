@@ -1,8 +1,8 @@
 'use strict'
 
 /**
-* @ngdoc service
-* @name climbingMemo.utilsRouteSvc
+* @module climbingMemo
+* @name climbingMemo.service:utilsRouteSvc
 * @description
 * # utilsRouteSvc
 * Service in the climbingMemo.

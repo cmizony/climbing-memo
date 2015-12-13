@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.service:overviewChartSvc
+* @description
+* # overviewChartSvc
+* Service of the climbingMemo
+*/
 angular.module('climbingMemo')
 .service('overviewChartSvc', function overviewChartSvc(utilsChartSvc) {
   /**

@@ -1,7 +1,7 @@
 'use strict'
 
 /**
-* @ngdoc function
+* @module climbingMemo
 * @name climbingMemo.controller:ModalsliderCtrl
 * @description
 * # ModalsliderCtrl

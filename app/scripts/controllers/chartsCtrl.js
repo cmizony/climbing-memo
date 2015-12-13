@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.controller:chartsCtrl
+* @description
+* # chartsCtrl
+* Controller of the climbingMemo
+*/
 angular.module('climbingMemo')
 .controller('chartsCtrl', function($scope, $rootScope, utilsRouteSvc) {
 
@@ -15,7 +22,12 @@ angular.module('climbingMemo')
     })
   })
 
-  // Init Controller
+  /**
+  * Initialize controller
+  *
+  * @method initController
+  * @param {Object} data
+  */
   $scope.initController = function(data) {
     $scope.routes = _.toArray(data)
   }

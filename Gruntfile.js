@@ -17,7 +17,8 @@ module.exports = function(grunt) {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
-    coveralls: 'grunt-karma-coveralls'
+    coveralls: 'grunt-karma-coveralls',
+    jsdoc: 'grunt-jsdoc'
   })
 
   // Configurable paths for the application
@@ -65,6 +66,18 @@ module.exports = function(grunt) {
           '.tmp/styles/**/*.css',
           '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+
+    jsdoc: {
+      dist: {
+        src: ['app/scripts/**/*.js'],
+        options: {
+          destination: appConfig.dist + '/doc',
+          readme: 'README.md',
+          template: 'node_modules/ink-docstrap/template',
+          configure: 'jsdoc.conf.json'
+        }
       }
     },
 

@@ -1,5 +1,12 @@
 'user strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.directive:scatterPlotChart
+* @description
+* # scatterPlotChart
+* Directive of the climbingMemo
+*/
 angular.module('climbingMemo')
 .directive('scatterPlotChart', function(scatterPlotChartSvc, utilsChartSvc,
 $modal, $window) {

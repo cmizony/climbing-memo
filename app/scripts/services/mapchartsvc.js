@@ -1,10 +1,10 @@
 'use strict'
 
 /**
-* @ngdoc service
-* @name climbingMemo.mapChartSvc.js
+* @module climbingMemo
+* @name climbingMemo.service:mapChartSvc
 * @description
-* # mapChartSvc.js
+* # mapChartSvc
 * Service in the climbingMemo.
 */
 angular.module('climbingMemo')

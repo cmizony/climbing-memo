@@ -1,5 +1,12 @@
 'use strict'
 
+/**
+* @module climbingMemo
+* @name climbingMemo.service:scatterPlotChartSvc
+* @description
+* # scatterPlotChartSvc
+* Service of the climbingMemo
+*/
 angular.module('climbingMemo')
 .service('scatterPlotChartSvc', function scatterPlotChartSvc(utilsChartSvc) {
 
