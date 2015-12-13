@@ -2,51 +2,10 @@
 
 /**
 * @module climbingMemo
-* @name climbingMemo.app:climbingMemo
+* @name climbingMemo.app:Config
 * @description
-* Angular module climbingMemo
+* Application configuration (constant, config, run)
 */
-angular.module('climbingMemo', [
-  'ngRoute',
-  'ui.bootstrap',
-  'hc.marked',
-  'jlareau.pnotify',
-  'ngStorage',
-  'uiGmapgoogle-maps',
-  'datatables',
-  'ngTouch',
-  'datatables.bootstrap',
-  'angular-timeline',
-  'angular-scroll-animate'
-])
-
-angular.module('climbingMemo')
-.config(function($routeProvider) {
-  $routeProvider
-  .when('/', {
-    redirectTo: '/timeline'
-  })
-  .when('/table', {
-    controller: 'tableCtrl',
-    templateUrl: 'views/table.html'
-  })
-  .when('/timeline', {
-    controller: 'TimelineCtrl',
-    templateUrl: 'views/timeline.html'
-  })
-  .when('/map', {
-    controller: 'mapCtrl',
-    templateUrl: 'views/map.html'
-  })
-  .when('/charts', {
-    controller: 'chartsCtrl',
-    templateUrl: 'views/charts.html'
-  })
-  .otherwise({
-    redirectTo: '/climbs'
-  })
-})
-
 angular.module('climbingMemo')
 .constant('DATABASE_URL', 'https://climbing-memo.firebaseio.com/')
 
