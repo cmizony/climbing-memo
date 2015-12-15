@@ -14,23 +14,25 @@
   mapController.$inject = [
     '$localStorage',
     '$log',
-    '$scope',
     '$rootScope',
     'mapChartSvc',
     'utilsRouteSvc'
   ]
 
-  function mapController($localStorage, $log, $scope, $rootScope, mapChartSvc,
+  function mapController($localStorage, $log, $rootScope, mapChartSvc,
   utilsRouteSvc) {
+    /* jshint validthis:true */
+    var vm = this
+
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
-      $scope.initController(data)
+      vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
       utilsRouteSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
+        vm.initController(data)
       })
     })
 
@@ -40,21 +42,21 @@
     * @method initController
     * @param {Object} routes
     */
-    $scope.initController = function(routes) {
-      $scope.offline = !$rootScope.online
+    vm.initController = function(routes) {
+      vm.offline = !$rootScope.online
 
       var arrayRoutes = _.toArray(routes)
       var arrayLocations = mapChartSvc.processData(arrayRoutes)
 
       _.map(arrayLocations, function(site) {
         site.options = {
-          icon: 'images/' + $scope.getMarkerIcon(site.metrics[0].type)
+          icon: 'images/' + vm.getMarkerIcon(site.metrics[0].type)
         }
         return site
       })
 
-      $scope.locations = arrayLocations
-      $scope.map = { center: { latitude: 37.7833, longitude: -122.4167 }, zoom: 8 }
+      vm.locations = arrayLocations
+      vm.map = { center: { latitude: 37.7833, longitude: -122.4167 }, zoom: 8 }
     }
 
     /**
@@ -64,7 +66,7 @@
     * @param {String} type
     * @return {String}
     */
-    $scope.getMarkerIcon = function(type) {
+    vm.getMarkerIcon = function(type) {
       var markerIcon = ''
 
       switch (type) {

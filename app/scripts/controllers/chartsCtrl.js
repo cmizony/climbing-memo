@@ -12,21 +12,23 @@
   .controller('chartsCtrl', chartsController)
 
   chartsController.$inject = [
-    '$scope',
     '$rootScope',
     'utilsRouteSvc'
   ]
 
-  function chartsController($scope, $rootScope, utilsRouteSvc) {
+  function chartsController($rootScope, utilsRouteSvc) {
+    /* jshint validthis:true */
+
+    var vm = this
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
-      $scope.initController(data)
+      vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
       utilsRouteSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
+        vm.initController(data)
       })
     })
 
@@ -36,8 +38,8 @@
     * @method initController
     * @param {Object} data
     */
-    $scope.initController = function(data) {
-      $scope.routes = _.toArray(data)
+    vm.initController = function(data) {
+      vm.routes = _.toArray(data)
     }
   }
 })()

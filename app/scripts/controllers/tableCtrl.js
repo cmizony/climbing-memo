@@ -12,7 +12,6 @@
   .controller('tableCtrl', tableController)
 
   tableController.$inject = [
-    '$scope',
     '$rootScope',
     '$modal',
     'utilsChartSvc',
@@ -20,15 +19,18 @@
     'DTOptionsBuilder'
   ]
 
-  function tableController($scope, $rootScope, $modal, utilsChartSvc, utilsRouteSvc,
+  function tableController($rootScope, $modal, utilsChartSvc, utilsRouteSvc,
   DTOptionsBuilder) {
+    /* jshint validthis:true */
+    var vm = this
+
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
-      $scope.initController(data)
+      vm.initController(data)
     })
 
-    $scope.dtInstance = {}
-    $scope.dtOptions = DTOptionsBuilder
+    vm.dtInstance = {}
+    vm.dtOptions = DTOptionsBuilder
       .newOptions()
       .withBootstrap()
       .withOption('sDom', "<'no-row'" +
@@ -54,7 +56,7 @@
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
       utilsRouteSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
+        vm.initController(data)
       })
     })
 
@@ -63,8 +65,8 @@
     *
     * @method nextPage
     */
-    $scope.nextPage = function() {
-      var dtApi = $($scope.dtInstance.dataTable[0]).dataTable().api() // jshint ignore:line
+    vm.nextPage = function() {
+      var dtApi = $(vm.dtInstance.dataTable[0]).dataTable().api() // jshint ignore:line
       dtApi.page('next').draw('page')
     }
 
@@ -73,8 +75,8 @@
     *
     * @method previousPage
     */
-    $scope.previousPage = function() {
-      var dtApi = $($scope.dtInstance.dataTable[0]).dataTable().api() // jshint ignore:line
+    vm.previousPage = function() {
+      var dtApi = $(vm.dtInstance.dataTable[0]).dataTable().api() // jshint ignore:line
       dtApi.page('previous').draw('page')
     }
 
@@ -85,20 +87,20 @@
     * @method initController
     * @param {Object} Routes
     */
-    $scope.initController = function(data) {
+    vm.initController = function(data) {
       var count = 0
       _.map(data, function(route, key) {
         route.$date    = route.date
         route.$id      = key
         count++
       })
-      $scope.routes = _.toArray(data)
+      vm.routes = _.toArray(data)
 
-      var arrayLocations = utilsChartSvc.arrayGroupBy($scope.routes,"location")
-      var arraySectors   = utilsChartSvc.arrayGroupBy($scope.routes,"sector")
+      var arrayLocations = utilsChartSvc.arrayGroupBy(vm.routes,"location")
+      var arraySectors   = utilsChartSvc.arrayGroupBy(vm.routes,"sector")
 
-      $scope.locations = arrayLocations
-      $scope.sectors   = arraySectors
+      vm.locations = arrayLocations
+      vm.sectors   = arraySectors
     }
 
     /**
@@ -109,7 +111,7 @@
      *
      * @return {String} Css color
      */
-    $scope.getTypeColor = function(route) {
+    vm.getTypeColor = function(route) {
       return utilsRouteSvc.getTypeColor(route)
     }
 
@@ -118,7 +120,7 @@
     *
     * @method addRoute
     */
-    $scope.addRoute = function() {
+    vm.addRoute = function() {
       $modal.open({
         templateUrl: 'views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
@@ -131,7 +133,7 @@
     *
     * @method openRouteModal
     */
-    $scope.openRouteModal = function(route) {
+    vm.openRouteModal = function(route) {
       $modal.open({
         templateUrl: 'views/sliderModal.html',
         controller: 'ModalsliderCtrl',
@@ -143,6 +145,5 @@
         }
       })
     }
-
   }
 })()

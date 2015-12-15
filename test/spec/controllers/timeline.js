@@ -60,7 +60,7 @@ describe('Controller: TimelineCtrl', function() {
     }
     spyOn(timelineSvc, 'processData').and.returnValue([1,2,3])
 
-    TimelineCtrl = $controller('TimelineCtrl', {
+    TimelineCtrl = $controller('TimelineCtrl as timelineVm', {
       $scope:         scope,
       timelineSvc:    timelineSvc,
       $rootScope:     rootScope,
@@ -80,7 +80,7 @@ describe('Controller: TimelineCtrl', function() {
 
   it('should #getTypeColor', function() {
     utilsRouteSvc.getTypeColor.calls.reset()
-    scope.getTypeColor({mainType: 'test'})
+    scope.timelineVm.getTypeColor({mainType: 'test'})
 
     expect(utilsRouteSvc.getTypeColor).toHaveBeenCalled()
   })
@@ -88,7 +88,7 @@ describe('Controller: TimelineCtrl', function() {
   it('should open modal on #addRoute', function() {
     modal.open.calls.reset()
 
-    scope.addRoute()
+    scope.timelineVm.addRoute()
     expect(modal.open).toHaveBeenCalled()
   })
 
@@ -97,29 +97,29 @@ describe('Controller: TimelineCtrl', function() {
       isIndoor: true,
       mainType: 'test'
     }
-    expect(scope.getBadgeTooltip(event)).toBe('Indoor test')
+    expect(scope.timelineVm.getBadgeTooltip(event)).toBe('Indoor test')
   })
 
   it('should #getBadgeIcon', function() {
     var event = { isIndoor: true }
-    expect(scope.getBadgeIcon(event)).toBe('fa fa-home')
+    expect(scope.timelineVm.getBadgeIcon(event)).toBe('fa fa-home')
 
     event = { isIndoor: false }
-    expect(scope.getBadgeIcon(event)).toBe('fa fa-sun-o')
+    expect(scope.timelineVm.getBadgeIcon(event)).toBe('fa fa-sun-o')
   })
 
   it('should #openRouteModal', function() {
     modal.open.calls.reset()
-    scope.openRouteModal()
+    scope.timelineVm.openRouteModal()
 
     expect(modal.open).toHaveBeenCalled()
   })
 
   it('should #initController ', function() {
     timelineSvc.processData.calls.reset()
-    scope.initController({})
+    scope.timelineVm.initController({})
 
-    expect(_.size(scope.events)).toBe(3)
+    expect(_.size(scope.timelineVm.events)).toBe(3)
     expect(timelineSvc.processData).toHaveBeenCalled()
   })
 })

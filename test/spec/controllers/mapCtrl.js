@@ -27,7 +27,7 @@ describe('Controller: mapCtrl', function() {
       {metrics: [{type: 'Sport Lead'}]}
     ])
 
-    mapCtrl = $controller('mapCtrl', {
+    mapCtrl = $controller('mapCtrl as mapVm', {
       $scope:         scope,
       utilsRouteSvc:  utilsRouteSvc,
       mapChartSvc:    mapChartSvc
@@ -44,9 +44,9 @@ describe('Controller: mapCtrl', function() {
   })
 
   it('should #initController with new empty route', function() {
-    scope.initController({test:'data'})
+    scope.mapVm.initController({test:'data'})
 
-    expect(_.isEqual(scope.locations, [
+    expect(_.isEqual(scope.mapVm.locations, [
       {"metrics":[{"type":"Boulder"}],"options":{"icon":"images/climbing_blue.png"}},
       {"metrics":[{"type":"Sport Lead"}],"options":{"icon":"images/climbing_gray.png"}}
     ])).toBe(true)
@@ -55,11 +55,11 @@ describe('Controller: mapCtrl', function() {
   it('should #getMarkerIcon', function() {
     var types = ['Sport lead', 'Boulder', 'Traditional', 'Multi-pitch', 'Top rope']
 
-    expect(scope.getMarkerIcon(types[0])).toMatch(/yellow/)
-    expect(scope.getMarkerIcon(types[1])).toMatch(/blue/)
-    expect(scope.getMarkerIcon(types[2])).toMatch(/green/)
-    expect(scope.getMarkerIcon(types[3])).toMatch(/orange/)
-    expect(scope.getMarkerIcon(types[4])).toMatch(/gray/)
-    expect(scope.getMarkerIcon('undefined')).toMatch(/gray/)
+    expect(scope.mapVm.getMarkerIcon(types[0])).toMatch(/yellow/)
+    expect(scope.mapVm.getMarkerIcon(types[1])).toMatch(/blue/)
+    expect(scope.mapVm.getMarkerIcon(types[2])).toMatch(/green/)
+    expect(scope.mapVm.getMarkerIcon(types[3])).toMatch(/orange/)
+    expect(scope.mapVm.getMarkerIcon(types[4])).toMatch(/gray/)
+    expect(scope.mapVm.getMarkerIcon('undefined')).toMatch(/gray/)
   })
 })
