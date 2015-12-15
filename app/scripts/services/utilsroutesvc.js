@@ -207,7 +207,8 @@
             deferred.resolve(route.id)
           })
           .catch(function() {
-            silentWhenError || notificationService.info('Offline mode: "update" event saved')
+            silentWhenError || notificationService.info('Offline mode: "update" ' +
+            'event saved')
             UtilsRoute.createRouteSync('update', route)
             deferred.reject(false)
           })
@@ -228,7 +229,8 @@
             deferred.resolve(route.id)
           })
           .catch(function() {
-            silentWhenError || notificationService.info('Offline mode: "create" event saved')
+            silentWhenError || notificationService.info('Offline mode: "create" ' +
+            'event saved')
             UtilsRoute.createRouteSync('create', route)
             deferred.reject(route.id)
           })
@@ -236,7 +238,8 @@
       })
       .catch(function() {
         var routeEvent = route.id ? 'update' : 'create'
-        silentWhenError || notificationService.info('Offline mode: "' + routeEvent + '" event saved')
+        silentWhenError || notificationService.info('Offline mode: "' +
+        routeEvent + '" event saved')
         UtilsRoute.createRouteSync(routeEvent, route)
         deferred.reject(route.id)
       })
