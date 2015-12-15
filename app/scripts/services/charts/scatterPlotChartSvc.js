@@ -1,51 +1,62 @@
-'use strict'
-
-/**
-* @module climbingMemo
-* @name climbingMemo.service:scatterPlotChartSvc
-* @description
-* # scatterPlotChartSvc
-* Service of the climbingMemo
-*/
-angular.module('climbingMemo')
-.service('scatterPlotChartSvc', function scatterPlotChartSvc(utilsChartSvc) {
+(function() {
+  'use strict'
 
   /**
-  * Pre-process data to be rendered on a Scatter Plot
-  *
-  * @params {Array} Flat routes objects
-  * @return {Array} Array indexed by dates
+  * @module climbingMemo
+  * @name climbingMemo.service:scatterPlotChartSvc
+  * @description
+  * # scatterPlotChartSvc
+  * Service of the climbingMemo
   */
-  this.processData = function(rawData) {
+  angular.module('climbingMemo')
+  .service('scatterPlotChartSvc', scatterPlotChartService)
 
-    // Create hashmap of sectrs
-    var sectors = utilsChartSvc.arrayToHashtable(rawData,'sector')
+  scatterPlotChartService.$inject = [
+    'utilsChartSvc'
+  ]
 
-    var data = []
+  function scatterPlotChartService(utilsChartSvc) {
+    var ScatterPlorChart = {}
 
-    for (var key in sectors) {
-      var sector = sectors[key]
+    /**
+    * Pre-process data to be rendered on a Scatter Plot
+    *
+    * @params {Array} Flat routes objects
+    * @return {Array} Array indexed by dates
+    */
+    ScatterPlorChart.processData = function(rawData) {
 
-      // Calculate dominant type
-      var types = utilsChartSvc.arrayGroupBy(sector,'type')
+      // Create hashmap of sectrs
+      var sectors = utilsChartSvc.arrayToHashtable(rawData,'sector')
 
-      // Calculate rating average
-      var sumRating = 0
-      for (var i=0 ; i < sector.length ; i++) {
-        sumRating += parseInt(sector[i].rating) || 0
+      var data = []
+
+      for (var key in sectors) {
+        var sector = sectors[key]
+
+        // Calculate dominant type
+        var types = utilsChartSvc.arrayGroupBy(sector,'type')
+
+        // Calculate rating average
+        var sumRating = 0
+        for (var i=0 ; i < sector.length ; i++) {
+          sumRating += parseInt(sector[i].rating) || 0
+        }
+
+        var avgRating = parseFloat(sumRating) / sector.length
+
+        data.push({
+          sector: key,
+          avgRating:  avgRating,
+          dominantType: types[0],
+          totalRoutes: sector.length,
+          routesId: _.pluck(sector, 'id')
+        })
       }
 
-      var avgRating = parseFloat(sumRating) / sector.length
-
-      data.push({
-        sector: key,
-        avgRating:  avgRating,
-        dominantType: types[0],
-        totalRoutes: sector.length,
-        routesId: _.pluck(sector, 'id')
-      })
+      return data
     }
 
-    return data
+    return ScatterPlorChart
   }
-})
+})()

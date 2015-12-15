@@ -1,34 +1,43 @@
-'use strict'
+(function() {
+  'use strict'
 
-/**
-* @module climbingMemo
-* @name climbingMemo.controller:chartsCtrl
-* @description
-* # chartsCtrl
-* Controller of the climbingMemo
-*/
-angular.module('climbingMemo')
-.controller('chartsCtrl', function($scope, $rootScope, utilsRouteSvc) {
+  /**
+  * @module climbingMemo
+  * @name climbingMemo.controller:chartsCtrl
+  * @description
+  * # chartsCtrl
+  * Controller of the climbingMemo
+  */
+  angular.module('climbingMemo')
+  .controller('chartsCtrl', chartsController)
 
-  // Get Data
-  utilsRouteSvc.getRoutes().then(function(data) {
-    $scope.initController(data)
-  })
+  chartsController.$inject = [
+    '$scope',
+    '$rootScope',
+    'utilsRouteSvc'
+  ]
 
-  // Watch Update event
-  $rootScope.$on('routesUpdated', function() {
+  function chartsController($scope, $rootScope, utilsRouteSvc) {
+    // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
       $scope.initController(data)
     })
-  })
 
-  /**
-  * Initialize controller
-  *
-  * @method initController
-  * @param {Object} data
-  */
-  $scope.initController = function(data) {
-    $scope.routes = _.toArray(data)
+    // Watch Update event
+    $rootScope.$on('routesUpdated', function() {
+      utilsRouteSvc.getRoutes().then(function(data) {
+        $scope.initController(data)
+      })
+    })
+
+    /**
+    * Initialize controller
+    *
+    * @method initController
+    * @param {Object} data
+    */
+    $scope.initController = function(data) {
+      $scope.routes = _.toArray(data)
+    }
   }
-})
+})()
