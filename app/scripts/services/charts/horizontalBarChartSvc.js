@@ -1,42 +1,53 @@
-'use strict'
+(function() {
+  'use strict'
 
-/**
-* @module climbingMemo
-* @name climbingMemo.service:horizontalBarChartSvc
-* @description
-* # horizontalBarChartSvc
-* Service of the climbingMemo
-*/
-angular.module('climbingMemo')
-.service('horizontalBarChartSvc', function horizontalBarChartSvc(utilsChartSvc) {
   /**
-  * Pre-process data to be rendered on a Calendar Heatmap
-  *
-  * @params {Array} Flat routes objects
-  * @return {Array} Array indexed by dates
+  * @module climbingMemo
+  * @name climbingMemo.service:horizontalBarChartSvc
+  * @description
+  * # horizontalBarChartSvc
+  * Service of the climbingMemo
   */
-  this.processData = function(rawData, type) {
+  angular.module('climbingMemo')
+  .service('horizontalBarChartSvc', horizontalBarChartService)
 
-    // Filter by Type
-    rawData = rawData.filter(function(d) { return d.type === type})
+  horizontalBarChartService.$inject = [
+    'utilsChartSvc'
+  ]
 
-    // Group by Grade
-    var grades = utilsChartSvc.arrayToHashtable(rawData,'grade')
+  function horizontalBarChartService(utilsChartSvc) {
+    var HorizontalBarChart = {}
 
-    // Convert to array
-    var data = []
-    for (var grade in grades) {
-      data.push({
-        name: type,
-        grade: grade,
-        total: grades[grade].length,
-        routesId: _.pluck(grades[grade], 'id')
-      })
+    /**
+    * Pre-process data to be rendered on a Calendar Heatmap
+    *
+    * @params {Array} Flat routes objects
+    * @return {Array} Array indexed by dates
+    */
+    HorizontalBarChart.processData = function(rawData, type) {
+      // Filter by Type
+      rawData = rawData.filter(function(d) { return d.type === type})
+
+      // Group by Grade
+      var grades = utilsChartSvc.arrayToHashtable(rawData,'grade')
+
+      // Convert to array
+      var data = []
+      for (var grade in grades) {
+        data.push({
+          name: type,
+          grade: grade,
+          total: grades[grade].length,
+          routesId: _.pluck(grades[grade], 'id')
+        })
+      }
+
+      // Sort by grade
+      data = data.sort(function(a,b) { return utilsChartSvc.compareRouteGrade(a.grade,b.grade) })
+
+      return data
     }
 
-    // Sort by grade
-    data = data.sort(function(a,b) { return utilsChartSvc.compareRouteGrade(a.grade,b.grade) })
-
-    return data
+    return HorizontalBarChart
   }
-})
+})()

@@ -1,74 +1,84 @@
-'use strict'
-
-/**
-* @module climbingMemo
-* @name climbingMemo.service:timelineSvc
-* @description
-* # timeline
-* Service in the climbingMemo.
-*/
-angular.module('climbingMemo')
-.service('timelineSvc', function(utilsChartSvc) {
+(function() {
+  'use strict'
 
   /**
-  * Pre-process data to be rendered on a timeline
-  * @params {Array} Flat routes objects
-  * @return {Object} Tree of properties
+  * @module climbingMemo
+  * @name climbingMemo.service:timelineSvc
+  * @description
+  * # timeline
+  * Service in the climbingMemo.
   */
-  this.processData = function(rawData) {
+  angular.module('climbingMemo')
+  .service('timelineSvc', timelineService)
 
-    // Sort by date
-    var routes = rawData.sort(function(a,b) {
-      return moment(b.date, 'MM-DD-YYYY').unix() -  moment(a.date, 'MM-DD-YYYY').unix()
-    })
+  timelineService.$inject = [
+    'utilsChartSvc'
+  ]
 
-    // Group by Locations
-    var currentLocation
-    var locations = _.reduce(routes, function(result, route) {
-      if (currentLocation !== route.location) {
-        result.push({
-          areaLocation: route.location,
-          routes: []
-        })
-        currentLocation = route.location
-      }
-      var currentRoutes = _.last(result).routes
-      currentRoutes.push(route)
-      return result
-    }, [])
+  function timelineService(utilsChartSvc) {
+    var Timeline = {}
 
-    // Group by sectors and sort
-    locations = _.map(locations, function(areaLocation) {
-      areaLocation.sectors = _.map(utilsChartSvc.arrayGroupBy(areaLocation.routes, 'sector'),
-      function(sector) {
-        return areaLocation.routes.filter(function(route) {
-          return route.sector == sector
-        }).sort(function(routeA, routeB) {
-          return utilsChartSvc.compareRouteGrade(routeB.grade, routeA.grade)
-        })
+    /**
+    * Pre-process data to be rendered on a timeline
+    * @params {Array} Flat routes objects
+    * @return {Object} Tree of properties
+    */
+    Timeline.processData = function(rawData) {
+      // Sort by date
+      var routes = rawData.sort(function(a,b) {
+        return moment(b.date, 'MM-DD-YYYY').unix() -  moment(a.date, 'MM-DD-YYYY').unix()
       })
-      return areaLocation
-    })
 
-    // Calculate first/last date per locations
-    locations = _.map(locations, function(areaLocation) {
-      areaLocation.start = _.first(areaLocation.routes).date
-      areaLocation.end   = _.last(areaLocation.routes).date
-      return areaLocation
-    })
+      // Group by Locations
+      var currentLocation
+      var locations = _.reduce(routes, function(result, route) {
+        if (currentLocation !== route.location) {
+          result.push({
+            areaLocation: route.location,
+            routes: []
+          })
+          currentLocation = route.location
+        }
+        var currentRoutes = _.last(result).routes
+        currentRoutes.push(route)
+        return result
+      }, [])
 
-    // Generate output data
-    var data = _.map(locations, function(areaLocation) {
-      var routeTypes = utilsChartSvc.arrayGroupBy(areaLocation.routes, 'type')
-      var routeRocks = utilsChartSvc.arrayGroupBy(areaLocation.routes, 'rock')
-      delete areaLocation.routes
-      return {
-        mainType: _.first(routeTypes),
-        isIndoor: _.first(routeRocks) === 'Indoor',
-        content: areaLocation
-      }
-    })
+      // Group by sectors and sort
+      locations = _.map(locations, function(areaLocation) {
+        areaLocation.sectors = _.map(utilsChartSvc.arrayGroupBy(areaLocation.routes, 'sector'),
+        function(sector) {
+          return areaLocation.routes.filter(function(route) {
+            return route.sector == sector
+          }).sort(function(routeA, routeB) {
+            return utilsChartSvc.compareRouteGrade(routeB.grade, routeA.grade)
+          })
+        })
+        return areaLocation
+      })
 
-    return data
+      // Calculate first/last date per locations
+      locations = _.map(locations, function(areaLocation) {
+        areaLocation.start = _.first(areaLocation.routes).date
+        areaLocation.end   = _.last(areaLocation.routes).date
+        return areaLocation
+      })
+
+      // Generate output data
+      var data = _.map(locations, function(areaLocation) {
+        var routeTypes = utilsChartSvc.arrayGroupBy(areaLocation.routes, 'type')
+        var routeRocks = utilsChartSvc.arrayGroupBy(areaLocation.routes, 'rock')
+        delete areaLocation.routes
+        return {
+          mainType: _.first(routeTypes),
+          isIndoor: _.first(routeRocks) === 'Indoor',
+          content: areaLocation
+        }
+      })
+
+      return data
+    }
+
+    return Timeline
   }
-})
+})()
