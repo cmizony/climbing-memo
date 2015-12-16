@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:treemapChart
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:treemapChart
   * @description
   * # treemapChart
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('treemapChart', treemapChartDirective)
 
   treemapChartDirective.$inject = [

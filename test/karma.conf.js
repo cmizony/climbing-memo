@@ -28,6 +28,7 @@ module.exports = function(config) {
 
     preprocessors: {
       'app/scripts/**/*.js': 'coverage',
+      'app/components/**/*.js': 'coverage',
       'app/views/**/*.html': ['ng-html2js']
     },
 
@@ -82,6 +83,8 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
       'bower_components/angular-touch/angular-touch.js',
       // endbower
+      'app/components/*/*.module.js',
+      'app/components/**/*.js',
       'app/scripts/app.module.js',
       'app/scripts/**/*.js',
       // 'test/mock#<{(||)}>#*.js',

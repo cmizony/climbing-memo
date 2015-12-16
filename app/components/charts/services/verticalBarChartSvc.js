@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.service:verticalBarChartSvc
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.service:verticalBarChartSvc
   * @description
   * # verticalBarChartSvc
-  * Service of the climbingMemo
+  * Service of the climbingMemoCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .service('verticalBarChartSvc', verticalBarChartService)
 
   verticalBarChartService.$inject = [
