@@ -7,16 +7,16 @@
     <p class="text-center climb-add">
       <button tooltip="Add new route"
               class="btn btn-fab btn-raised btn-success"
-              ng-click="addRoute()">
+              ng-click="timelineVm.addRoute()">
         <i class="fa fa-plus"></i>
       </button>
     </p>
 
     <timeline>
-      <timeline-event ng-repeat="event in events">
-      <timeline-badge style="background-color:{{getTypeColor(event)}}"
-      tooltip="{{getBadgeTooltip(event)}}">
-          <i class="fa {{getBadgeIcon(event)}}"></i>
+      <timeline-event ng-repeat="event in timelineVm.events">
+      <timeline-badge style="background-color:{{ timelineVm.getTypeColor(event) }}"
+      tooltip="{{ timelineVm.getBadgeTooltip(event) }}">
+          <i class="fa {{ timelineVm.getBadgeIcon(event) }}"></i>
         </timeline-badge>
 
         <timeline-panel>

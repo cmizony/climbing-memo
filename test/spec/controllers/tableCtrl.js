@@ -32,7 +32,7 @@ describe('Controller: tableCtrl', function() {
     utilsChartSvc = { arrayGroupBy: function() {} }
     spyOn(utilsChartSvc, 'arrayGroupBy').and.returnValue(['test'])
 
-    tableCtrl = $controller('tableCtrl', {
+    tableCtrl = $controller('tableCtrl as tableVm', {
       $scope:         scope,
       $modal:         modal,
       utilsRouteSvc:  utilsRouteSvc,
@@ -51,18 +51,18 @@ describe('Controller: tableCtrl', function() {
   it('should #initController', function() {
     utilsChartSvc.arrayGroupBy.calls.reset()
     var data = {key1: 'test1', key2: 'test2'}
-    scope.initController(data)
+    scope.tableVm.initController(data)
 
-    expect(scope.routes.length).toBe(2)
-    expect(scope.routes).toEqual(jasmine.any(Array))
+    expect(scope.tableVm.routes.length).toBe(2)
+    expect(scope.tableVm.routes).toEqual(jasmine.any(Array))
     expect(utilsChartSvc.arrayGroupBy).toHaveBeenCalled()
-    expect(scope.locations).toEqual(['test'])
-    expect(scope.sectors).toEqual(['test'])
+    expect(scope.tableVm.locations).toEqual(['test'])
+    expect(scope.tableVm.sectors).toEqual(['test'])
   })
 
   it('should #getTypeColor', function() {
     var route = {type: 'test'}
-    scope.getTypeColor(route)
+    scope.tableVm.getTypeColor(route)
 
     expect(utilsRouteSvc.getTypeColor).toHaveBeenCalledWith(route)
   })
@@ -70,14 +70,14 @@ describe('Controller: tableCtrl', function() {
   it('should #addRoute', function() {
     modal.open.calls.reset()
 
-    scope.addRoute()
+    scope.tableVm.addRoute()
     expect(modal.open).toHaveBeenCalled()
   })
 
   it('should #openRouteModal', function() {
     modal.open.calls.reset()
 
-    scope.openRouteModal()
+    scope.tableVm.openRouteModal()
     expect(modal.open).toHaveBeenCalled()
   })
 

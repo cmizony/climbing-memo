@@ -4,9 +4,9 @@
       <h3 class="panel-title"><span class="fa fa-globe"></span> Routes Locations</h3>
     </div>
     <div class="panel-body">
-      <div class="alert alert-info" role="alert" ng-if="offline">Offline Mode</div>
-      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-      <ui-gmap-marker ng-repeat="location in locations" idKey='location.name'
+      <div class="alert alert-info" role="alert" ng-if="mapVm.offline">Offline Mode</div>
+      <ui-gmap-google-map center='mapVm.map.center' zoom='mapVm.map.zoom'>
+      <ui-gmap-marker ng-repeat="location in mapVm.locations" idKey='location.name'
       coords='location.coords' options="location.options" >
 
       <ui-gmap-window templateUrl="'views/_windowLocationMap.html'" templateParameter="location"> </ui-gmap-window>

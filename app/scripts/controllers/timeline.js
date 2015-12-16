@@ -12,7 +12,6 @@
   .controller('TimelineCtrl', timelineController)
 
   timelineController.$inject = [
-    '$scope',
     '$localStorage',
     '$log',
     '$rootScope',
@@ -21,17 +20,20 @@
     'utilsRouteSvc'
   ]
 
-  function timelineController($scope, $localStorage, $log, $rootScope,
+  function timelineController($localStorage, $log, $rootScope,
   $modal,timelineSvc, utilsRouteSvc) {
+    /* jshint validthis:true */
+    var vm = this
+
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
-      $scope.initController(data)
+      vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
       utilsRouteSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
+        vm.initController(data)
       })
     })
 
@@ -44,7 +46,7 @@
     *
     * @return {String} Css color
     */
-    $scope.getTypeColor = function(event) {
+    vm.getTypeColor = function(event) {
       return utilsRouteSvc.getTypeColor({type: event.mainType})
     }
 
@@ -55,7 +57,7 @@
     * @param {Boolean} event
     * @return {String}
     */
-    $scope.getBadgeTooltip = function(event) {
+    vm.getBadgeTooltip = function(event) {
       return (event.isIndoor ? 'Indoor' : 'Outdoor') + ' ' + event.mainType
     }
 
@@ -66,7 +68,7 @@
     * @param {Boolean} event
     * @return {String}
     */
-    $scope.getBadgeIcon = function(event) {
+    vm.getBadgeIcon = function(event) {
       return 'fa ' + (event.isIndoor ? 'fa-home' : 'fa-sun-o')
     }
 
@@ -77,7 +79,7 @@
     * @param {Object} route - First route to display
     * @param {Array} routes - All routes in slider
     */
-    $scope.openRouteModal = function(route, routes) {
+    vm.openRouteModal = function(route, routes) {
       $modal.open({
         templateUrl: 'views/sliderModal.html',
         controller: 'ModalsliderCtrl',
@@ -99,7 +101,7 @@
     *
     * @method addRoute
     */
-    $scope.addRoute = function() {
+    vm.addRoute = function() {
       $modal.open({
         templateUrl: 'views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
@@ -108,11 +110,11 @@
     }
 
     // Init Controller
-    $scope.initController = function(data) {
+    vm.initController = function(data) {
       var arrayRoutes = _.toArray(data)
       var events = timelineSvc.processData(arrayRoutes)
 
-      $scope.events = events
+      vm.events = events
     }
   }
 })()

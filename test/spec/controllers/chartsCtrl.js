@@ -20,7 +20,7 @@ describe('Controller: chartsCtrl', function() {
     deferred.resolve({})
     spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
 
-    chartsCtrl = $controller('chartsCtrl', {
+    chartsCtrl = $controller('chartsCtrl as chartsVm', {
       $scope:          scope,
       utilsRouteSvc:   utilsRouteSvc
     })
@@ -36,9 +36,9 @@ describe('Controller: chartsCtrl', function() {
   })
 
   it('should #initController with new empty route', function() {
-    scope.initController({test:'data'})
+    scope.chartsVm.initController({test:'data'})
 
-    expect(scope.routes).toEqual(jasmine.any(Array))
-    expect(scope.routes.length).toBe(1)
+    expect(scope.chartsVm.routes).toEqual(jasmine.any(Array))
+    expect(scope.chartsVm.routes.length).toBe(1)
   })
 })

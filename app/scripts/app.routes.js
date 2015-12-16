@@ -21,19 +21,23 @@ angular.module('climbingMemo')
   })
   .when('/table', {
     controller: 'tableCtrl',
-    templateUrl: 'views/table.html'
+    templateUrl: 'views/table.html',
+    controllerAs: 'tableVm'
   })
   .when('/timeline', {
     controller: 'TimelineCtrl',
-    templateUrl: 'views/timeline.html'
+    templateUrl: 'views/timeline.html',
+    controllerAs: 'timelineVm'
   })
   .when('/map', {
     controller: 'mapCtrl',
-    templateUrl: 'views/map.html'
+    templateUrl: 'views/map.html',
+    controllerAs: 'mapVm'
   })
   .when('/charts', {
     controller: 'chartsCtrl',
-    templateUrl: 'views/charts.html'
+    templateUrl: 'views/charts.html',
+    controllerAs: 'chartsVm'
   })
   .otherwise({
     redirectTo: '/timeline'
