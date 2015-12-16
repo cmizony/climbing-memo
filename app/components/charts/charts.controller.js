@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.controller:chartsCtrl
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.controller:chartsCtrl
   * @description
   * # chartsCtrl
-  * Controller of the climbingMemo
+  * Controller of the climbingMemoCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .controller('chartsCtrl', chartsController)
 
   chartsController.$inject = [
@@ -18,8 +18,8 @@
 
   function chartsController($rootScope, utilsRouteSvc) {
     /* jshint validthis:true */
-
     var vm = this
+
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {
       vm.initController(data)

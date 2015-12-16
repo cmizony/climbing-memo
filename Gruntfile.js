@@ -40,7 +40,10 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/**/*.js'],
+        files: [
+          '<%= yeoman.app %>/scripts/**/*.js',
+          '<%= yeoman.app %>/components/**/*.js'
+        ],
         tasks: ['newer:jshint:all', 'newer:jscs'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -71,7 +74,10 @@ module.exports = function(grunt) {
 
     jsdoc: {
       dist: {
-        src: ['app/scripts/**/*.js'],
+        src: [
+          'app/scripts/**/*.js',
+          'app/components/**/*.js'
+        ],
         options: {
           destination: appConfig.dist + '/doc',
           readme: 'README.md',
@@ -141,6 +147,7 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
+          '<%= yeoman.app %>/components/**/*.js',
           '<%= yeoman.app %>/scripts/**/*.js'
         ]
       },
@@ -155,6 +162,7 @@ module.exports = function(grunt) {
     jscs: {
       src: [
         'Gruntfile.js',
+        '<%= yeoman.app %>/components/**/*.js',
         '<%= yeoman.app %>/scripts/**/*.js',
         'test/spec/**/*.js'
       ],
@@ -272,6 +280,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           '<%= yeoman.dist %>/scripts/**/*.js',
+          '<%= yeoman.dist %>/components/**/*.js',
           '<%= yeoman.dist %>/styles/**/*.css',
           '<%= yeoman.dist %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
@@ -302,7 +311,10 @@ module.exports = function(grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/**/*.html'],
       css: ['<%= yeoman.dist %>/styles/**/*.css'],
-      js: ['<%= yeoman.dist %>/scripts/**/*.js'],
+      js: [
+        '<%= yeoman.dist %>/scripts/**/*.js',
+        '<%= yeoman.dist %>/components/**/*.js'
+      ],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -481,6 +493,7 @@ module.exports = function(grunt) {
           master: ['index.html']
         },
         src: [
+          'components/**/*.js',
           'scripts/**/*.js',
           'styles/**/*.css',
           'views/**/*.html'

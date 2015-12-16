@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:horizontalBarChart
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:horizontalBarChart
   * @description
   * # horizontalBarChart
-  * Directive of the climbingMemo
+  * Directive of the climbingMemoCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('horizontalBarChart', horizontalBarChartDirective)
 
   horizontalBarChartDirective.$inject = [

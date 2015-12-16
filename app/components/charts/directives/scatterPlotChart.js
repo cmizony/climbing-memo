@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:scatterPlotChart
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:scatterPlotChart
   * @description
   * # scatterPlotChart
-  * Directive of the climbingMemo
+  * Directive of the climbingMemoCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('scatterPlotChart', scatterPlotChartDirective)
 
   scatterPlotChartDirective.$inject = [
