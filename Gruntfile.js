@@ -18,7 +18,8 @@ module.exports = function(grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     coveralls: 'grunt-karma-coveralls',
-    jsdoc: 'grunt-jsdoc'
+    jsdoc: 'grunt-jsdoc',
+    protractor: 'grunt-protractor-runner'
   })
 
   // Configurable paths for the application
@@ -512,6 +513,18 @@ module.exports = function(grunt) {
       }
     },
 
+    protractor: {
+      options: {
+        configFile: 'test/e2e/protractor.conf.js',
+        keepAlive: true,
+        noColor: false,
+        webdriverManagerUpdate: true,
+        args: {
+        }
+      },
+      run: {}
+    },
+
     coveralls: {
       options: {
         coverageDir: 'coverage',
@@ -550,6 +563,18 @@ module.exports = function(grunt) {
       })
   })
 
+  grunt.registerTask('e2e-test', [
+    'connect:test',
+    'protractor:run'
+  ])
+
+  grunt.registerTask('unit-test', [
+    'jscs',
+    'jshint',
+    'karma',
+    'coveralls'
+  ])
+
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
@@ -559,6 +584,7 @@ module.exports = function(grunt) {
     'jscs',
     'jshint',
     'karma',
+    'protractor:run',
     'coveralls'
   ])
 
