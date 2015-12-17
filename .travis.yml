@@ -6,6 +6,8 @@ node_js:
 before_install: bundle install
 after_script:
 - cat ./coverage/report-lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+addons:
+  sauce_connect: true
 deploy:
   provider: heroku
   app: climbing-memo

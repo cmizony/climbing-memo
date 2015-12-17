@@ -518,8 +518,9 @@ module.exports = function(grunt) {
         configFile: 'test/e2e/protractor.conf.js',
         keepAlive: true,
         noColor: false,
-        webdriverManagerUpdate: true,
         args: {
+          sauceUser: process.env.SAUCE_USERNAME,
+          sauceKey: process.env.SAUCE_ACCESS_KEY
         }
       },
       run: {}
