@@ -130,4 +130,5 @@
     $scope.getIndoorLabel = function(route) { return utilsRouteSvc.getIndoorLabel(route) }
     $scope.getTypeColor   = function(route) { return utilsRouteSvc.getTypeColor(route) }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

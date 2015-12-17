@@ -12,4 +12,5 @@
     'ngRoute',
     'ui.bootstrap'
   ])
-})()
+// jscs:disable disallowSemicolons
+})();

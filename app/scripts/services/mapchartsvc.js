@@ -65,4 +65,5 @@
 
     return MapChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

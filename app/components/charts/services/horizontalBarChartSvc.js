@@ -50,4 +50,5 @@
 
     return HorizontalBarChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

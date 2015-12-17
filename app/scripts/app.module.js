@@ -22,4 +22,5 @@
     'angular-timeline',
     'angular-scroll-animate'
   ])
-})()
+// jscs:disable disallowSemicolons
+})();

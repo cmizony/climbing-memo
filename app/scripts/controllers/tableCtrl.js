@@ -146,4 +146,5 @@
       })
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

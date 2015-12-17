@@ -35,13 +35,9 @@
       templateUrl: 'views/map.html',
       controllerAs: 'mapVm'
     })
-    // .when('/charts', {
-    //   controller: 'chartsCtrl',
-    //   templateUrl: 'components/charts/chartsLayout.html',
-    //   controllerAs: 'chartsVm'
-    // })
     .otherwise({
       redirectTo: '/timeline'
     })
   })
-})()
+// jscs:disable disallowSemicolons
+})();

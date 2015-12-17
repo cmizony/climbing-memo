@@ -261,4 +261,5 @@
       }
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

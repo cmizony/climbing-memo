@@ -80,4 +80,5 @@
       return markerIcon
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

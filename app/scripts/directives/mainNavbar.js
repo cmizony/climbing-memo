@@ -19,4 +19,5 @@
       templateUrl: 'views/_mainNavbar.html'
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

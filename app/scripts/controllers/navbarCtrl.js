@@ -57,4 +57,5 @@
       }
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

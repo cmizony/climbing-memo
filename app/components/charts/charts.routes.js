@@ -19,4 +19,5 @@
       controllerAs: 'chartsVm'
     })
   })
-})()
+// jscs:disable disallowSemicolons
+})();

@@ -8,4 +8,5 @@
   * Module creation for utils
   */
   angular.module('climbingMemo.utils', [])
-})()
+// jscs:disable disallowSemicolons
+})();

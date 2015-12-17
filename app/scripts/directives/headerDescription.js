@@ -19,4 +19,5 @@
       templateUrl: 'views/_headerDescription.html'
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

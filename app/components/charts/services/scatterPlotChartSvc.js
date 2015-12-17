@@ -59,4 +59,5 @@
 
     return ScatterPlorChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

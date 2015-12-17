@@ -54,4 +54,5 @@
     }
     return TreemapChartService
   }
-})()
+// jscs:disable disallowSemicolons
+})();

@@ -99,4 +99,5 @@
     }
     return VerticalBarChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

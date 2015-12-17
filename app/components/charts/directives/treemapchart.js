@@ -278,4 +278,5 @@
       }
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();
