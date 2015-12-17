@@ -42,4 +42,5 @@
       vm.routes = _.toArray(data)
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

@@ -92,4 +92,5 @@
 
     return OverviewChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

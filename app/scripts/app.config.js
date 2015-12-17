@@ -44,4 +44,5 @@
       $log.info("Error updating cache (manifest)")
     }
   })
-})()
+// jscs:disable disallowSemicolons
+})();

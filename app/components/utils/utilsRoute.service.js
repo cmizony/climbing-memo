@@ -334,4 +334,5 @@
 
     return UtilsRoute
   }
-})()
+// jscs:disable disallowSemicolons
+})();

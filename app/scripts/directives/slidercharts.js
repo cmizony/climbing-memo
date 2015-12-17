@@ -76,4 +76,5 @@
       }
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

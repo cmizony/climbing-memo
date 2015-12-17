@@ -81,4 +81,5 @@
 
     return Timeline
   }
-})()
+// jscs:disable disallowSemicolons
+})();

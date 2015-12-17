@@ -8,11 +8,11 @@
   * # sectorsMetrics
   */
   angular.module('climbingMemo')
-  .directive('sectorsMetrics', uniqtest)
+  .directive('sectorsMetrics', sectorsMetricsDirective)
 
-  uniqtest.$inject = []
+  sectorsMetricsDirective.$inject = []
 
-  function uniqtest() {
+  function sectorsMetricsDirective() {
     return {
       templateUrl: 'views/_sectorsMetrics.html',
       restrict: 'E',
@@ -41,4 +41,5 @@
       }
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

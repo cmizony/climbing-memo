@@ -28,4 +28,5 @@
       return input ? input : '```\nReminder:\n```\n\n**Description**\n\n> \n\n----\n'
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();

@@ -101,4 +101,5 @@
 
     return Routes
   }
-})()
+// jscs:disable disallowSemicolons
+})();

@@ -113,4 +113,5 @@
     }
     return UtilsChart
   }
-})()
+// jscs:disable disallowSemicolons
+})();

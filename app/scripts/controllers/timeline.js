@@ -117,4 +117,5 @@
       vm.events = events
     }
   }
-})()
+// jscs:disable disallowSemicolons
+})();
