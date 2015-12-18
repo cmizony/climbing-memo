@@ -6,7 +6,7 @@ describe('Directive: sliderCharts', function() {
   beforeEach(module('climbingMemo'))
   beforeEach(module('templates'))
 
-  var element, scope, modal, httpBackend, templateCache, timeout
+  var element, scope, httpBackend, templateCache, timeout
 
   beforeEach(inject(function($rootScope, $httpBackend, $templateCache, $timeout) {
     scope = $rootScope.$new()

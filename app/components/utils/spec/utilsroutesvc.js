@@ -7,8 +7,8 @@ describe('Service: utilsRouteSvc', function() {
 
   // instantiate service
   var utilsRouteSvc, utilsChartSvc
-  beforeEach(inject(function(_utilsRouteSvc_, _utilsChartSvc_, _routesSvc_, $q,
-  _notificationService_, $rootScope) {
+  beforeEach(inject(function(_utilsRouteSvc_, _utilsChartSvc_, _routesSvc_,
+  _notificationService_) {
     utilsRouteSvc = _utilsRouteSvc_
     utilsChartSvc = _utilsChartSvc_
 

@@ -6,11 +6,11 @@ describe('Directive: sectorsMetrics', function() {
   beforeEach(module('climbingMemo'))
   beforeEach(module('templates'))
 
-  var element, scope, modal, httpBackend, templateCache
+  var element, scope, httpBackend, templateCache
 
   beforeEach(function() {
     module('climbingMemo', function($controllerProvider) {
-      $controllerProvider.register('ModalsliderCtrl', function($scope) {
+      $controllerProvider.register('ModalsliderCtrl', function() {
         // Controller Mock
       })
     })
