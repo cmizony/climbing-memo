@@ -6,7 +6,7 @@ describe('Directive: headerOverview', function() {
   beforeEach(module('climbingMemo'))
   beforeEach(module('templates'))
 
-  var element, scope, modal, httpBackend, templateCache
+  var element, scope, httpBackend, templateCache
 
   beforeEach(function() {
     module('climbingMemo', function($provide) {

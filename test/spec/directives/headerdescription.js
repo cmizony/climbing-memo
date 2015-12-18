@@ -6,7 +6,7 @@ describe('Directive: headerDescription', function() {
   beforeEach(module('climbingMemo'))
   beforeEach(module('templates'))
 
-  var element, scope, modal, httpBackend, templateCache
+  var element, scope, httpBackend, templateCache
 
   beforeEach(inject(function($rootScope, $httpBackend, $templateCache) {
     scope = $rootScope.$new()

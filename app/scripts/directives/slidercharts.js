@@ -23,7 +23,7 @@
       scope: {
         routes: '='
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
 
         scope.slides = [
           {

@@ -10,22 +10,6 @@ describe('Controller: TimelineCtrl', function() {
   */
   var TimelineCtrl, scope, deferred, utilsChartSvc,
   rootScope, modal, timelineSvc, utilsRouteSvc
-  // jscs:disable
-  var dataStub = {
-    1: {
-      date: "07/06/2015" , id: 1                , location: "Jamestown , CA" ,
-      name: "Green Card" , rock: "Basalt"       , sector: "Goldwall"   ,
-      status: "Onsight"  , type: "Sport lead" } ,
-    2: {
-      date: "08/02/2015" , id: 2                , location: "Jamestown , CA" ,
-      name: "Gold Rush"  , rock: "Basalt"       , sector: "Goldwall"   ,
-      status: "Redpoint" , type: "Sport lead" } ,
-    3: {
-      date: "02/17/2015" , id: 3                , location: "Jamestown , CA" ,
-      name: "Motherlode" , rock: "Basalt"       , sector: "Jailhouse"  ,
-      status: "Attempt"  , type: "Sport lead" }
-  }
-  // jscs:enable
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($controller, routesSvc,

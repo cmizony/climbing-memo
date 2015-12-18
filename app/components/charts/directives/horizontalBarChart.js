@@ -30,7 +30,7 @@
       },
       restrict: 'E',
       template: '<div id="chart-' + ID + '"></div>',
-      link: function(scope, element, attrs) {
+      link: function(scope, element) {
 
         function initDirective() {
           scope.renderChart(scope.routes)
@@ -92,7 +92,6 @@
           var data = []
           var width = 800
           var height = 600
-          var heightBar = 40
 
           function my(container) {
 

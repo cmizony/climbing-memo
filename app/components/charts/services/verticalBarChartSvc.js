@@ -11,11 +11,9 @@
   angular.module('climbingMemo.charts')
   .service('verticalBarChartSvc', verticalBarChartService)
 
-  verticalBarChartService.$inject = [
-    'utilsChartSvc'
-  ]
+  verticalBarChartService.$inject = []
 
-  function verticalBarChartService(utilsChartSvc) {
+  function verticalBarChartService() {
     var VerticalBarChart = {}
 
     /**

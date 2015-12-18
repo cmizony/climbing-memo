@@ -27,7 +27,7 @@
       },
       restrict: 'E',
       template: '<div id="chart-' + ID + '"></div>',
-      link: function(scope, element, attrs) {
+      link: function(scope, element) {
 
         function initDirective() {
           scope.renderChart(scope.routes)
@@ -141,7 +141,7 @@
             svg.call(legendTip)
 
             var rect = svg.selectAll(".emptyDay")
-            .data(function(d) { return d3.time.days(startDate, endDate); })
+            .data(function() { return d3.time.days(startDate, endDate) })
             .enter().append("rect")
             .attr("class", "emptyDay")
             .attr("width", cellSize)
@@ -210,7 +210,7 @@
                 'Multi-pitch',
                 'Top rope'
               ]
-              var rect = svg.selectAll(".legendDay")
+              svg.selectAll(".legendDay")
               .data(legendDays)
               .enter().append("rect")
               .attr("width", cellSize)

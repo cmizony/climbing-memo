@@ -558,7 +558,7 @@ module.exports = function(grunt) {
   grunt.registerTask('help', 'Display some helpful information if no task provided', function() {
     this.async()
     grunt.util.spawn({
-      grunt: true, args: ['--help']}, function(e, r, c) {
+      grunt: true, args: ['--help']}, function(e, r) {
         grunt.log.writelns(r, '\n')
       })
   })

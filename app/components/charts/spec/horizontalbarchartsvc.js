@@ -13,8 +13,6 @@ describe('Service: horizontalBarChartSvc', function() {
 
   describe('#processData(data)', function() {
     it('should group routes per month', function() {
-      var currentYear = new Date().getFullYear()
-
       var inputArray = [
         { "id": 1, "grade": "5.14a", "type": "Sport lead" },
         { "id": 2, "grade": "5.13b", "type": "Sport lead" },
