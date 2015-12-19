@@ -8,6 +8,12 @@ after_script:
 - cat ./coverage/report-lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 addons:
   sauce_connect: true
+notifcations:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/0d3dd621350d780c1bf7
+    on_success: change
+    on_failure: always
 deploy:
   provider: heroku
   app: climbing-memo
