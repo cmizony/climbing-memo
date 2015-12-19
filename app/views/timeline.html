@@ -42,7 +42,7 @@
             <span ng-repeat="route in routes">
               <span class="text-muted">{{route.grade}}</span>
               <i ng-class="{'fa fa-eye': route.watch}"></i>
-              <a style="cursor:pointer" title="Route Details" ng-click="openRouteModal(route, routes)">
+              <a style="cursor:pointer" title="Route Details" ng-click="timelineVm.openRouteModal(route, routes)">
                 {{route.name}}
               </a>
               <i ng-if="route.$sync" class="fa fa-refresh text-info" tooltip="Offline {{route.$sync}}"></i>
