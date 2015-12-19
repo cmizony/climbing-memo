@@ -527,7 +527,7 @@ module.exports = function(grunt) {
       },
       local: {
         options: {
-          configFile: 'test/e2e/protractor.conf.js',
+          configFile: 'test/e2e/protractor.conf.js'
         }
       },
       sauceLab: {
@@ -598,7 +598,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     'unit-test',
     'connect:test',
-    'protractor:SauceLab'
+    'protractor:sauceLab'
   ])
 
   grunt.registerTask('test', [
