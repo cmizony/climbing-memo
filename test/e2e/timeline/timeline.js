@@ -3,22 +3,28 @@ var TimelinePage = function() {
 
   page.timeline = element(by.css('.climb-timeline'))
   page.btnAdd = element(by.css('.climb-add button'))
-  page.routeModal = element(by.css('.route-modal'))
-  page.saveRoute = element(by.partialButtonText('Save'))
 
-  page.bucketButton = element(by.css('.bucket-actions button'))
+  page.routeModal = element(by.css('.route-modal'))
+  page.routeModalSave = element(by.partialButtonText('Save'))
+  page.routeModalDelete = element(by.css('.e2e-route .e2e-delete'))
+
+  page.bucketButton = element(by.css('.e2e-bucket button'))
   page.bucketInput = element(by.model('bucketName'))
 
+  /**
+  * @TODO Click from navbar
+  */
   page.get = function() {
     browser.get(browser.params.url)
-    // TODO nav bar + click
   }
-
-  page.generateName
 
   page.setBucket = function(name) {
     page.bucketInput.clear()
     return page.bucketInput.sendKeys(name)
+  }
+
+  page.getRoute = function(route) {
+    return element(by.partialLinkText(route.name))
   }
 
   page.enterRoute = function(route) {

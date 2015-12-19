@@ -2,7 +2,6 @@ var TimelinePage = require('./timeline.js')
 
 describe('timeline page', function() {
   var page = new TimelinePage()
-  var testRoute = getTestRoute()
   page.get()
 
   function getTestRoute() {
@@ -30,19 +29,29 @@ describe('timeline page', function() {
     expect(page.timeline.isPresent()).toBe(true)
   })
 
-  it('should add a route', function() {
-    // Select the bucket
-    page.setBucket('e2e')
-    page.bucketButton.click()
+  describe('CRUD routes', function() {
+    var testRoute = getTestRoute()
 
-    // Add a route
-    page.btnAdd.click()
-    expect(page.routeModal.isPresent()).toBe(true)
+    it('should add a route', function() {
+      page.setBucket('e2e')
+      page.bucketButton.click()
 
-    page.enterRoute(testRoute)
-    page.saveRoute.click().then(function() {
-      var routeElement = element(by.partialLinkText(testRoute.name))
-      expect(routeElement.getText()).toEqual(testRoute.name)
+      page.btnAdd.click()
+      expect(page.routeModal.isPresent()).toBe(true)
+
+      page.enterRoute(testRoute)
+      page.routeModalSave.click().then(function() {
+        expect(page.getRoute(testRoute).isPresent()).toBe(true)
+        expect(page.getRoute(testRoute).getText()).toEqual(testRoute.name)
+      })
+    })
+
+    it('should delete a route', function() {
+      page.getRoute(testRoute).click()
+      page.routeModalDelete.click().then(function() {
+        expect(page.routeModal.isPresent()).toBe(false)
+        expect(page.getRoute(testRoute).isPresent()).toBe(false)
+      })
     })
   })
 })
