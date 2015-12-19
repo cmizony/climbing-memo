@@ -33,7 +33,7 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      dir : 'coverage/',
+      dir: 'coverage/',
       reporters: [
         { type: 'html', subdir: 'report-html' },
         { type: 'lcov', subdir: 'report-lcov' }
@@ -42,6 +42,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      // jscs:disable
       // bower:js
       'bower_components/jquery/dist/jquery.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -83,12 +84,13 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
       'bower_components/angular-touch/angular-touch.js',
       // endbower
+      // jscs:enable
       'app/components/*/*.module.js',
       'app/components/**/*.js',
       'app/scripts/app.module.js',
       'app/scripts/**/*.js',
       // 'test/mock#<{(||)}>#*.js',
-      'test/spec/**/*.js',
+      'test/unit/**/*.js',
       'app/views/**/*.html'
     ],
 
@@ -128,7 +130,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_INFO
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
@@ -136,5 +138,5 @@ module.exports = function(config) {
     // },
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
-  });
-};
+  })
+}
