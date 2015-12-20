@@ -13,11 +13,7 @@ cache:
     - node_modules
     - bower_components
 notifcations:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/0d3dd621350d780c1bf7
-    on_success: change
-    on_failure: always
+  webhooks: https://webhooks.gitter.im/e/0d3dd621350d780c1bf7
 deploy:
   provider: heroku
   app: climbing-memo
