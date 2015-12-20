@@ -1,12 +1,6 @@
 // Generated on 2015-07-26 using generator-angular 0.12.1
 'use strict'
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/**/*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
-
 module.exports = function(grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -51,7 +45,7 @@ module.exports = function(grunt) {
         }
       },
       jsTest: {
-        files: ['test/spec/**/*.js'],
+        files: ['test/unit/**/*.js'],
         tasks: ['newer:jshint:test', 'newer:jscs', 'karma']
       },
       compass: {
@@ -156,7 +150,7 @@ module.exports = function(grunt) {
         options: {
           jshintrc: '.jshintrc'
         },
-        src: ['test/spec/**/*.js']
+        src: ['test/**/*.js']
       }
     },
 
@@ -165,7 +159,7 @@ module.exports = function(grunt) {
         'Gruntfile.js',
         '<%= yeoman.app %>/components/**/*.js',
         '<%= yeoman.app %>/scripts/**/*.js',
-        'test/spec/**/*.js'
+        'test/**/*.js'
       ],
       options: {
         config: '.jscsrc'
@@ -528,15 +522,23 @@ module.exports = function(grunt) {
 
     protractor: {
       options: {
-        configFile: 'test/e2e/protractor.conf.js',
-        keepAlive: true,
-        noColor: false,
-        args: {
-          sauceUser: process.env.SAUCE_USERNAME,
-          sauceKey: process.env.SAUCE_ACCESS_KEY
+        keepAlive: false,
+        noColor: false
+      },
+      local: {
+        options: {
+          configFile: 'test/e2e/protractor.conf.js'
         }
       },
-      run: {}
+      sauceLab: {
+        options: {
+          configFile: 'test/e2e/protractorSauceLab.conf.js',
+          args: {
+            sauceUser: process.env.SAUCE_USERNAME,
+            sauceKey: process.env.SAUCE_ACCESS_KEY
+          }
+        }
+      }
     },
 
     coveralls: {
@@ -579,7 +581,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('e2e-test', [
     'connect:test',
-    'protractor:run'
+    'protractor:local'
   ])
 
   grunt.registerTask('unit-test', [
@@ -589,17 +591,23 @@ module.exports = function(grunt) {
     'coveralls'
   ])
 
+  grunt.registerTask('full-test', [
+    'clean:server',
+    'wiredep',
+    'concurrent:test',
+    'autoprefixer',
+    'unit-test',
+    'connect:test',
+    'protractor:sauceLab'
+  ])
+
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
-    'jscs',
-    'jshint',
-    'karma',
-    'protractor:run',
-    'coveralls'
+    'unit-test',
+    'e2e-test'
   ])
 
   grunt.registerTask('build', [

@@ -50,7 +50,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "node --harmony ./node_modules/.bin/grunt test",
+    "test": "node --harmony ./node_modules/.bin/grunt full-test",
     "postinstall": "bower install && ./node_modules/.bin/grunt build"
   },
   "devDependencies": {
