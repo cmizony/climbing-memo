@@ -59,8 +59,8 @@
 
       // Calculate first/last date per locations
       locations = _.map(locations, function(areaLocation) {
-        areaLocation.start = _.first(areaLocation.routes).date
-        areaLocation.end   = _.last(areaLocation.routes).date
+        areaLocation.end = _.first(areaLocation.routes).date
+        areaLocation.start   = _.last(areaLocation.routes).date
         return areaLocation
       })
 

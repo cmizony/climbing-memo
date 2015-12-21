@@ -58,8 +58,8 @@ describe('Service: timelineSvc', function() {
                 }
               ]
             ],
-            "start": "08/18/2015",
-            "end": "08/02/2015"
+            "end": "08/18/2015",
+            "start": "08/02/2015"
           }
         },
         {
@@ -78,8 +78,8 @@ describe('Service: timelineSvc', function() {
                 }
               ]
             ],
-            "start": "07/20/2015",
-            "end": "07/08/2015"
+            "end": "07/20/2015",
+            "start": "07/08/2015"
           }
         }
       ]
