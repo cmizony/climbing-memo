@@ -33,14 +33,15 @@
 
       // Convert to array
       var data = []
-      for (var grade in grades) {
+
+      _.forOwn(grades, function(routes, grade) {
         data.push({
           name: type,
           grade: grade,
-          total: grades[grade].length,
-          routesId: _.pluck(grades[grade], 'id')
+          total: routes.length,
+          routesId: _.pluck(routes, 'id')
         })
-      }
+      })
 
       // Sort by grade
       data = data.sort(function(a,b) { return utilsChartSvc.compareRouteGrade(a.grade,b.grade) })

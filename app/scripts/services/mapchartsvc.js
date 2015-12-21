@@ -30,35 +30,32 @@
 
       // Calculate metrics for sites
       var data = []
-      for (var key in locations) {
-
-        var routes = locations[key]
-
+      _.forOwn(locations, function(locationRoutes, key) {
         var metrics = []
-        var sectors = utilsChartSvc.arrayToHashtable(routes,'sector')
+        var sectors = utilsChartSvc.arrayToHashtable(locationRoutes,'sector')
 
-        for (var sector in sectors) {
+        _.forOwn(sectors, function(sectorRoutes, sector) {
           metrics.push({
             sector: sector,
-            routesId: _.pluck(sectors[sector], 'id'),
-            count: sectors[sector].length,
-            type: utilsChartSvc.arrayGroupBy(sectors[sector], 'type')[0],
-            rating: (_.reduce(sectors[sector], function(result, n) {
+            routesId: _.pluck(sectorRoutes, 'id'),
+            count: sectorRoutes.length,
+            type: utilsChartSvc.arrayGroupBy(sectorRoutes, 'type')[0],
+            rating: (_.reduce(sectorRoutes, function(result, n) {
               return result += n.rating
-            }, 0) / sectors[sector].length).toFixed(1)
+            }, 0) / sectorRoutes.length).toFixed(1)
           })
-        }
+        })
         metrics.sort(function(a,b) { return a.count < b.count; })
 
         data.push({
           name: key,
           coords: {
-            latitude: routes[0].latitude,
-            longitude: routes[0].longitude
+            latitude: locationRoutes[0].latitude,
+            longitude: locationRoutes[0].longitude
           },
           metrics: metrics
         })
-      }
+      })
 
       return data
     }

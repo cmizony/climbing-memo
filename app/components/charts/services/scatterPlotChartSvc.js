@@ -25,15 +25,11 @@
     * @return {Array} Array indexed by dates
     */
     ScatterPlorChart.processData = function(rawData) {
-
       // Create hashmap of sectrs
       var sectors = utilsChartSvc.arrayToHashtable(rawData,'sector')
 
       var data = []
-
-      for (var key in sectors) {
-        var sector = sectors[key]
-
+      _.forOwn(sectors, function(sector, key) {
         // Calculate dominant type
         var types = utilsChartSvc.arrayGroupBy(sector,'type')
 
@@ -52,7 +48,7 @@
           totalRoutes: sector.length,
           routesId: _.pluck(sector, 'id')
         })
-      }
+      })
 
       return data
     }

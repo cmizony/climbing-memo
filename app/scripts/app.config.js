@@ -37,7 +37,7 @@
     try {
       appCache.update() // Attempt to update the user's cache.
 
-      if (appCache.status == $window.applicationCache.UPDATEREADY) {
+      if (appCache.status === $window.applicationCache.UPDATEREADY) {
         appCache.swapCache()  // The fetch was successful, swap in the new cache.
       }
     } catch (error) {
