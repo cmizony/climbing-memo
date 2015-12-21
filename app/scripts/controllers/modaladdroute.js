@@ -12,7 +12,7 @@
   .controller('ModaladdrouteCtrl', modalAddRouteController)
 
   modalAddRouteController.$inject = [
-    '$modalInstance',
+    '$uibModalInstance',
     '$scope',
     '$rootScope',
     '$log',
@@ -21,7 +21,7 @@
     'utilsRouteSvc'
   ]
 
-  function modalAddRouteController($modalInstance, $scope, $rootScope, $log,
+  function modalAddRouteController($uibModalInstance, $scope, $rootScope, $log,
   routeNoteFormattingFilter, utilsChartSvc, utilsRouteSvc)  {
     // Buffer for all routes
     $scope.arrayRoutes = []
@@ -44,7 +44,7 @@
     * @method cancelEdit
     */
     $scope.cancelEdit = function() {
-      $modalInstance.dismiss('cancel')
+      $uibModalInstance.dismiss('cancel')
     }
 
     /**

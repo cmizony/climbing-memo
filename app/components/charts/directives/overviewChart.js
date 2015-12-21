@@ -12,12 +12,12 @@
   .directive('overviewChart', overviewChartDirective)
 
   overviewChartDirective.$inject = [
-    '$modal',
+    '$uibModal',
     'overviewChartSvc',
     'utilsChartSvc'
   ]
 
-  function overviewChartDirective($modal, overviewChartSvc, utilsChartSvc) {
+  function overviewChartDirective($uibModal, overviewChartSvc, utilsChartSvc) {
     // Private 5 digit chart ID
     var ID = _.random(10000, 99999)
 
@@ -44,7 +44,7 @@
         * @method openSliderModal
         */
         scope.openSliderModal = function(routesId) {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'views/sliderModal.html',
             controller: 'ModalsliderCtrl',
             size: 'md',

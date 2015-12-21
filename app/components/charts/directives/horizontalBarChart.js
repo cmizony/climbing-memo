@@ -12,13 +12,13 @@
   .directive('horizontalBarChart', horizontalBarChartDirective)
 
   horizontalBarChartDirective.$inject = [
-    '$modal',
+    '$uibModal',
     '$window',
     'horizontalBarChartSvc',
     'utilsChartSvc'
   ]
 
-  function horizontalBarChartDirective($modal, $window, horizontalBarChartSvc,
+  function horizontalBarChartDirective($uibModal, $window, horizontalBarChartSvc,
   utilsChartSvc) {
     // Private 5 digit chart ID
     var ID = _.random(10000, 99999)
@@ -51,7 +51,7 @@
         * @method openSliderModal
         */
         scope.openSliderModal = function(routesId) {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'views/sliderModal.html',
             controller: 'ModalsliderCtrl',
             size: 'md',

@@ -13,7 +13,7 @@
 
   modalSliderController.$inject = [
     '$scope',
-    '$modalInstance',
+    '$uibModalInstance',
     '$localStorage',
     '$log',
     '$rootScope',
@@ -23,7 +23,7 @@
     'utilsRouteSvc'
   ]
 
-  function modalSliderController($scope, $modalInstance, $localStorage, $log,
+  function modalSliderController($scope, $uibModalInstance, $localStorage, $log,
   $rootScope, $filter, routesId, routeNoteFormattingFilter, utilsRouteSvc) {
 
     /**
@@ -32,7 +32,7 @@
     * @method closeModal
     */
     $scope.closeModal = function() {
-      $modalInstance.dismiss('cancel')
+      $uibModalInstance.dismiss('cancel')
     }
 
     // Get Data

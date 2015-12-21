@@ -42,7 +42,7 @@ describe('Controller: ModaladdrouteCtrl', function() {
 
     ModaladdrouteCtrl = $controller('ModaladdrouteCtrl', {
       $scope:          scope,
-      $modalInstance:  modalInstance,
+      $uibModalInstance:  modalInstance,
       utilsRouteSvc:   utilsRouteSvc,
       utilsChartSvc:   utilsChartSvc
     })

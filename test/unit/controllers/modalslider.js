@@ -57,7 +57,7 @@ describe('Controller: ModalsliderCtrl', function() {
 
     ModalsliderCtrl = $controller('ModalsliderCtrl', {
       $scope:                     scope,
-      $modalInstance:             modalInstance,
+      $uibModalInstance:             modalInstance,
       routesId:                   routesId,
       routeNoteFormattingFilter:  filters.routeNoteFormattingFilter,
       utilsChartSvc:              utilsChartSvc,

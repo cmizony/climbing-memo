@@ -50,7 +50,7 @@ describe('Controller: TimelineCtrl', function() {
       $rootScope:     rootScope,
       utilsChartSvc:  utilsChartSvc,
       utilsRouteSvc:  utilsRouteSvc,
-      $modal:         modal
+      $uibModal:         modal
     })
   }))
 

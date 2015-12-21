@@ -1,13 +1,13 @@
 <div class="card-header">
   <div class="text-center actions">
-    <button tooltip="Save"
+    <button uib-tooltip="Save"
           class="btn btn-default"
           ng-click="saveRoute(route)"
           tooltip-placement="bottom"
           tooltip-animation="false">
       <i class="fa fa-check text-success fa-lg"></i>
     </button>
-    <button tooltip="Cancel"
+    <button uib-tooltip="Cancel"
           class="btn btn-default"
           ng-click="cancelEdit(route)"
           tooltip-placement="bottom"
@@ -37,9 +37,9 @@
           </div>
           <input placeholder="Grade" class="form-control" type="text" ng-model="route.grade">
         </div>
-        <rating ng-model="route.rating"
+        <uib-rating ng-model="route.rating"
                 state-on="'fa fa-star fa-lg'"
-                state-off="'fa fa-star-o fa-lg'"></rating>
+                state-off="'fa fa-star-o fa-lg'"></uib-rating>
 
         <div class="input-group">
           <div class="input-group-addon">
@@ -63,7 +63,7 @@
             <i class="fa fa-map-o fa-fw text-muted"></i>
           </div>
             <input placeholder="Sector"
-                   typeahead="sector for sector in sectors | filter:$viewValue"
+                   uib-typeahead="sector for sector in sectors | filter:$viewValue"
                    typeahead-on-select="sectorPopulatePlaceholder($item,route)"
                    class="form-control"
                    type="text"
@@ -103,7 +103,7 @@
                    class="form-control"
                    type="text"
                    ng-model="route.location"
-                   typeahead="location for location in locations | filter:$viewValue">
+                   uib-typeahead="location for location in locations | filter:$viewValue">
         </div>
 
       </div>
@@ -112,11 +112,11 @@
   <div class="back">
     <div class="content">
       <div class="main">
-        <tabset type="pills">
-        <tab>
-        <tab-heading>
+        <uib-tabset type="pills">
+        <uib-tab>
+        <uib-tab-heading>
         <span style="cursor:pointer"><i class="fa fa-pencil"></i> <span class="hidden-xs">Notes</span></span>
-        </tab-heading>
+        </uib-tab-heading>
 
         <div class="panel panel-default">
           <div class="panel-body">
@@ -129,24 +129,24 @@
             </span>
           </div>
         </div>
-        </tab>
+        </uib-tab>
 
-        <tab>
-        <tab-heading>
+        <uib-tab>
+        <uib-tab-heading>
         <span style="cursor:pointer"><i class="fa fa-search"></i> <span class="hidden-xs">Preview</span></span>
-        </tab-heading>
+        </uib-tab-heading>
 
         <div class="panel panel-default">
           <div class="panel-body">
             <div marked="route.notes"></div>
           </div>
         </div>
-        </tab>
+        </uib-tab>
 
-        <tab>
-        <tab-heading>
+        <uib-tab>
+        <uib-tab-heading>
         <span style="cursor:pointer"><i class="fa fa-question-circle"></i> <span class="hidden-xs">Help</span></span>
-        </tab-heading>
+        </uib-tab-heading>
 
         <div class="panel panel-default">
           <div class="panel-body">
@@ -156,9 +156,9 @@
               src="'views/_markdownReferenceSummary.html'"></div>
           </div>
         </div>
-        </tab>
+        </uib-tab>
 
-        </tabset>
+        </uib-tabset>
       </div>
     </div>
   </div> <!-- end back panel -->

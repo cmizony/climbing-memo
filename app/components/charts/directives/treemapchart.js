@@ -12,12 +12,12 @@
 
   treemapChartDirective.$inject = [
     '$window',
-    '$modal',
+    '$uibModal',
     'treemapChartSvc',
     'utilsChartSvc'
   ]
 
-  function treemapChartDirective($window, $modal, treemapChartSvc,
+  function treemapChartDirective($window, $uibModal, treemapChartSvc,
   utilsChartSvc) {
     // Private 5 digit chart ID
     var ID = _.random(10000, 99999)
@@ -48,7 +48,7 @@
         * @method openSliderModal
         */
         scope.openSliderModal = function(routesId) {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'views/sliderModal.html',
             controller: 'ModalsliderCtrl',
             size: 'md',

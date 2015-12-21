@@ -13,13 +13,13 @@
 
   tableController.$inject = [
     '$rootScope',
-    '$modal',
+    '$uibModal',
     'utilsChartSvc',
     'utilsRouteSvc',
     'DTOptionsBuilder'
   ]
 
-  function tableController($rootScope, $modal, utilsChartSvc, utilsRouteSvc,
+  function tableController($rootScope, $uibModal, utilsChartSvc, utilsRouteSvc,
   DTOptionsBuilder) {
     /* jshint validthis:true */
     var vm = this
@@ -121,7 +121,7 @@
     * @method addRoute
     */
     vm.addRoute = function() {
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
         size: 'md'
@@ -134,7 +134,7 @@
     * @method openRouteModal
     */
     vm.openRouteModal = function(route) {
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/sliderModal.html',
         controller: 'ModalsliderCtrl',
         size: 'md',

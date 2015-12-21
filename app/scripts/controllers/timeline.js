@@ -15,13 +15,13 @@
     '$localStorage',
     '$log',
     '$rootScope',
-    '$modal',
+    '$uibModal',
     'timelineSvc',
     'utilsRouteSvc'
   ]
 
   function timelineController($localStorage, $log, $rootScope,
-  $modal,timelineSvc, utilsRouteSvc) {
+  $uibModal,timelineSvc, utilsRouteSvc) {
     /* jshint validthis:true */
     var vm = this
 
@@ -80,7 +80,7 @@
     * @param {Array} routes - All routes in slider
     */
     vm.openRouteModal = function(route, routes) {
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/sliderModal.html',
         controller: 'ModalsliderCtrl',
         size: 'md',
@@ -102,7 +102,7 @@
     * @method addRoute
     */
     vm.addRoute = function() {
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
         size: 'md'

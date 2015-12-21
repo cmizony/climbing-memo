@@ -19,7 +19,7 @@
       scope: {
         metrics: '='
       },
-      controller: function($scope, $modal) {
+      controller: function($scope, $uibModal) {
         /**
         * Open a modal to display routes details
         *
@@ -27,7 +27,7 @@
         * @param {Array} routes - routes of Id
         */
         $scope.openRoutesModal = function(routesId) {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'views/sliderModal.html',
             controller: 'ModalsliderCtrl',
             size: 'md',
