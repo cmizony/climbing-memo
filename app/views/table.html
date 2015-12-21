@@ -7,7 +7,7 @@
 	<div class="panel-body">
 
     <p class="hidden-xs">
-      <button tooltip="Add route" class="btn btn-fab btn-raised btn-success" ng-click="tableVm.addRoute()"><i class="fa fa-plus"></i></button>
+      <button uib-tooltip="Add route" class="btn btn-fab btn-raised btn-success" ng-click="tableVm.addRoute()"><i class="fa fa-plus"></i></button>
     </p>
 
     <div ng-swipe-left="tableVm.nextPage()" ng-swipe-right="tableVm.previousPage()">
@@ -32,13 +32,13 @@
               <a title="Route Details">
                 {{route.name}}
               </a>
-                <i ng-if="route.$sync" class="fa fa-refresh text-info" tooltip="Offline {{route.$sync}}"></i>
+                <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
             </td>
             <td class="">
               <span>{{route.grade}}</span>
             </td>
             <td class="hidden-xs hidden-sm">
-              <rating readonly="true" ng-model="route.rating"></rating>
+              <uib-rating readonly="true" ng-model="route.rating"></uib-rating>
             </td>
             <td class="hidden-xs">
               <span>{{route.status}}</span>

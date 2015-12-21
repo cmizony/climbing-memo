@@ -34,7 +34,7 @@ describe('Controller: tableCtrl', function() {
 
     tableCtrl = $controller('tableCtrl as tableVm', {
       $scope:         scope,
-      $modal:         modal,
+      $uibModal:         modal,
       utilsRouteSvc:  utilsRouteSvc,
       utilsChartSvc:  utilsChartSvc
     })

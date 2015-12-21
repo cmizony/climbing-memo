@@ -1,8 +1,8 @@
 <div class="modal-unstyled slider-unstyled">
   <div class="modal-body">
     <div>
-      <carousel interval="myInterval" no-wrap="noWrapSlides">
-      <slide ng-repeat="slide in slides" active="slide.active">
+      <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+      <uib-slide ng-repeat="slide in slides" active="slide.active">
 
       <div class="card-container manual-flip"
            ng-class="{hover: slide.$hover}"
@@ -12,8 +12,8 @@
            <ng-include ng-if="route.$editMode" src="'views/_cardAddRoute.html'"></ng-include>
       </div>
 
-      </slide>
-      </carousel>
+      </uib-slide>
+      </uib-carousel>
     </div>
   </div>
 
