@@ -38,25 +38,22 @@
         return !utilsChartSvc.compareRouteGrade(a,b)
       }
 
-      for (type in allTypes) {
-        difficulties[type] = utilsChartSvc.arrayGroupBy(allTypes[type],'grade')
+      _.forOwn(allTypes, function(routes, type) {
+        difficulties[type] = utilsChartSvc.arrayGroupBy(routes, 'grade')
         .sort(sortRouteGrade)
-      }
+      })
 
       // Calculate metrics at dates for each climbing type
       var data = {}
       sortRouteGrade = function(a, b) {
         return !utilsChartSvc.compareRouteGrade(a.grade, b.grade)
       }
-      for (var key in dates) {
 
-        var routes = dates[key]
-
+      _.forOwn(dates, function(routes, key) {
         var metrics = []
         var dayTypes = utilsChartSvc.arrayToHashtable(routes,'type')
-        for (type in dayTypes) {
 
-          var typeRoutes = dayTypes[type]
+        _.forOwn(dayTypes, function(typeRoutes, type) {
           typeRoutes.sort(sortRouteGrade)
 
           // Routes sorted hardest to easiest
@@ -77,7 +74,8 @@
             ease: ease,
             count: dayTypes[type].length
           })
-        }
+        })
+
         metrics.sort(function(a,b) { return a.count < b.count; })
 
         data[key] = {
@@ -85,7 +83,7 @@
           total: dates[key].length,
           metrics: metrics
         }
-      }
+      })
 
       return data
     }

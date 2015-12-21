@@ -58,7 +58,7 @@
         }
         return localRoute
       })
-      if (!localRouteFound && event != 'delete') { // Create route
+      if (!localRouteFound && event !== 'delete') { // Create route
         route.$sync = event
         route.id = "tmp_" + _.random(10000, 99999)
         $localStorage.routes.push(route)

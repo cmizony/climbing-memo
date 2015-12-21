@@ -49,7 +49,7 @@
         areaLocation.sectors = _.map(utilsChartSvc.arrayGroupBy(areaLocation.routes, 'sector'),
         function(sector) {
           return areaLocation.routes.filter(function(route) {
-            return route.sector == sector
+            return route.sector === sector
           }).sort(function(routeA, routeB) {
             return utilsChartSvc.compareRouteGrade(routeB.grade, routeA.grade)
           })
