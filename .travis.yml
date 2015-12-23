@@ -15,8 +15,3 @@ cache:
     - bower_components
 notifcations:
   webhooks: https://webhooks.gitter.im/e/0d3dd621350d780c1bf7
-deploy:
-  provider: heroku
-  app: climbing-memo
-  api_key:
-    secure: a6qix3R7l9g91VSgcx02SQMUImncoBmNaPyu8Sx2exqwJA05P+n20OgTHXuGXkY7qbPKcgzdb+DvSU6JwA0BqgT4p4kciJTi/V2PqP2MLPheOY9wrqPjh3rhplo8f5Xcyyrg6xi00z0B9suVWxVJWLFIlUbsRjDT3sk7ndQpTYs=
