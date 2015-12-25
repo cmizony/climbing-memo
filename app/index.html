@@ -90,10 +90,16 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <!-- Angular ClimbingMemo utils module -->
-    <script src="components/utils/utils.module.js"></script>
-    <script src="components/utils/utilsChart.service.js"></script>
-    <script src="components/utils/utilsRoute.service.js"></script>
+    <!-- Angular ClimbingMemo routes module -->
+    <script src="components/routes/routes.module.js"></script>
+    <script src="components/routes/routes.config.js"></script>
+    <script src="components/routes/routes.service.js"></script>
+    <script src="components/routes/controllers/modaladd.controller.js"></script>
+    <script src="components/routes/controllers/modalslider.controller.js"></script>
+    <script src="components/routes/directives/routeLocation.js"></script>
+    <script src="components/routes/directives/routeName.js"></script>
+    <script src="components/routes/filters/routenoteformatting.js"></script>
+    <script src="components/routes/services/utils.service.js"></script>
 
     <!-- Angular ClimbingMemo charts module -->
     <script src="components/charts/charts.module.js"></script>
@@ -102,6 +108,7 @@
     <script src="components/charts/directives/horizontalBarChart.js"></script>
     <script src="components/charts/directives/overviewChart.js"></script>
     <script src="components/charts/directives/scatterPlotChart.js"></script>
+    <script src="components/charts/directives/slidercharts.js"></script>
     <script src="components/charts/directives/treemapchart.js"></script>
     <script src="components/charts/directives/verticalBarChart.js"></script>
     <script src="components/charts/services/horizontalBarChartSvc.js"></script>
@@ -109,29 +116,23 @@
     <script src="components/charts/services/scatterPlotChartSvc.js"></script>
     <script src="components/charts/services/treemapchartsvc.js"></script>
     <script src="components/charts/services/verticalBarChartSvc.js"></script>
+    <script src="components/charts/services/utils.service.js"></script>
 
     <!-- Angular ClimbingMemo main module -->
     <script src="scripts/app.module.js"></script>
     <script src="scripts/app.routes.js"></script>
     <script src="scripts/app.config.js"></script>
-    <script src="scripts/controllers/tableCtrl.js"></script>
     <script src="scripts/controllers/mapCtrl.js"></script>
     <script src="scripts/controllers/navbarCtrl.js"></script>
     <script src="scripts/controllers/overviewCtrl.js"></script>
+    <script src="scripts/controllers/tableCtrl.js"></script>
+    <script src="scripts/controllers/timeline.js"></script>
     <script src="scripts/directives/headerDescription.js"></script>
     <script src="scripts/directives/headerOverview.js"></script>
     <script src="scripts/directives/mainNavbar.js"></script>
-    <script src="scripts/directives/routeName.js"></script>
-    <script src="scripts/directives/routeLocation.js"></script>
-    <script src="scripts/services/mapchartsvc.js"></script>
-    <script src="scripts/services/routesSvc.js"></script>
-    <script src="scripts/filters/routenoteformatting.js"></script>
-    <script src="scripts/controllers/timeline.js"></script>
-    <script src="scripts/services/timeline.js"></script>
-    <script src="scripts/controllers/modalslider.js"></script>
     <script src="scripts/directives/sectorsmetrics.js"></script>
-    <script src="scripts/controllers/modaladdroute.js"></script>
-    <script src="scripts/directives/slidercharts.js"></script>
+    <script src="scripts/services/mapchartsvc.js"></script>
+    <script src="scripts/services/timeline.js"></script>
     <!-- endbuild -->
     <script>
       // Check if a new cache is available on page load.

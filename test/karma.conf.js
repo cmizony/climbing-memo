@@ -29,6 +29,7 @@ module.exports = function(config) {
     preprocessors: {
       'app/scripts/**/*.js': 'coverage',
       'app/components/**/*.js': 'coverage',
+      'app/components/**/*.html': ['ng-html2js'],
       'app/views/**/*.html': ['ng-html2js']
     },
 

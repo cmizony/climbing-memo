@@ -3,7 +3,7 @@
 describe('Service: verticalBarChartSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.charts'))
 
   // instantiate service
   var verticalBarChartSvc

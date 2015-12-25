@@ -3,7 +3,7 @@
 describe('Controller: chartsCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.charts'))
 
   var chartsCtrl, scope, rootScope, utilsRouteSvc,
   deferred

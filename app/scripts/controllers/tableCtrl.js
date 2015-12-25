@@ -122,7 +122,7 @@
     */
     vm.addRoute = function() {
       $uibModal.open({
-        templateUrl: 'views/_modalAddRoute.html',
+        templateUrl: 'components/routes/views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
         size: 'md'
       })
@@ -135,7 +135,7 @@
     */
     vm.openRouteModal = function(route) {
       $uibModal.open({
-        templateUrl: 'views/sliderModal.html',
+        templateUrl: 'components/routes/views/sliderModal.html',
         controller: 'ModalsliderCtrl',
         size: 'md',
         resolve: {

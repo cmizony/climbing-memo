@@ -2,18 +2,20 @@
   'use strict'
 
   /**
-  * @module climbingMemoUtils
-  * @name climbingMemoUtils.service:utilsChartSvc
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.service:utilsChartSvc
   * @description
   * # utilsChartSvc
-  * Service in the climbingMemoUtils
+  * Service in the climbingMemoCharts
   */
-  angular.module('climbingMemo.utils')
+  angular.module('climbingMemo.charts')
   .service('utilsChartSvc', utilsChartService)
 
-  utilsChartService.$inject = []
+  utilsChartService.$inject = [
+    'utilsRouteSvc'
+  ]
 
-  function utilsChartService() {
+  function utilsChartService(utilsRouteSvc) {
     var UtilsChart = {}
 
     /**
@@ -57,14 +59,10 @@
      * @return {String} Svg color
      */
     UtilsChart.typeColor = function(type) {
-      switch (type) {
-        case 'Sport lead':	return 'gold'
-        case 'Boulder':		return 'lightskyblue'
-        case 'Traditional':	return 'yellowgreen'
-        case 'Multi-pitch':	return 'darkorange'
-        case 'Top rope':	return 'lightgray'
-        default:			return 'lightgray'
+      var route = {
+        type: type
       }
+      return utilsRouteSvc.getTypeColor(route)
     }
 
 

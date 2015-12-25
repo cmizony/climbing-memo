@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.controller:ModalsliderCtrl
+  * @module climbingMemoRoutes
+  * @name climbingMemoRoutes.controller:ModalsliderCtrl
   * @description
   * # ModalsliderCtrl
-  * Controller of the climbingMemo
+  * Controller of the climbingMemoRoutes
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.routes')
   .controller('ModalsliderCtrl', modalSliderController)
 
   modalSliderController.$inject = [

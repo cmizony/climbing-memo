@@ -12,14 +12,13 @@
   .controller('mapCtrl', mapController)
 
   mapController.$inject = [
-    '$localStorage',
     '$log',
     '$rootScope',
     'mapChartSvc',
     'utilsRouteSvc'
   ]
 
-  function mapController($localStorage, $log, $rootScope, mapChartSvc,
+  function mapController($log, $rootScope, mapChartSvc,
   utilsRouteSvc) {
     /* jshint validthis:true */
     var vm = this

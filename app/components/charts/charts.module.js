@@ -8,7 +8,7 @@
   * Module creation for charts and set dependencies
   */
   angular.module('climbingMemo.charts', [
-    'climbingMemo.utils',
+    'climbingMemo.routes',
     'ngRoute',
     'ui.bootstrap'
   ])

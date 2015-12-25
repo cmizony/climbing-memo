@@ -12,7 +12,6 @@
   .controller('TimelineCtrl', timelineController)
 
   timelineController.$inject = [
-    '$localStorage',
     '$log',
     '$rootScope',
     '$uibModal',
@@ -20,8 +19,8 @@
     'utilsRouteSvc'
   ]
 
-  function timelineController($localStorage, $log, $rootScope,
-  $uibModal,timelineSvc, utilsRouteSvc) {
+  function timelineController($log, $rootScope, $uibModal,timelineSvc,
+  utilsRouteSvc) {
     /* jshint validthis:true */
     var vm = this
 
@@ -81,7 +80,7 @@
     */
     vm.openRouteModal = function(route, routes) {
       $uibModal.open({
-        templateUrl: 'views/sliderModal.html',
+        templateUrl: 'components/routes/views/sliderModal.html',
         controller: 'ModalsliderCtrl',
         size: 'md',
         resolve: {
@@ -103,7 +102,7 @@
     */
     vm.addRoute = function() {
       $uibModal.open({
-        templateUrl: 'views/_modalAddRoute.html',
+        templateUrl: 'components/routes/views/_modalAddRoute.html',
         controller: 'ModaladdrouteCtrl',
         size: 'md'
       })

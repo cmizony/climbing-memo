@@ -1,10 +1,10 @@
 'use strict'
 
 describe('Service: routesSvc', function() {
-  beforeEach(module('climbingMemo'))
-  beforeEach(angular.mock.module('climbingMemo'))
+  beforeEach(module('climbingMemo.routes'))
+  beforeEach(angular.mock.module('climbingMemo.routes'))
 
-  beforeEach(angular.mock.module('climbingMemo', function($provide) {
+  beforeEach(angular.mock.module('climbingMemo.routes', function($provide) {
     $provide.constant('DATABASE_URL', 'test.mock/')
   }))
 

@@ -3,7 +3,7 @@
 describe('Directive: horizontalBarChart', function() {
 
   // load the directive's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.charts'))
   beforeEach(module('templates'))
 
   var rootScope, element, scope, compile
