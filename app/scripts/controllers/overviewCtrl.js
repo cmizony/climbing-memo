@@ -13,15 +13,14 @@
 
   overviewController.$inject = [
     '$scope',
-    '$localStorage',
     '$log',
     '$rootScope',
     'utilsChartSvc',
     'utilsRouteSvc'
   ]
 
-  function overviewController($scope, $localStorage, $log,
-  $rootScope, utilsChartSvc, utilsRouteSvc) {
+  function overviewController($scope, $log, $rootScope, utilsChartSvc,
+  utilsRouteSvc) {
 
     // Get Data
     utilsRouteSvc.getRoutes().then(function(data) {

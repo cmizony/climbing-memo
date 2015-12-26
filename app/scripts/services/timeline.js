@@ -32,6 +32,8 @@
       // Group by Locations
       var currentLocation
       var locations = _.reduce(routes, function(result, route) {
+        route.location = route.location || 'unknow'
+
         if (currentLocation !== route.location) {
           result.push({
             areaLocation: route.location,

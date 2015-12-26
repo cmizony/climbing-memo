@@ -3,12 +3,15 @@
 describe('Service: utilsChartSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.charts'))
 
   // instantiate service
-  var utilsChartSvc
-  beforeEach(inject(function(_utilsChartSvc_) {
+  var utilsChartSvc, utilsRouteSvc
+  beforeEach(inject(function(_utilsChartSvc_, _utilsRouteSvc_) {
     utilsChartSvc = _utilsChartSvc_
+    utilsRouteSvc = _utilsRouteSvc_
+
+    spyOn(utilsRouteSvc, 'getTypeColor').and.returnValue('green')
   }))
 
 	describe('#arrayToHashtable(data,field)', function() {
@@ -29,16 +32,17 @@ describe('Service: utilsChartSvc', function() {
 		})
 	})
 
-	describe('#typeColor(type)', function() {
-		it('should return the right color based on type', function() {
-      expect(utilsChartSvc.typeColor('Sport lead')).toMatch(/[a-z]+/)
-      expect(utilsChartSvc.typeColor('Boulder')).toMatch(/[a-z]+/)
-      expect(utilsChartSvc.typeColor('Traditional')).toMatch(/[a-z]+/)
-      expect(utilsChartSvc.typeColor('Multi-pitch')).toMatch(/[a-z]+/)
-      expect(utilsChartSvc.typeColor('Top rope')).toMatch(/[a-z]+/)
-      expect(utilsChartSvc.typeColor('')).toMatch(/[a-z]+/)
-		})
-	})
+  describe('#typeColor(type)', function() {
+    it('should return the right color based on type', function() {
+      var type = 'Boulder'
+      var output = utilsChartSvc.typeColor(type)
+
+      expect(utilsRouteSvc.getTypeColor).toHaveBeenCalledWith({
+        type: type
+      })
+      expect(output).toMatch('green')
+    })
+  })
 
 	describe('#compareRouteGrade(a,b)', function() {
 		it('should return true if grade a greater than b', function() {

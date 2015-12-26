@@ -3,7 +3,7 @@
 describe('Directive: routeName', function() {
   var element, scope, form, deferred, utilsRouteSvc
 
-  beforeEach(module('climbingMemo', function($provide) {
+  beforeEach(module('climbingMemo.routes', function($provide) {
     // Stub for utilsRouteSvc
     utilsRouteSvc = {
       getRoutes: function() {}

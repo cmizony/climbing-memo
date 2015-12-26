@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoUtils
-  * @name climbingMemoUtils.service:utilsRouteSvc
+  * @module climbingMemoRoutes
+  * @name climbingMemoRoutes.service:utilsRouteSvc
   * @description
   * # utilsRouteSvc
-  * Service in the climbingMemo.
+  * Service in the climbingMemoRoutes
   */
-  angular.module('climbingMemo.utils')
+  angular.module('climbingMemo.routes')
   .service('utilsRouteSvc', utilsRouteService)
 
   utilsRouteService.$inject = [
@@ -20,12 +20,11 @@
     '$log',
     '$timeout',
     'notificationService',
-    'routesSvc',
-    'utilsChartSvc'
+    'routesSvc'
   ]
 
   function utilsRouteService($filter, $rootScope, $http, $q, $localStorage,
-  $log, $timeout, notificationService, routesSvc, utilsChartSvc) {
+  $log, $timeout, notificationService, routesSvc) {
     var UtilsRoute = {}
 
     //  ____             _                 ____
@@ -329,7 +328,14 @@
     * @return {String} Css color
     */
     UtilsRoute.getTypeColor = function(route) {
-      return utilsChartSvc.typeColor(route ? route.type : '')
+      switch (route.type) {
+        case 'Sport lead':	return 'gold'
+        case 'Boulder':		return 'lightskyblue'
+        case 'Traditional':	return 'yellowgreen'
+        case 'Multi-pitch':	return 'darkorange'
+        case 'Top rope':	return 'lightgray'
+        default:			return 'lightgray'
+      }
     }
 
     return UtilsRoute

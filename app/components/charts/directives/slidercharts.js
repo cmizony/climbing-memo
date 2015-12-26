@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:sliderCharts
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:sliderCharts
   * @description
   * # sliderCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('sliderCharts', sliderChartsDirective)
 
   sliderChartsDirective.$inject = [
@@ -18,7 +18,7 @@
 
   function sliderChartsDirective($compile, $rootScope, $timeout) {
     return {
-      templateUrl: 'views/_sliderCharts.html',
+      templateUrl: 'components/charts/views/_sliderCharts.html',
       restrict: 'E',
       scope: {
         routes: '='

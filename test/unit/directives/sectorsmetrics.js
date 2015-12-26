@@ -30,9 +30,9 @@ describe('Directive: sectorsMetrics', function() {
     element = $compile(element)(scope)
     httpBackend.flush()
 
-    httpBackend.expectGET('views/sliderModal.html')
-    httpBackend.whenGET('views/sliderModal.html')
-      .respond(templateCache.get('/views/sliderModal.html'))
+    httpBackend.expectGET('components/routes/views/sliderModal.html')
+    httpBackend.whenGET('components/routes/views/sliderModal.html')
+      .respond(templateCache.get('/components/routes/views/sliderModal.html'))
     element.find('a').click()
 
     httpBackend.flush()

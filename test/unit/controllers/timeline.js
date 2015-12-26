@@ -12,8 +12,7 @@ describe('Controller: TimelineCtrl', function() {
   rootScope, modal, timelineSvc, utilsRouteSvc
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, routesSvc,
-  $localStorage, $log, $rootScope, $q) {
+  beforeEach(inject(function($controller, routesSvc, $log, $rootScope, $q) {
     scope = $rootScope.$new()
     rootScope = $rootScope
 

@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:routeLocation
+  * @module climbingMemoRoutes
+  * @name climbingMemoRoutes.directive:routeLocation
   * @description
   * # mainNavbar
   * Angular form validation for route location
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.routes')
   .directive('routeLocation', function($q, $http) {
     return {
       require: 'ngModel',

@@ -3,15 +3,12 @@
 describe('Service: utilsRouteSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.routes'))
 
   // instantiate service
-  var utilsRouteSvc, utilsChartSvc
-  beforeEach(inject(function(_utilsRouteSvc_, _utilsChartSvc_) {
+  var utilsRouteSvc
+  beforeEach(inject(function(_utilsRouteSvc_) {
     utilsRouteSvc = _utilsRouteSvc_
-    utilsChartSvc = _utilsChartSvc_
-
-    spyOn(utilsChartSvc, 'typeColor').and.returnValue('green')
   }))
 
   describe('#deleteRoute method', function() {
@@ -57,14 +54,12 @@ describe('Service: utilsRouteSvc', function() {
   })
 
   it('should #getTypeColor', function() {
-    var route = {type: 'test'}
-    var output = utilsRouteSvc.getTypeColor(route)
-
-    expect(utilsChartSvc.typeColor).toHaveBeenCalledWith('test')
-    expect(output).toMatch('green')
-
-    output = utilsRouteSvc.getTypeColor()
-    expect(utilsChartSvc.typeColor).toHaveBeenCalledWith('')
+    expect(utilsRouteSvc.getTypeColor('Sport lead')).toMatch(/[a-z]+/)
+    expect(utilsRouteSvc.getTypeColor('Boulder')).toMatch(/[a-z]+/)
+    expect(utilsRouteSvc.getTypeColor('Traditional')).toMatch(/[a-z]+/)
+    expect(utilsRouteSvc.getTypeColor('Multi-pitch')).toMatch(/[a-z]+/)
+    expect(utilsRouteSvc.getTypeColor('Top rope')).toMatch(/[a-z]+/)
+    expect(utilsRouteSvc.getTypeColor('')).toMatch(/[a-z]+/)
   })
 
   it('should #getIndoorLabel', function() {

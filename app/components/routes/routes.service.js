@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.factory:routesSvc
+  * @module climbingMemoRoutes
+  * @name climbingMemoRoutes.factory:routesSvc
   * @description
   * # routesSvc
-  * Factory of the climbingMemo
+  * Factory of the climbingMemoRoutes
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.routes')
   .service('routesSvc', routesService)
 
   routesService.$inject = [

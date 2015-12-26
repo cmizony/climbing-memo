@@ -2,10 +2,10 @@
   'use strict'
 
   /**
-  * @module climbingMemo.charts
-  * @name climbingMemo.charts.app:Routes
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.app:Routes
   * @description
-  * Routes for climbingMemo.charts app:
+  * Routes for climbingMemoCharts app:
   * <ul>
   *   <li>`/charts` Data visualization for routes</li>
   * </ul>

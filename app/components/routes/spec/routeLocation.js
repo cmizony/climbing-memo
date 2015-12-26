@@ -4,7 +4,7 @@ describe('Directive: routeLocation', function() {
   var element, scope, httpBackend, form
   var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address='
 
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.routes'))
 
   beforeEach(inject(function($rootScope, $compile, $httpBackend) {
     scope = $rootScope

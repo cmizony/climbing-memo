@@ -28,7 +28,7 @@
         */
         $scope.openRoutesModal = function(routesId) {
           $uibModal.open({
-            templateUrl: 'views/sliderModal.html',
+            templateUrl: 'components/routes/views/sliderModal.html',
             controller: 'ModalsliderCtrl',
             size: 'md',
             resolve: {

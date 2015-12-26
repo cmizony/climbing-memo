@@ -8,11 +8,10 @@
   * Module creation and set dependencies
   */
   angular.module('climbingMemo', [
-    'climbingMemo.utils',
+    'climbingMemo.routes',
     'climbingMemo.charts',
     'ngRoute',
     'ui.bootstrap',
-    'hc.marked',
     'jlareau.pnotify',
     'ngStorage',
     'uiGmapgoogle-maps',

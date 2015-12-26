@@ -3,7 +3,7 @@
 describe('Controller: ModaladdrouteCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.routes'))
 
   var ModaladdrouteCtrl, scope, modalInstance, rootScope, utilsRouteSvc,
   deferred, utilsChartSvc

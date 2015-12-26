@@ -5,11 +5,8 @@
   * @module climbingMemo
   * @name climbingMemo.app:Config
   * @description
-  * Application configuration (constant, config, run)
+  * Application configuration
   */
-  angular.module('climbingMemo')
-  .constant('DATABASE_URL', 'https://climbing-memo.firebaseio.com/')
-
   angular.module('climbingMemo')
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
