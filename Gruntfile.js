@@ -32,11 +32,11 @@ module.exports = function(grunt) {
           dns:
             grunt.option('server-dns')           ||
             process.env.SERVER_DNS               ||
-            'climbing-memo.firebaseio.com',
+            'test-climbing-memo.firebaseio.com',
           version:
             grunt.option('server-version')       ||
             process.env.SERVER_VERSION           ||
-            ''
+            'v1'
         }
       }
     },

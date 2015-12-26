@@ -3,10 +3,10 @@
 
   /**
   * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.factory:routesSvc
+  * @name climbingMemoRoutes.service:routesSvc
   * @description
   * # routesSvc
-  * Factory of the climbingMemoRoutes
+  * Service of the climbingMemoRoutes
   */
   angular.module('climbingMemo.routes')
   .service('routesSvc', routesService)
@@ -15,20 +15,27 @@
     '$http',
     '$rootScope',
     '$localStorage',
+    'Auth',
     'APP_CONFIG'
   ]
 
-  function routesService($http, $rootScope, $localStorage, APP_CONFIG) {
+  function routesService($http, $rootScope, $localStorage, Auth, APP_CONFIG) {
     var Routes = {}
 
     /**
     * Dynamically generate database URL and save bucket name
+    * Use session uid
     *
-    * @return {String}
+    * @TODO add http interceptors
+    * @param {String} uri
+    * @return {String} url
     */
-    Routes.getBaseUrl = function() {
-      var bucket = $rootScope.bucket || $localStorage.bucket || 'demo'
-      return APP_CONFIG.url + bucket + '/routes'
+    Routes.getUrl = function(uri) {
+      var session = Auth.getSession()
+      var tokenParam = session.token ? '?auth=' + session.token : ''
+      return APP_CONFIG.url +
+        'users/' + session.uid +
+        '/routes/' + uri + tokenParam
     }
 
     /**
@@ -54,7 +61,7 @@
      * @return {Object} promise
      */
     Routes.getRoute = function(id) {
-      return $http.get(Routes.getBaseUrl() + '/' + id + '.json')
+      return $http.get(Routes.getUrl(id + '.json'))
     }
 
     /**
@@ -63,7 +70,7 @@
     * @return {Object} promise
     */
     Routes.getRoutes = function() {
-      return $http.get(Routes.getBaseUrl() + '.json')
+      return $http.get(Routes.getUrl('.json'))
     }
 
     /**
@@ -75,7 +82,7 @@
     Routes.addRoute = function(route) {
       var cleanedRoute = Routes.cleanObjectProperties(route)
 
-      return $http.post(Routes.getBaseUrl() + '/.json', cleanedRoute)
+      return $http.post(Routes.getUrl('.json'), cleanedRoute)
     }
 
     /**
@@ -85,7 +92,7 @@
     * @return {Object} promise
     */
     Routes.deleteRoute = function(id) {
-      return $http.delete(Routes.getBaseUrl() + '/' + id + '.json')
+      return $http.delete(Routes.getUrl(id + '.json'))
     }
 
     /**
@@ -96,7 +103,7 @@
     Routes.updateRoute = function(route, id) {
       var cleanedRoute = Routes.cleanObjectProperties(route)
 
-      return $http.patch(Routes.getBaseUrl() + '/' +  id + '.json', cleanedRoute)
+      return $http.patch(Routes.getUrl(id + '.json'), cleanedRoute)
     }
 
     return Routes

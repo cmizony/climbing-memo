@@ -86,6 +86,7 @@
     <script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
     <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -93,11 +94,14 @@
     <!-- Angular ClimbingMemo core module -->
     <script src="components/core/core.module.js"></script>
     <script src="components/core/core.config.js"></script>
+    <script src="components/core/services/auth.service.js"></script>
 
     <!-- Angular ClimbingMemo users module -->
     <script src="components/users/users.module.js"></script>
+    <script src="components/users/users.service.js"></script>
     <script src="components/users/directives/profileSummary.js"></script>
     <script src="components/users/directives/userLogin.js"></script>
+    <script src="components/users/services/userLogin.service.js"></script>
 
     <!-- Angular ClimbingMemo routes module -->
     <script src="components/routes/routes.module.js"></script>

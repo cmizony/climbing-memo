@@ -85,6 +85,7 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js',
       'bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/firebase/firebase.js',
       // endbower
       // jscs:enable
       'app/components/*/*.module.js',

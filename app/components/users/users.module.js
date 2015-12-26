@@ -8,7 +8,8 @@
   * Module creation for utils
   */
   angular.module('climbingMemo.users', [
-    'climbingMemo.core'
+    'climbingMemo.core',
+    'jlareau.pnotify'
   ])
 // jscs:disable disallowSemicolons
 })();
