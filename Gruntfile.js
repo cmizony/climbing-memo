@@ -23,6 +23,20 @@ module.exports = function(grunt) {
           conservativeCollapse: true,
           collapseBooleanAttributes: true,
           removeCommentsFromCDATA: true
+        },
+        server: {
+          protocol:
+            grunt.option('server-protocol')      ||
+            process.env.SERVER_PROTOCOL          ||
+            'https',
+          dns:
+            grunt.option('server-dns')           ||
+            process.env.SERVER_DNS               ||
+            'climbing-memo.firebaseio.com',
+          version:
+            grunt.option('server-version')       ||
+            process.env.SERVER_VERSION           ||
+            ''
         }
       }
     },
@@ -33,7 +47,8 @@ module.exports = function(grunt) {
         cdnify: 'grunt-google-cdn',
         coveralls: 'grunt-karma-coveralls',
         protractor: 'grunt-protractor-runner',
-        versioncheck: 'grunt-version-check'
+        versioncheck: 'grunt-version-check',
+        ngconstant: 'grunt-ng-constant'
       }
     }
   })
@@ -60,6 +75,7 @@ module.exports = function(grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
+      'ngconstant',
       'connect:livereload',
       'watch'
     ])

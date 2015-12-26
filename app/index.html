@@ -35,7 +35,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 hidden-xs">
-          <header-description></header-description>
+          <profile-summary></profile-summary>
         </div>
         <div class="col-md-9 hidden-sm hidden-xs">
           <header-overview></header-overview>
@@ -90,6 +90,15 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- Angular ClimbingMemo core module -->
+    <script src="components/core/core.module.js"></script>
+    <script src="components/core/core.config.js"></script>
+
+    <!-- Angular ClimbingMemo users module -->
+    <script src="components/users/users.module.js"></script>
+    <script src="components/users/directives/profileSummary.js"></script>
+    <script src="components/users/directives/userLogin.js"></script>
+
     <!-- Angular ClimbingMemo routes module -->
     <script src="components/routes/routes.module.js"></script>
     <script src="components/routes/routes.config.js"></script>
@@ -127,7 +136,6 @@
     <script src="scripts/controllers/overviewCtrl.js"></script>
     <script src="scripts/controllers/tableCtrl.js"></script>
     <script src="scripts/controllers/timeline.js"></script>
-    <script src="scripts/directives/headerDescription.js"></script>
     <script src="scripts/directives/headerOverview.js"></script>
     <script src="scripts/directives/mainNavbar.js"></script>
     <script src="scripts/directives/sectorsmetrics.js"></script>

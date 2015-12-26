@@ -8,6 +8,7 @@
   * Module creation and set dependencies
   */
   angular.module('climbingMemo', [
+    'climbingMemo.users',
     'climbingMemo.routes',
     'climbingMemo.charts',
     'ngRoute',

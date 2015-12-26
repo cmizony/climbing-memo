@@ -39,6 +39,7 @@ module.exports = {
     'concurrent:dist',
     'autoprefixer',
     'ngtemplates',
+    'ngconstant',
     'concat',
     'ngAnnotate',
     'copy:dist',

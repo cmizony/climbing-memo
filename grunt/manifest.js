@@ -12,7 +12,7 @@ module.exports = {
         'fonts/fontawesome-webfont.woff2?v=4.4.0',
         'styles/main.css',
         'styles/vendor.css',
-        'scripts/vendor.js ',
+        'scripts/vendor.js',
         'scripts/scripts.js'
       ],
       network: ['*'],
@@ -26,6 +26,7 @@ module.exports = {
     },
     src: [
       'components/**/*.js',
+      'components/**/*.html',
       'scripts/**/*.js',
       'styles/**/*.css',
       'views/**/*.html'
