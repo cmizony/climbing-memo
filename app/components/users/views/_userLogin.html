@@ -1,0 +1,16 @@
+<form class="navbar-form navbar-right form-inline" role="search">
+  <div class="input-group">
+    <div class="input-group-addon hidden-xs">
+      <i class="fa fa-connectdevelop"></i>
+    </div>
+    <input type="text" name="bucket" class="form-control" ng-model="bucketName">
+    <div class="input-group-addon e2e-bucket">
+      <button class="btn btn-success"
+        ng-click="getBucket()"
+        uib-tooltip="Get Bucket"
+        tooltip-placement="left">
+        <i class="fa fa-sign-in"></i>
+      </button>
+    </div>
+  </div>
+</form>

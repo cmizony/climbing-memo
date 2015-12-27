@@ -18,6 +18,7 @@ describe('Directive: mainNavbar', function() {
     httpBackend.expectGET('views/_mainNavbar.html')
     httpBackend.whenGET('views/_mainNavbar.html')
       .respond(templateCache.get('/views/_mainNavbar.html'))
+    httpBackend.whenGET('components/users/views/_userLogin.html').respond('')
 
     element = $compile('<main-navbar></main-navbar>')(scope)
 

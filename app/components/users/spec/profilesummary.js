@@ -1,6 +1,6 @@
 'use strict'
 
-describe('Directive: headerDescription', function() {
+describe('Directive: profileSummary', function() {
 
   // load the directive's module
   beforeEach(module('climbingMemo'))
@@ -15,11 +15,11 @@ describe('Directive: headerDescription', function() {
   }))
 
   it('should get #templateUrl', inject(function($compile) {
-    httpBackend.expectGET('views/_headerDescription.html')
-    httpBackend.whenGET('views/_headerDescription.html')
-      .respond(templateCache.get('/views/_headerDescription.html'))
+    httpBackend.expectGET('components/users/views/_profileSummary.html')
+    httpBackend.whenGET('components/users/views/_profileSummary.html')
+      .respond(templateCache.get('/components/users/views/_profileSummary.html'))
 
-    element = $compile('<header-description></header-description>')(scope)
+      element = $compile('<profile-summary></profile-summary>')(scope)
 
     httpBackend.flush()
   }))

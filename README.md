@@ -56,3 +56,25 @@ Technologies
 * Validators:      Jshint + Jscs
 * Visualizations:  D3 + Angular Gmap
 * WebServer:       NodeJS & Grunt-http
+
+Module structure
+-----
+
+**Angular module dependencies:**
+
+```sh
+             +---------+
+    +------> |  Core   | <----+
+    |        +---------+      |
+    |                         |
++---+-----+              +----+-----+
+|  Users  | <------------+  Routes  |
++---+-----+              +-+-----+--+
+    ^                      ^     ^
+    |                      |     |
+    |        +-------------+     |
+    |        |                   |
++---+--------+---+       +-------+---+
+|  ClimbingMemo  +-----> |  Charts   |
++----------------+       +-----------+
+```

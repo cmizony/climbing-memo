@@ -5,7 +5,9 @@ describe('Service: routesSvc', function() {
   beforeEach(angular.mock.module('climbingMemo.routes'))
 
   beforeEach(angular.mock.module('climbingMemo.routes', function($provide) {
-    $provide.constant('DATABASE_URL', 'test.mock/')
+    $provide.constant('APP_CONFIG', {
+      url: 'test.mock/'
+    })
   }))
 
   var myService, httpBackend

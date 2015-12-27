@@ -6,3 +6,4 @@ coverage
 bower_components
 npm-debug.log
 manifest.appcache
+app/components/core/core.config.js

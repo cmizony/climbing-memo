@@ -15,10 +15,10 @@
     '$http',
     '$rootScope',
     '$localStorage',
-    'DATABASE_URL'
+    'APP_CONFIG'
   ]
 
-  function routesService($http, $rootScope, $localStorage, DATABASE_URL) {
+  function routesService($http, $rootScope, $localStorage, APP_CONFIG) {
     var Routes = {}
 
     /**
@@ -28,7 +28,7 @@
     */
     Routes.getBaseUrl = function() {
       var bucket = $rootScope.bucket || $localStorage.bucket || 'demo'
-      return DATABASE_URL + bucket + '/routes'
+      return APP_CONFIG.url + bucket + '/routes'
     }
 
     /**
