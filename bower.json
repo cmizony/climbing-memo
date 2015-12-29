@@ -22,7 +22,8 @@
     "angular-scroll-animate": "~0.9.2",
     "angular-datatables": "~0.5.0",
     "datatables": "~1.10.9",
-    "angular-touch": "~1.4.5"
+    "angular-touch": "~1.4.5",
+    "firebase": "~2.3.2"
   },
   "appPath": "app",
   "moduleName": "climbingMemo",

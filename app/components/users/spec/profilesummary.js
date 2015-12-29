@@ -1,6 +1,6 @@
 'use strict'
 
-describe('Directive: profileSummary', function() {
+xdescribe('Directive: profileSummary', function() {
 
   // load the directive's module
   beforeEach(module('climbingMemo'))

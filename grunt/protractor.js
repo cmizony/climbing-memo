@@ -1,6 +1,6 @@
 module.exports = {
   options: {
-    keepAlive: false,
+    keepAlive: true,
     noColor: false
   },
   local: {

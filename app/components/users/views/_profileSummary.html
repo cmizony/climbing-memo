@@ -1,27 +1,66 @@
 <div class="panel panel-default">
   <div class="panel-body text-center">
-
     <div class="hidden-sm">
-      <span class="fa-stack fa-4x">
+      <img ng-if="profile.picture"
+           width="112"
+           height="112"
+           alt="Profile picture"
+           class="img-circle"
+           ng-src="{{profile.picture}}">
+      <span ng-if="!profile.picture" class="fa-stack fa-4x">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-book fa-stack-1x fa-inverse"></i>
       </span>
-      <h3>Climbing Memo</h3>
+
+      <h3>
+        {{ profile.name }}
+      </h3>
 
       <hr>
-      <p class="text-muted">Remember what you have climbed and look at your progress.</p>
-      <hr>
+      <ul class="list-unstyled">
+        <li ng-if="profile.email">
+        <i class="fa fa-fw fa-envelope-o"></i>
+        <a href="mailto:{{profile.email}}">{{ profile.email }}</a>
+        </li>
+        <li ng-if="profile.provider">
+        <i class="fa fa-fw fa-{{ profile.provider }}"></i>
+        <a ng-href="{{ profile.link  }}" target="_blank">
+          {{ profile.name }}
+        </a>
+        </li>
+      </ul>
     </div>
 
     <div class="visible-sm">
-      <h2>
-        <span class="fa-stack fa-1x">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-        </span>
-        Climbing Memo
-      </h2>
+      <div class="row">
+        <div class="col-sm-3">
+          <img ng-if="profile.picture"
+               width="112"
+               height="112"
+               class="img-circle"
+               alt="Profile picture"
+               ng-src="{{profile.picture}}">
+          <span ng-if="!profile.picture" class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+          </span>
+        </div>
+        <div class="col-sm-9">
+          <h3> {{ profile.name }} </h3>
+          <ul class="list-unstyled">
+            <li ng-if="profile.email">
+            <i class="fa fa-fw fa-envelope-o"></i>
+            <a href="mailto:{{profile.email}}">{{ profile.email }}</a>
+            </li>
+            <li ng-if="profile.provider">
+            <i class="fa fa-fw fa-{{ profile.provider }}"></i>
+            <a ng-href="{{ profile.link  }}" target="_blank">
+              {{ profile.name }}
+            </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>

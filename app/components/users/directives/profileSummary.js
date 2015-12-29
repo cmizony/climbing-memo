@@ -11,12 +11,28 @@
   angular.module('climbingMemo.users')
   .directive('profileSummary', profileSummaryDirective)
 
-  profileSummaryDirective.$inject = []
+  profileSummaryDirective.$inject = [
+    '$rootScope',
+    'UsersSvc',
+    'Auth'
+  ]
 
-  function profileSummaryDirective() {
+  function profileSummaryDirective($rootScope, UsersSvc, Auth) {
     return {
       restrict: 'E',
-      templateUrl: 'components/users/views/_profileSummary.html'
+      templateUrl: 'components/users/views/_profileSummary.html',
+      link: function(scope) {
+        scope.initDirective = function() {
+          var uid = Auth.getSession().uid || 'none'
+          scope.profile = { name: 'Climbing Memo' }
+          UsersSvc.getProfile(uid).then(function(result) {
+            scope.profile = result.data
+          })
+        }
+
+        scope.initDirective()
+        $rootScope.$on('userUpdated', scope.initDirective)
+      }
     }
   }
 // jscs:disable disallowSemicolons
