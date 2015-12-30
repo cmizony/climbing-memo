@@ -13,11 +13,10 @@
 
   usersService.$inject = [
     '$http',
-    'Auth',
     'APP_CONFIG'
   ]
 
-  function usersService($http, Auth, APP_CONFIG) {
+  function usersService($http, APP_CONFIG) {
     var Users = {}
 
     /**
@@ -28,9 +27,7 @@
     * @return {String} url
     */
     Users.getUrl = function(uri) {
-      var session = Auth.getSession()
-      var tokenParam = session.token ? '?auth=' + session.token : ''
-      return APP_CONFIG.url + 'users/' + uri + tokenParam
+      return APP_CONFIG.url + 'users/' + uri
     }
 
     /**

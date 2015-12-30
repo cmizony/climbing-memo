@@ -1,4 +1,4 @@
-body >.container {
+body {
   margin-top:70px;
 }
 
@@ -33,23 +33,10 @@ h2 {
 // |_|  |_|\__,_| .__/
 //              |_|
 
-.sectors-map {
-  .panel-body {
-    padding:0px;
-  }
-}
-
-@media screen and (min-width: 769px) {
   .angular-google-map-container {
-    min-height: 600px;
+    height: 100vh;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .angular-google-map-container {
-    min-height: 350px;
-  }
-}
 
 .route-summary {
   margin-top:10px;

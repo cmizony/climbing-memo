@@ -1,0 +1,13 @@
+<main-navbar></main-navbar>
+
+<div class="sectors-map">
+  <div class="alert alert-info" role="alert" ng-if="mapVm.offline">Offline Mode</div>
+  <ui-gmap-google-map center='mapVm.map.center' zoom='mapVm.map.zoom'>
+  <ui-gmap-marker ng-repeat="location in mapVm.locations" idKey='location.name'
+  coords='location.coords' options="location.options" >
+
+  <ui-gmap-window templateUrl="'views/_windowLocationMap.html'" templateParameter="location"> </ui-gmap-window>
+
+  </ui-gmap-marker>
+  </ui-gmap-google-map>
+</div>

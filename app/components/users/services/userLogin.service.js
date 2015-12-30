@@ -13,13 +13,13 @@
   userLoginService.$inject = [
     '$log',
     '$q',
-    '$rootScope',
+    '$location',
     'UsersSvc',
     'Auth',
     'APP_CONFIG'
   ]
 
-  function userLoginService($log, $q, $rootScope, UsersSvc, Auth,
+  function userLoginService($log, $q, $location, UsersSvc, Auth,
   APP_CONFIG) {
     var UserLogin = {}
 
@@ -33,8 +33,7 @@
     UserLogin.successLogin = function(session, profile) {
       Auth.createSession(session)
       UsersSvc.updateProfile(session.uid, profile)
-      $rootScope.$emit('userUpdated')
-      $rootScope.$emit('routesUpdated')
+      $location.path('/timeline')
     }
 
     /**

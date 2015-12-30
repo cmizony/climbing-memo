@@ -18,25 +18,25 @@
   .config(function($routeProvider) {
     $routeProvider
     .when('/', {
-      redirectTo: '/timeline'
+      templateUrl: 'views/home.html'
     })
     .when('/table', {
       controller: 'tableCtrl',
-      templateUrl: 'views/table.html',
+      templateUrl: 'views/tableLayout.html',
       controllerAs: 'tableVm'
     })
     .when('/timeline', {
       controller: 'TimelineCtrl',
-      templateUrl: 'views/timeline.html',
+      templateUrl: 'views/timelineLayout.html',
       controllerAs: 'timelineVm'
     })
     .when('/map', {
       controller: 'mapCtrl',
-      templateUrl: 'views/map.html',
+      templateUrl: 'views/mapLayout.html',
       controllerAs: 'mapVm'
     })
     .otherwise({
-      redirectTo: '/timeline'
+      redirectTo: '/'
     })
   })
 // jscs:disable disallowSemicolons
