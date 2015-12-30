@@ -29,21 +29,7 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <main-navbar></main-navbar>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 hidden-xs">
-          <profile-summary></profile-summary>
-        </div>
-        <div class="col-md-9 hidden-sm hidden-xs">
-          <header-overview></header-overview>
-        </div>
-      </div>
-      <hr class="hidden-xs hidden-sm">
-      <div data-ng-view></div>
-    </div>
+    <div data-ng-view></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -95,6 +81,7 @@
     <script src="components/core/core.module.js"></script>
     <script src="components/core/core.config.js"></script>
     <script src="components/core/services/auth.service.js"></script>
+    <script src="components/core/services/authInterceptor.service.js"></script>
 
     <!-- Angular ClimbingMemo users module -->
     <script src="components/users/users.module.js"></script>

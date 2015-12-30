@@ -32,10 +32,9 @@
     */
     Routes.getUrl = function(uri) {
       var session = Auth.getSession()
-      var tokenParam = session.token ? '?auth=' + session.token : ''
       return APP_CONFIG.url +
         'users/' + session.uid +
-        '/routes/' + uri + tokenParam
+        '/routes/' + uri
     }
 
     /**

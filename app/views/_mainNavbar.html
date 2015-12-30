@@ -1,5 +1,5 @@
-:armponent<div class="main-navbar">
-  <div class="navbar navbar-default navbar-fixed-top" ng-controller="navbarCtrl">
+<div class="main-navbar">
+  <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -11,22 +11,22 @@
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li ng-class="{ active: isActive('/timeline')}">
+          <li ng-class="{ active: isActive('/timeline')}" ng-if="isLoggedIn()">
           <a href="#/timeline" data-toggle="collapse" data-target=".navbar-responsive-collapse.in">
             <i class="fa fa fa-clock-o"></i> Timeline
           </a>
           </li>
-          <li ng-class="{ active: isActive('/table')}">
+          <li ng-class="{ active: isActive('/table')}" ng-if="isLoggedIn()">
           <a href="#/table" data-toggle="collapse" data-target=".navbar-responsive-collapse.in">
             <i class="fa fa-table"></i> Table
           </a>
           </li>
-          <li ng-class="{ active: isActive('/map')}">
+          <li ng-class="{ active: isActive('/map')}" ng-if="isLoggedIn()">
           <a href="#/map" data-toggle="collapse" data-target=".navbar-responsive-collapse.in">
             <i class="fa fa-globe"></i> Map
           </a>
           </li>
-          <li ng-class="{ active: isActive('/charts')}">
+          <li ng-class="{ active: isActive('/charts')}" ng-if="isLoggedIn()">
           <a href="#/charts" data-toggle="collapse" data-target=".navbar-responsive-collapse.in">
             <i class="fa fa-bar-chart"></i> Charts
           </a>

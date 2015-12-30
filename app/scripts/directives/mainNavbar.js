@@ -16,7 +16,8 @@
   function mainNavbarDirective() {
     return {
       restrict: 'E',
-      templateUrl: 'views/_mainNavbar.html'
+      templateUrl: 'views/_mainNavbar.html',
+      controller: 'navbarCtrl'
     }
   }
 // jscs:disable disallowSemicolons

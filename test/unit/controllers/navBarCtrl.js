@@ -8,16 +8,11 @@ describe('Controller: navbarCtrl', function() {
   /**
   * Initialize local variables for unit-test
   */
-  var navbarCtrl, scope, location, rootScope, deferred, utilsRouteSvc,
-  localStorage
+  var navbarCtrl, scope, location
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, $rootScope, $q) {
+  beforeEach(inject(function($controller, $rootScope) {
     scope = $rootScope.$new()
-
-    // rootScope stub
-    rootScope = $rootScope
-    spyOn(rootScope, '$broadcast')
 
     // Location stub
     location = {
@@ -25,26 +20,9 @@ describe('Controller: navbarCtrl', function() {
     }
     spyOn(location, 'path').and.returnValue('/test')
 
-    // localStorage stub
-    localStorage = {
-      routes: {
-        testA: {sync: true},
-        testB: {sync: true}
-      }
-    }
-
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
-      getRoutes:       function() {}
-    }
-    deferred = $q.defer()
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
-
     navbarCtrl = $controller('navbarCtrl', {
       $scope:    scope,
-      $location:  location,
-      $localStorage: localStorage,
-      utilsRouteSvc: utilsRouteSvc
+      $location:  location
     })
   }))
 
@@ -55,25 +33,5 @@ describe('Controller: navbarCtrl', function() {
     expect(output).toBe(true)
     output = scope.isActive('/error')
     expect(output).toBe(false)
-  })
-
-  it('should refresh routes on #getBucket success', function() {
-    scope.getBucket()
-    deferred.resolve()
-    rootScope.$apply()
-
-    expect(rootScope.bucket).toMatch('demo')
-    expect(localStorage.bucket).toMatch('demo')
-    expect(rootScope.$broadcast).toHaveBeenCalledWith('routesUpdated')
-  })
-
-  it('should revert bucket on #getBucket error', function() {
-    rootScope.bucket = 'test'
-    scope.getBucket()
-    deferred.reject()
-    rootScope.$apply()
-
-    expect(rootScope.bucket).toMatch('test')
-    expect(scope.bucketName).toMatch('test')
   })
 })
