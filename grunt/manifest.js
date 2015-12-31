@@ -16,7 +16,7 @@ module.exports = {
         'scripts/scripts.js'
       ],
       network: ['*'],
-      fallback: ['/ /offline.html'],
+      fallback: ['/offline.html'],
       exclude: ['manifest.appcache'],
       preferOnline: true,
       verbose: true,
@@ -25,10 +25,6 @@ module.exports = {
       master: ['index.html']
     },
     src: [
-      'components/**/*.js',
-      'components/**/*.html',
-      'scripts/**/*.js',
-      'styles/**/*.css',
       'views/**/*.html'
     ],
     dest: 'manifest.appcache'
