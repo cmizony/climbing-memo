@@ -22,6 +22,7 @@
   function userLoginService($log, $q, $location, UsersSvc, Auth,
   APP_CONFIG) {
     var UserLogin = {}
+    var firebaseReference = new Firebase(APP_CONFIG.url)
 
     /**
      * Handle successful login from provider
@@ -37,12 +38,22 @@
     }
 
     /**
+    * Remove local session, invalidate the token and redirect to home page
+    *
+    * @method logOut
+    */
+    UserLogin.logOut = function() {
+      Auth.deleteSession()
+      firebaseReference.unauth()
+      $location.path('/')
+    }
+
+    /**
     * Prompt the user to login and then invoke the google login popup
     *
     * @return {Object} promise that resolve to profile info
     */
     UserLogin.googleSignIn = function() {
-      var firebaseReference = new Firebase(APP_CONFIG.url)
       var deferred = $q.defer()
 
       firebaseReference.authWithOAuthPopup('google', function(error, data) {

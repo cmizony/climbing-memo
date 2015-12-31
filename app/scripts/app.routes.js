@@ -18,7 +18,19 @@
   .config(function($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      resolve: {
+        authentication: function($q, $location, Auth) {
+          var deferred = $q.defer()
+          if (Auth.isLoggedIn()) {
+            deferred.reject()
+            $location.path('/timeline')
+          } else {
+            deferred.resolve()
+          }
+          return deferred.promise
+        }
+      }
     })
     .when('/table', {
       controller: 'tableCtrl',
