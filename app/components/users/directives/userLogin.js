@@ -12,14 +12,12 @@
   .directive('userLogin', userLoginDirective)
 
   userLoginDirective.$inject = [
-    '$rootScope',
-    '$location',
     'UserLoginSvc',
     'notificationService',
     'Auth'
   ]
 
-  function userLoginDirective($rootScope, $location, UserLoginSvc,
+  function userLoginDirective(UserLoginSvc,
   notificationService, Auth) {
     return {
       restrict: 'E',
@@ -39,11 +37,7 @@
           }
         }
 
-        scope.logOut = function() {
-          Auth.deleteSession()
-          notificationService.success('You are not logged out')
-          $location.path('/')
-        }
+        scope.logOut = UserLoginSvc.logOut
 
         scope.initDirective = function() {
           scope.isLoggedIn = Auth.isLoggedIn

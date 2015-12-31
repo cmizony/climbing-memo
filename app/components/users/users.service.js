@@ -37,7 +37,11 @@
     * @return {Object} promise
     */
     Users.getProfile = function(uid) {
-      return $http.get(Users.getUrl(uid + '/profile.json'))
+      return $http({
+        method: 'GET',
+        url: Users.getUrl(uid + '/profile.json'),
+        cache: true
+      })
     }
 
     /**
