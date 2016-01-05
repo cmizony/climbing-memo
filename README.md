@@ -1,7 +1,7 @@
-| | | | |
-|---|---|---|---|
-| **Develop** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=develop)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=develop&service=github)](https://coveralls.io/github/10alab/Siurana?branch=develop) | [![Heroku](https://heroku-badge.herokuapp.com/?app=test-climbing-memo&style=flat)](https://test-climbing-memo.herokuapp.com) |
-| **Master** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=master)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=master&service=github)](https://coveralls.io/github/10alab/Siurana?branch=master) | [![Heroku](https://heroku-badge.herokuapp.com/?app=climbing-memo&style=flat)](https://climbing-memo.herokuapp.com) |
+| | Travis | Coverralls | Heroku | Bithound |
+|---|---|---|---|---|
+| **Develop** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=develop)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=develop&service=github)](https://coveralls.io/github/10alab/Siurana?branch=develop) | [![Heroku](https://heroku-badge.herokuapp.com/?app=test-climbing-memo&style=flat)](https://test-climbing-memo.herokuapp.com) | [![bitHound Overall Score](https://www.bithound.io/github/10alab/Siurana/badges/score.svg)](https://www.bithound.io/github/10alab/Siurana) |
+| **Master** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=master)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=master&service=github)](https://coveralls.io/github/10alab/Siurana?branch=master) | [![Heroku](https://heroku-badge.herokuapp.com/?app=climbing-memo&style=flat)](https://climbing-memo.herokuapp.com) | [![bitHound Overall Score](https://www.bithound.io/github/10alab/Siurana/badges/score.svg)](https://www.bithound.io/github/10alab/Siurana) |
 
 [![Codacy Badge](https://api.codacy.com/project/badge/82b99cbb621d4ee6ae23826ec798d7cd)](https://www.codacy.com/app/cmizony/Siurana)
 [![Gitter Chat](http://img.shields.io/badge/gitter-cmizony / 10aLab-blue.svg)](https://gitter.im/cmizony/10aLab)
