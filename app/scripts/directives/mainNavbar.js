@@ -16,6 +16,7 @@
   function mainNavbarDirective() {
     return {
       restrict: 'E',
+      replace: true,
       templateUrl: 'views/_mainNavbar.html',
       controller: 'navbarCtrl'
     }
