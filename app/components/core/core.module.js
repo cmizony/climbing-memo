@@ -8,7 +8,9 @@
   * Module creation for core
   * Constain APP_CONFIG that is being generated on the build
   */
-  angular.module('climbingMemo.core', [])
+  angular.module('climbingMemo.core', [
+    'ngStorage'
+  ])
 
   angular.module('climbingMemo.core')
   .config(['$httpProvider', function($httpProvider) {

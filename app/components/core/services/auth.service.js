@@ -16,7 +16,7 @@
 
   function authService($localStorage) {
     var Auth = {}
-    var cachedSession = false
+    Auth.cachedSession = false
 
     /**
     * Authentication session
@@ -34,7 +34,7 @@
     * @param {Object} session
     */
     Auth.createSession = function(session) {
-      cachedSession = session
+      Auth.cachedSession = session
       $localStorage.mySession = session
     }
 
@@ -43,7 +43,7 @@
     * @method deleteSession
     */
     Auth.deleteSession = function() {
-      cachedSession = false
+      Auth.cachedSession = false
       delete $localStorage.mySession
     }
 
@@ -53,10 +53,10 @@
     * @return {session}
     */
     Auth.getSession = function() {
-      if (!cachedSession) {
-        cachedSession = $localStorage.mySession || {}
+      if (!Auth.cachedSession) {
+        Auth.cachedSession = $localStorage.mySession || {}
       }
-      return cachedSession
+      return Auth.cachedSession
     }
 
     /**
