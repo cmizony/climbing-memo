@@ -30,8 +30,7 @@ module.exports = function(config) {
       'app/scripts/**/*.js': 'coverage',
       'app/components/*/*.js': 'coverage',
       'app/components/*/{controllers,directives,filters,services}/**/*.js': 'coverage',
-      'app/components/**/*.html': ['ng-html2js'],
-      'app/views/**/*.html': ['ng-html2js']
+      'app/{components,views}/**/*.html': ['ng-html2js']
     },
 
     coverageReporter: {
@@ -94,6 +93,7 @@ module.exports = function(config) {
       'app/scripts/**/*.js',
       // 'test/mock#<{(||)}>#*.js',
       'test/unit/**/*.js',
+      'app/components/**/*.html',
       'app/views/**/*.html'
     ],
 
