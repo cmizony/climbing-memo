@@ -26,7 +26,7 @@ describe('Directive: sliderCharts', function() {
 
     var elementScope = element.isolateScope()
     expect(elementScope.slides.length).toBeGreaterThan(1)
-    expect(elementScope.currentSlideType).toBe('')
+    expect(elementScope.currentSlideType).toBe('scatter-plot-chart')
 
     elementScope.slides[0].active = true
     elementScope.$digest()
