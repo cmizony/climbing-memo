@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.controller:tableCtrl
+  * @module climbingMemoTable
+  * @name climbingMemoTable.controller:tableCtrl
   * @description
   * # tableCtrl
-  * Controller of the climbingMemo
+  * Controller of the climbingMemoTable
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.table')
   .controller('tableCtrl', tableController)
 
   tableController.$inject = [

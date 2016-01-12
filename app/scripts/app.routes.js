@@ -32,21 +32,6 @@
         }
       }
     })
-    .when('/table', {
-      controller: 'tableCtrl',
-      templateUrl: 'views/tableLayout.html',
-      controllerAs: 'tableVm'
-    })
-    .when('/timeline', {
-      controller: 'TimelineCtrl',
-      templateUrl: 'views/timelineLayout.html',
-      controllerAs: 'timelineVm'
-    })
-    .when('/map', {
-      controller: 'mapCtrl',
-      templateUrl: 'views/mapLayout.html',
-      controllerAs: 'mapVm'
-    })
     .otherwise({
       redirectTo: '/'
     })

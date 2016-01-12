@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.service:mapChartSvc
+  * @module climbingMemoMap
+  * @name climbingMemoMap.service:mapChartSvc
   * @description
   * # mapChartSvc
-  * Service in the climbingMemo.
+  * Service in the climbingMemoMap
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.map')
   .service('mapChartSvc', mapChartService)
 
   mapChartService.$inject = [
