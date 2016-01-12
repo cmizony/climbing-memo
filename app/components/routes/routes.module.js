@@ -12,6 +12,7 @@
     'hc.marked',
     'jlareau.pnotify',
     'ui.bootstrap',
+    'ngRoute',
     'ngStorage'
   ])
 // jscs:disable disallowSemicolons

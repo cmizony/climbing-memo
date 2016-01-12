@@ -3,7 +3,7 @@
 describe('Controller: tableCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('climbingMemo.table'))
 
   var tableCtrl, scope, modal, rootScope, utilsRouteSvc,
   deferred, utilsChartSvc

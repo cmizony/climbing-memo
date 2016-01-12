@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.service:timelineSvc
+  * @module climbingMemoTimeline
+  * @name climbingMemoTimeline.service:timelineSvc
   * @description
   * # timeline
-  * Service in the climbingMemo.
+  * Service in the climbingMemoTimeline.
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.timeline')
   .service('timelineSvc', timelineService)
 
   timelineService.$inject = [

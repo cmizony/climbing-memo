@@ -11,15 +11,15 @@
     'climbingMemo.users',
     'climbingMemo.routes',
     'climbingMemo.charts',
+    'climbingMemo.map',
+    'climbingMemo.timeline',
+    'climbingMemo.table',
     'ngRoute',
     'ui.bootstrap',
     'jlareau.pnotify',
     'ngStorage',
     'uiGmapgoogle-maps',
-    'datatables',
     'ngTouch',
-    'datatables.bootstrap',
-    'angular-timeline',
     'angular-scroll-animate'
   ])
 // jscs:disable disallowSemicolons

@@ -6,7 +6,7 @@
   <ui-gmap-marker ng-repeat="location in mapVm.locations" idKey='location.name'
   coords='location.coords' options="location.options" >
 
-  <ui-gmap-window templateUrl="'views/_windowLocationMap.html'" templateParameter="location"> </ui-gmap-window>
+  <ui-gmap-window templateUrl="'components/map/views/_windowLocationMap.html'" templateParameter="location"> </ui-gmap-window>
 
   </ui-gmap-marker>
   </ui-gmap-google-map>
