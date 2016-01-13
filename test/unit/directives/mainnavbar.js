@@ -15,9 +15,8 @@ describe('Directive: mainNavbar', function() {
   }))
 
   it('should get #templateUrl', inject(function($compile) {
-    httpBackend.expectGET('views/_mainNavbar.html')
-    httpBackend.whenGET('views/_mainNavbar.html')
-      .respond(templateCache.get('/views/_mainNavbar.html'))
+    httpBackend.whenGET('components/core/views/_mainNavbar.html')
+      .respond(templateCache.get('/components/core/views/_mainNavbar.html'))
     httpBackend.whenGET('components/users/views/_userLogin.html').respond('')
 
     element = $compile('<main-navbar></main-navbar>')(scope)

@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.controller:navbarCtrl
+  * @module climbingMemoCore
+  * @name climbingMemoCore.controller:navbarCtrl
   * @description
   * # navbarCtrl
-  * Controller of the climbingMemo
+  * Controller of the climbingMemoCore
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.core')
   .controller('navbarCtrl', navbarController)
 
   navbarController.$inject = [

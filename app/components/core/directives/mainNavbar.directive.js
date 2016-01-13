@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:mainNavbar
+  * @module climbingMemoCore
+  * @name climbingMemoCore.directive:mainNavbar
   * @description
   * # mainNavbar
-  * Directive of the climbingMemo
+  * Directive of the climbingMemoCore
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.core')
   .directive('mainNavbar', mainNavbarDirective)
 
   mainNavbarDirective.$inject = []
@@ -17,7 +17,7 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'views/_mainNavbar.html',
+      templateUrl: 'components/core/views/_mainNavbar.html',
       controller: 'navbarCtrl'
     }
   }
