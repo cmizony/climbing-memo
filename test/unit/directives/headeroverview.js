@@ -29,9 +29,8 @@ describe('Directive: headerOverview', function() {
   }))
 
   it('should get #templateUrl', inject(function($compile) {
-    httpBackend.expectGET('views/_headerOverview.html')
-    httpBackend.whenGET('views/_headerOverview.html')
-      .respond(templateCache.get('/views/_headerOverview.html'))
+    httpBackend.whenGET('components/charts/views/_headerOverview.html')
+      .respond(templateCache.get('/components/charts/views/_headerOverview.html'))
 
     element = $compile('<header-overview></header-overview>')(scope)
 

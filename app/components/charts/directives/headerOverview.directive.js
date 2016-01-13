@@ -2,15 +2,15 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:headerOverview
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:headerOverview
   * @description
   * # headerOverview
-  * Directive of the climbingMemo
+  * Directive of the climbingMemoCharts
   * @example
   * <header-overview></header-overview>
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('headerOverview', headerOverviewDirective)
 
   headerOverviewDirective.$inject = []
@@ -19,7 +19,7 @@
     return {
       scope: true,
       restrict: 'E',
-      templateUrl: 'views/_headerOverview.html'
+      templateUrl: 'components/charts/views/_headerOverview.html'
     }
   }
 // jscs:disable disallowSemicolons

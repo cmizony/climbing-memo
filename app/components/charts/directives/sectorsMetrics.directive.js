@@ -2,19 +2,19 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.directive:sectorsMetrics
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.directive:sectorsMetrics
   * @description
   * # sectorsMetrics
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .directive('sectorsMetrics', sectorsMetricsDirective)
 
   sectorsMetricsDirective.$inject = []
 
   function sectorsMetricsDirective() {
     return {
-      templateUrl: 'views/_sectorsMetrics.html',
+      templateUrl: 'components/charts/views/_sectorsMetrics.html',
       restrict: 'E',
       scope: {
         metrics: '='

@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.controller:overviewCtrl
+  * @module climbingMemoCharts
+  * @name climbingMemoCharts.controller:overviewCtrl
   * @description
   * # overviewCtrl
-  * Controller of the climbingMemo
+  * Controller of the climbingMemoCharts
   */
-  angular.module('climbingMemo')
+  angular.module('climbingMemo.charts')
   .controller('overviewCtrl', overviewController)
 
   overviewController.$inject = [

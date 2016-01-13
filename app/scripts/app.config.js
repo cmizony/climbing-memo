@@ -8,14 +8,6 @@
   * Application configuration
   */
   angular.module('climbingMemo')
-  .config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-      v: '3.17',
-      libraries: 'weather,geometry,visualization'
-    })
-  })
-
-  angular.module('climbingMemo')
   .run(function($window, $rootScope, $log) {
     $rootScope.online = navigator.onLine // jshint ignore:line
     // FIXME
