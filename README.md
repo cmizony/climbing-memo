@@ -53,12 +53,11 @@ Technologies
 * Database:        Firebase
 * Deployement:     Travis + Heroku
 * Framework:       AngularJS
-* Generator:       Yeoman-angular
 * Style:           Sass + Bootstrap material design
 * Tests:           Karma + Jasmine + Coveralls
 * Validators:      Jshint + Jscs
 * Visualizations:  D3 + Angular Gmap
-* WebServer:       NodeJS & Grunt-http
+* WebServer:       NodeJS
 
 Module structure
 -----
@@ -66,18 +65,25 @@ Module structure
 **Angular module dependencies:**
 
 ```sh
-             +---------+
-    +------> |  Core   | <----+
-    |        +---------+      |
-    |                         |
-+---+-----+              +----+-----+
-|  Users  | <------------+  Routes  |
-+---+-----+              +-+-----+--+
-    ^                      ^     ^
-    |                      |     |
-    |        +-------------+     |
-    |        |                   |
-+---+--------+---+       +-------+---+
-|  ClimbingMemo  +-----> |  Charts   |
-+----------------+       +-----------+
+
+                +--------+            +------+               +-------+
+                | Routes +------------> Core <---------------+ Users |
+                +----^---+            +---^--+               +---^---+
+                     |                    |                      |
+                     |                    |                      |
+   ^--------------^--+--------------^-----+----------^           |
+   |              |                 |                |           |
+   |              |                 |                |           |
++--+--+       +---+----+        +---+---+      +-----+----+      |
+| Map +-------> Charts <--------+ Table |      | Timeline |      |
++--^--+       +---^----+        +---^---+      +-----^----+      |
+   |              |                 |                |           |
+   |              |                 |                |           |
+   |              |                 |                |           |
+   +--------------+-------------+---+----------------+-----------+
+                                |
+                                |
+                         +------+-------+
+                         | ClimbingMemo |
+                         +--------------+
 ```
