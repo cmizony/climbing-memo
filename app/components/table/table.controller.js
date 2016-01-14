@@ -15,17 +15,18 @@
     '$rootScope',
     '$uibModal',
     'utilsChartSvc',
-    'utilsRouteSvc',
-    'DTOptionsBuilder'
+    'RoutesSvc',
+    'DTOptionsBuilder',
+    'RoutesUtilsSvc'
   ]
 
-  function tableController($rootScope, $uibModal, utilsChartSvc, utilsRouteSvc,
-  DTOptionsBuilder) {
+  function tableController($rootScope, $uibModal, utilsChartSvc, RoutesSvc,
+  DTOptionsBuilder, RoutesUtilsSvc) {
     /* jshint validthis:true */
     var vm = this
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       vm.initController(data)
     })
 
@@ -55,7 +56,7 @@
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         vm.initController(data)
       })
     })
@@ -112,7 +113,7 @@
      * @return {String} Css color
      */
     vm.getTypeColor = function(route) {
-      return utilsRouteSvc.getTypeColor(route)
+      return RoutesUtilsSvc.getTypeColor(route)
     }
 
     /**

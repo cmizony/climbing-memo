@@ -9,10 +9,10 @@ describe('Controller: TimelineCtrl', function() {
   * Initialize local variables for unit-test
   */
   var TimelineCtrl, scope, deferred, utilsChartSvc,
-  rootScope, modal, timelineSvc, utilsRouteSvc
+  rootScope, modal, timelineSvc, RoutesSvc, RoutesUtilsSvc
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, routesSvc, $log, $rootScope, $q) {
+  beforeEach(inject(function($controller, $log, $rootScope, $q) {
     scope = $rootScope.$new()
     rootScope = $rootScope
 
@@ -23,15 +23,19 @@ describe('Controller: TimelineCtrl', function() {
     }
     spyOn(utilsChartSvc, 'typeColor').and.returnValue('green')
 
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
-      getRoutes:       function() {},
-      getTypeColor:    function() {}
+    // RoutesSvc Stub
+    RoutesSvc = {
+      getRoutes:       function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
-    spyOn(utilsRouteSvc, 'getTypeColor')
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+
+    // RoutesUtilsSvc Stub
+    RoutesUtilsSvc = {
+      getTypeColor:    function() {}
+    }
+    spyOn(RoutesUtilsSvc, 'getTypeColor')
 
     // modal stub
     modal = { open:     function() {} }
@@ -44,28 +48,29 @@ describe('Controller: TimelineCtrl', function() {
     spyOn(timelineSvc, 'processData').and.returnValue([1,2,3])
 
     TimelineCtrl = $controller('TimelineCtrl as timelineVm', {
-      $scope:         scope,
-      timelineSvc:    timelineSvc,
-      $rootScope:     rootScope,
-      utilsChartSvc:  utilsChartSvc,
-      utilsRouteSvc:  utilsRouteSvc,
-      $uibModal:         modal
+      $scope:          scope,
+      timelineSvc:     timelineSvc,
+      $rootScope:      rootScope,
+      utilsChartSvc:   utilsChartSvc,
+      RoutesSvc:       RoutesSvc,
+      RoutesUtilsSvc:  RoutesUtilsSvc,
+      $uibModal:       modal
     })
   }))
 
   it('should listen on event #routesUpdated', function() {
-    utilsRouteSvc.getRoutes.calls.reset()
+    RoutesSvc.getRoutes.calls.reset()
     rootScope.$emit('routesUpdated')
     rootScope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should #getTypeColor', function() {
-    utilsRouteSvc.getTypeColor.calls.reset()
+    RoutesUtilsSvc.getTypeColor.calls.reset()
     scope.timelineVm.getTypeColor({mainType: 'test'})
 
-    expect(utilsRouteSvc.getTypeColor).toHaveBeenCalled()
+    expect(RoutesUtilsSvc.getTypeColor).toHaveBeenCalled()
   })
 
   it('should open modal on #addRoute', function() {

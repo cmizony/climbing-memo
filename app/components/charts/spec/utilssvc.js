@@ -6,12 +6,12 @@ describe('Service: utilsChartSvc', function() {
   beforeEach(module('climbingMemo.charts'))
 
   // instantiate service
-  var utilsChartSvc, utilsRouteSvc
-  beforeEach(inject(function(_utilsChartSvc_, _utilsRouteSvc_) {
+  var utilsChartSvc, RoutesUtilsSvc
+  beforeEach(inject(function(_utilsChartSvc_, _RoutesUtilsSvc_) {
     utilsChartSvc = _utilsChartSvc_
-    utilsRouteSvc = _utilsRouteSvc_
+    RoutesUtilsSvc = _RoutesUtilsSvc_
 
-    spyOn(utilsRouteSvc, 'getTypeColor').and.returnValue('green')
+    spyOn(RoutesUtilsSvc, 'getTypeColor').and.returnValue('green')
   }))
 
 	describe('#arrayToHashtable(data,field)', function() {
@@ -37,7 +37,7 @@ describe('Service: utilsChartSvc', function() {
       var type = 'Boulder'
       var output = utilsChartSvc.typeColor(type)
 
-      expect(utilsRouteSvc.getTypeColor).toHaveBeenCalledWith({
+      expect(RoutesUtilsSvc.getTypeColor).toHaveBeenCalledWith({
         type: type
       })
       expect(output).toMatch('green')

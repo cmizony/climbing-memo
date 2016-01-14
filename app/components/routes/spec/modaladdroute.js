@@ -5,8 +5,8 @@ describe('Controller: ModaladdrouteCtrl', function() {
   // load the controller's module
   beforeEach(module('climbingMemo.routes'))
 
-  var ModaladdrouteCtrl, scope, modalInstance, rootScope, utilsRouteSvc,
-  deferred, utilsChartSvc
+  var ModaladdrouteCtrl, scope, modalInstance, rootScope, RoutesSvc,
+  deferred, utilsChartSvc, RoutesUtilsSvc
 
   beforeEach(inject(function($controller, $rootScope, $q) {
     scope = $rootScope.$new()
@@ -18,43 +18,48 @@ describe('Controller: ModaladdrouteCtrl', function() {
     }
     spyOn(modalInstance, 'dismiss')
 
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
-      getRoutes:       function() { },
-      saveRoute:       function() {},
+    // RoutesSvc Stub
+    RoutesSvc = {
+      getRoutes:       function() {},
+      saveRoute:       function() {}
+    }
+    deferred = $q.defer()
+    deferred.resolve({})
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'saveRoute').and.returnValue(deferred.promise)
+
+    // RoutesUtilsSvc Stub
+    RoutesUtilsSvc = {
       getIconStatus:   function() {},
       getIconRock:     function() {},
       getIndoorLabel:  function() {},
       getTypeColor:    function() {}
     }
-    deferred = $q.defer()
-    deferred.resolve({})
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
-    spyOn(utilsRouteSvc, 'saveRoute').and.returnValue(deferred.promise)
-    spyOn(utilsRouteSvc, 'getIconStatus')
-    spyOn(utilsRouteSvc, 'getIconRock')
-    spyOn(utilsRouteSvc, 'getIndoorLabel')
-    spyOn(utilsRouteSvc, 'getTypeColor')
+    spyOn(RoutesUtilsSvc, 'getIconStatus')
+    spyOn(RoutesUtilsSvc, 'getIconRock')
+    spyOn(RoutesUtilsSvc, 'getIndoorLabel')
+    spyOn(RoutesUtilsSvc, 'getTypeColor')
 
     // utilsChartSvc stub
     utilsChartSvc = { arrayGroupBy: function() {} }
     spyOn(utilsChartSvc, 'arrayGroupBy').and.returnValue(['test'])
 
     ModaladdrouteCtrl = $controller('ModaladdrouteCtrl', {
-      $scope:          scope,
+      $scope:             scope,
       $uibModalInstance:  modalInstance,
-      utilsRouteSvc:   utilsRouteSvc,
-      utilsChartSvc:   utilsChartSvc
+      RoutesSvc:          RoutesSvc,
+      RoutesUtilsSvc:     RoutesUtilsSvc,
+      utilsChartSvc:      utilsChartSvc
     })
   }))
 
   it('should watch for #routesUpdated event', function() {
-    utilsRouteSvc.getRoutes.calls.reset()
+    RoutesSvc.getRoutes.calls.reset()
 
     rootScope.$emit('routesUpdated')
     rootScope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should close the modal on #cancelEdit', function() {
@@ -90,10 +95,10 @@ describe('Controller: ModaladdrouteCtrl', function() {
   })
 
   it('should #saveRoute and close the modal', function() {
-    utilsRouteSvc.saveRoute.calls.reset()
+    RoutesSvc.saveRoute.calls.reset()
     scope.saveRoute()
 
-    expect(utilsRouteSvc.saveRoute).toHaveBeenCalled()
+    expect(RoutesSvc.saveRoute).toHaveBeenCalled()
   })
 
   it('should #initController with new empty route', function() {
@@ -106,31 +111,31 @@ describe('Controller: ModaladdrouteCtrl', function() {
   })
 
   it('should #getIconRock', function() {
-    utilsRouteSvc.getIconRock.calls.reset()
+    RoutesUtilsSvc.getIconRock.calls.reset()
     scope.getIconRock()
 
-    expect(utilsRouteSvc.getIconRock).toHaveBeenCalled()
+    expect(RoutesUtilsSvc.getIconRock).toHaveBeenCalled()
   })
 
   it('should #getIconStatus', function() {
-    utilsRouteSvc.getIconStatus.calls.reset()
+    RoutesUtilsSvc.getIconStatus.calls.reset()
     scope.getIconStatus()
 
-    expect(utilsRouteSvc.getIconStatus).toHaveBeenCalled()
+    expect(RoutesUtilsSvc.getIconStatus).toHaveBeenCalled()
   })
 
   it('should #getIndoorLabel', function() {
-    utilsRouteSvc.getIndoorLabel.calls.reset()
+    RoutesUtilsSvc.getIndoorLabel.calls.reset()
     scope.getIndoorLabel()
 
-    expect(utilsRouteSvc.getIndoorLabel).toHaveBeenCalled()
+    expect(RoutesUtilsSvc.getIndoorLabel).toHaveBeenCalled()
   })
 
   it('should #getTypeColor', function() {
-    utilsRouteSvc.getTypeColor.calls.reset()
+    RoutesUtilsSvc.getTypeColor.calls.reset()
     scope.getTypeColor()
 
-    expect(utilsRouteSvc.getTypeColor).toHaveBeenCalled()
+    expect(RoutesUtilsSvc.getTypeColor).toHaveBeenCalled()
   })
 
 })

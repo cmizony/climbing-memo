@@ -15,22 +15,22 @@
     '$log',
     '$rootScope',
     'mapChartSvc',
-    'utilsRouteSvc'
+    'RoutesSvc'
   ]
 
   function mapController($log, $rootScope, mapChartSvc,
-  utilsRouteSvc) {
+  RoutesSvc) {
     /* jshint validthis:true */
     var vm = this
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         vm.initController(data)
       })
     })

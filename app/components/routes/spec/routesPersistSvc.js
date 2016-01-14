@@ -1,6 +1,6 @@
 'use strict'
 
-describe('Service: routesSvc', function() {
+describe('Service: RoutesPersistSvc', function() {
   beforeEach(module('climbingMemo.routes'))
   beforeEach(angular.mock.module('climbingMemo.routes'))
 
@@ -11,8 +11,8 @@ describe('Service: routesSvc', function() {
   }))
 
   var myService, httpBackend
-  beforeEach(inject(function(routesSvc, _$httpBackend_) {
-    myService = routesSvc
+  beforeEach(inject(function(RoutesPersistSvc, _$httpBackend_) {
+    myService = RoutesPersistSvc
     httpBackend = _$httpBackend_
   }))
 

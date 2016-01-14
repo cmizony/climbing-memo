@@ -5,8 +5,8 @@ describe('Controller: tableCtrl', function() {
   // load the controller's module
   beforeEach(module('climbingMemo.table'))
 
-  var tableCtrl, scope, modal, rootScope, utilsRouteSvc,
-  deferred, utilsChartSvc
+  var tableCtrl, scope, modal, rootScope, RoutesSvc,
+  deferred, utilsChartSvc, RoutesUtilsSvc
 
   beforeEach(inject(function($controller, $rootScope, $q) {
     scope = $rootScope.$new()
@@ -18,34 +18,39 @@ describe('Controller: tableCtrl', function() {
     }
     spyOn(modal, 'open')
 
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
-      getRoutes:       function() { },
-      getTypeColor:    function() {}
+    // RoutesSvc Stub
+    RoutesSvc = {
+      getRoutes:       function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
-    spyOn(utilsRouteSvc, 'getTypeColor')
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+
+    // RoutesUtilsSvc Stub
+    RoutesUtilsSvc = {
+      getTypeColor:    function() {}
+    }
+    spyOn(RoutesUtilsSvc, 'getTypeColor')
 
     // utilsChartSvc stub
     utilsChartSvc = { arrayGroupBy: function() {} }
     spyOn(utilsChartSvc, 'arrayGroupBy').and.returnValue(['test'])
 
     tableCtrl = $controller('tableCtrl as tableVm', {
-      $scope:         scope,
-      $uibModal:         modal,
-      utilsRouteSvc:  utilsRouteSvc,
-      utilsChartSvc:  utilsChartSvc
+      $scope:          scope,
+      $uibModal:       modal,
+      RoutesSvc:       RoutesSvc,
+      RoutesUtilsSvc:  RoutesUtilsSvc,
+      utilsChartSvc:   utilsChartSvc
     })
   }))
 
   it('should listen to #routesUpdated event', function() {
-    utilsRouteSvc.getRoutes.calls.reset()
+    RoutesSvc.getRoutes.calls.reset()
     rootScope.$emit('routesUpdated')
     rootScope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should #initController', function() {
@@ -64,7 +69,7 @@ describe('Controller: tableCtrl', function() {
     var route = {type: 'test'}
     scope.tableVm.getTypeColor(route)
 
-    expect(utilsRouteSvc.getTypeColor).toHaveBeenCalledWith(route)
+    expect(RoutesUtilsSvc.getTypeColor).toHaveBeenCalledWith(route)
   })
 
   it('should #addRoute', function() {

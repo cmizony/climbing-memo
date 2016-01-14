@@ -18,22 +18,23 @@
     '$log',
     'routeNoteFormattingFilter',
     'utilsChartSvc',
-    'utilsRouteSvc'
+    'RoutesSvc',
+    'RoutesUtilsSvc'
   ]
 
   function modalAddRouteController($uibModalInstance, $scope, $rootScope, $log,
-  routeNoteFormattingFilter, utilsChartSvc, utilsRouteSvc)  {
+  routeNoteFormattingFilter, utilsChartSvc, RoutesSvc, RoutesUtilsSvc)  {
     // Buffer for all routes
     $scope.arrayRoutes = []
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       $scope.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         $scope.initController(data)
       })
     })
@@ -83,7 +84,7 @@
     * @method saveRoute
     */
     $scope.saveRoute = function() {
-      utilsRouteSvc.saveRoute($scope.route)
+      RoutesSvc.saveRoute($scope.route)
       .then(function(routeId) {
         $rootScope.$broadcast('routesUpdated', routeId)
       }).catch(function(routeId) {
@@ -106,10 +107,10 @@
       $scope.route = route
     }
 
-    $scope.getIconStatus  = function(route) { return utilsRouteSvc.getIconStatus(route) }
-    $scope.getIconRock    = function(route) { return utilsRouteSvc.getIconRock(route) }
-    $scope.getIndoorLabel = function(route) { return utilsRouteSvc.getIndoorLabel(route) }
-    $scope.getTypeColor   = function(route) { return utilsRouteSvc.getTypeColor(route) }
+    $scope.getIconStatus  = function(route) { return RoutesUtilsSvc.getIconStatus(route) }
+    $scope.getIconRock    = function(route) { return RoutesUtilsSvc.getIconRock(route) }
+    $scope.getIndoorLabel = function(route) { return RoutesUtilsSvc.getIndoorLabel(route) }
+    $scope.getTypeColor   = function(route) { return RoutesUtilsSvc.getTypeColor(route) }
   }
 // jscs:disable disallowSemicolons
 })();

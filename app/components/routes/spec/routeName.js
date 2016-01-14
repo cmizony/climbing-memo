@@ -1,21 +1,21 @@
 'use strict'
 
 describe('Directive: routeName', function() {
-  var element, scope, form, deferred, utilsRouteSvc
+  var element, scope, form, deferred, RoutesSvc
 
   beforeEach(module('climbingMemo.routes', function($provide) {
-    // Stub for utilsRouteSvc
-    utilsRouteSvc = {
+    // Stub for RoutesSvRoutesSvc
+    RoutesSvc = {
       getRoutes: function() {}
     }
-    $provide.value('utilsRouteSvc', utilsRouteSvc)
+    $provide.value('RoutesSvc', RoutesSvc)
   }))
 
   beforeEach(inject(function($rootScope, $compile, $q) {
     scope = $rootScope
     deferred = $q.defer()
 
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
 
     element = angular.element(
       '<form name="form">' +
@@ -27,11 +27,11 @@ describe('Directive: routeName', function() {
     form = scope.form
   }))
 
-  it('should query utilsRouteSvc to get routes', function() {
+  it('should query RoutesSvc to get routes', function() {
     form.test.$setViewValue('Route')
     scope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should validate the form if name is unique', function() {
