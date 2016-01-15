@@ -16,22 +16,23 @@
     '$rootScope',
     '$uibModal',
     'timelineSvc',
-    'utilsRouteSvc'
+    'RoutesSvc',
+    'RoutesUtilsSvc'
   ]
 
   function timelineController($log, $rootScope, $uibModal,timelineSvc,
-  utilsRouteSvc) {
+  RoutesSvc, RoutesUtilsSvc) {
     /* jshint validthis:true */
     var vm = this
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         vm.initController(data)
       })
     })
@@ -46,7 +47,7 @@
     * @return {String} Css color
     */
     vm.getTypeColor = function(event) {
-      return utilsRouteSvc.getTypeColor({type: event.mainType})
+      return RoutesUtilsSvc.getTypeColor({type: event.mainType})
     }
 
     /**

@@ -5,39 +5,39 @@ describe('Controller: overviewCtrl', function() {
   // load the controller's module
   beforeEach(module('climbingMemo'))
 
-  var overviewCtrl, scope, rootScope, utilsRouteSvc,
+  var overviewCtrl, scope, rootScope, RoutesSvc,
   deferred, utilsChartSvc
 
   beforeEach(inject(function($controller, $rootScope, $q) {
     scope = $rootScope.$new()
     rootScope = $rootScope
 
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
+    // RoutesSvc Stub
+    RoutesSvc = {
       getRoutes:       function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
 
     // utilsChartSvc stub
     utilsChartSvc = { arrayGroupBy: function() {} }
     spyOn(utilsChartSvc, 'arrayGroupBy').and.returnValue(['test1', 'test2'])
 
     overviewCtrl = $controller('overviewCtrl', {
-      $scope:          scope,
-      utilsRouteSvc:   utilsRouteSvc,
-      utilsChartSvc:   utilsChartSvc
+      $scope:         scope,
+      RoutesSvc:      RoutesSvc,
+      utilsChartSvc:  utilsChartSvc
     })
   }))
 
   it('should watch for #routesUpdated event', function() {
-    utilsRouteSvc.getRoutes.calls.reset()
+    RoutesSvc.getRoutes.calls.reset()
 
     rootScope.$emit('routesUpdated')
     rootScope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should #initController with new empty route', function() {

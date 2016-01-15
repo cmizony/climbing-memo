@@ -12,10 +12,10 @@
   .service('utilsChartSvc', utilsChartService)
 
   utilsChartService.$inject = [
-    'utilsRouteSvc'
+    'RoutesUtilsSvc'
   ]
 
-  function utilsChartService(utilsRouteSvc) {
+  function utilsChartService(RoutesUtilsSvc) {
     var UtilsChart = {}
 
     /**
@@ -62,7 +62,7 @@
       var route = {
         type: type
       }
-      return utilsRouteSvc.getTypeColor(route)
+      return RoutesUtilsSvc.getTypeColor(route)
     }
 
 

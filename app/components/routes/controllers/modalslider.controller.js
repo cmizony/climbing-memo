@@ -20,11 +20,12 @@
     '$filter',
     'routesId',
     'routeNoteFormattingFilter',
-    'utilsRouteSvc'
+    'RoutesSvc',
+    'RoutesUtilsSvc'
   ]
 
   function modalSliderController($scope, $uibModalInstance, $localStorage, $log,
-  $rootScope, $filter, routesId, routeNoteFormattingFilter, utilsRouteSvc) {
+  $rootScope, $filter, routesId, routeNoteFormattingFilter, RoutesSvc, RoutesUtilsSvc) {
 
     /**
     * Close the modal
@@ -36,7 +37,7 @@
     }
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       $scope.initController(data)
     })
 
@@ -70,7 +71,7 @@
 
     $scope.deleteRoute = function(route) {
       route.$editMode = false
-      utilsRouteSvc.deleteRoute(route)
+      RoutesSvc.deleteRoute(route)
       .then(function(routeId) {
         $rootScope.$broadcast('routesUpdated', routeId)
       })
@@ -87,7 +88,7 @@
     $scope.saveRoute = function(route) {
       route.$editMode = false
 
-      utilsRouteSvc.saveRoute(route)
+      RoutesSvc.saveRoute(route)
       .then(function(routeId) {
         $rootScope.$broadcast('routesUpdated', routeId)
       }).catch(function(routeId) {
@@ -125,10 +126,10 @@
       activeSlide.$hover = !activeSlide.$hover
     }
 
-    $scope.getIconStatus  = function(route) { return utilsRouteSvc.getIconStatus(route) }
-    $scope.getIconRock    = function(route) { return utilsRouteSvc.getIconRock(route) }
-    $scope.getIndoorLabel = function(route) { return utilsRouteSvc.getIndoorLabel(route) }
-    $scope.getTypeColor   = function(route) { return utilsRouteSvc.getTypeColor(route) }
+    $scope.getIconStatus  = function(route) { return RoutesUtilsSvc.getIconStatus(route) }
+    $scope.getIconRock    = function(route) { return RoutesUtilsSvc.getIconRock(route) }
+    $scope.getIndoorLabel = function(route) { return RoutesUtilsSvc.getIndoorLabel(route) }
+    $scope.getTypeColor   = function(route) { return RoutesUtilsSvc.getTypeColor(route) }
   }
 // jscs:disable disallowSemicolons
 })();

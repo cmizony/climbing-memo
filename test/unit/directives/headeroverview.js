@@ -10,7 +10,7 @@ describe('Directive: headerOverview', function() {
 
   beforeEach(function() {
     module('climbingMemo', function($provide) {
-      $provide.factory('routesSvc', function($q) {
+      $provide.factory('RoutesSvc', function($q) {
         return {
           getRoutes: function() {
            var deferred = $q.defer()

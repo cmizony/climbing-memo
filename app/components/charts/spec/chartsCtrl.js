@@ -5,34 +5,34 @@ describe('Controller: chartsCtrl', function() {
   // load the controller's module
   beforeEach(module('climbingMemo.charts'))
 
-  var chartsCtrl, scope, rootScope, utilsRouteSvc,
+  var chartsCtrl, scope, rootScope, RoutesSvc,
   deferred
 
   beforeEach(inject(function($controller, $rootScope, $q) {
     scope = $rootScope.$new()
     rootScope = $rootScope
 
-    // utilsRouteSvc Stub
-    utilsRouteSvc = {
+    // RoutesSvc Stub
+    RoutesSvc = {
       getRoutes:       function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(utilsRouteSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
 
     chartsCtrl = $controller('chartsCtrl as chartsVm', {
       $scope:          scope,
-      utilsRouteSvc:   utilsRouteSvc
+      RoutesSvc:   RoutesSvc
     })
   }))
 
   it('should watch for #routesUpdated event', function() {
-    utilsRouteSvc.getRoutes.calls.reset()
+    RoutesSvc.getRoutes.calls.reset()
 
     rootScope.$emit('routesUpdated')
     rootScope.$digest()
 
-    expect(utilsRouteSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
   })
 
   it('should #initController with new empty route', function() {

@@ -9,7 +9,7 @@
   * Angular form validation for route name
   */
   angular.module('climbingMemo.routes')
-  .directive('routeName', function($q, utilsRouteSvc) {
+  .directive('routeName', function($q, RoutesSvc) {
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ctrl) {
@@ -22,7 +22,7 @@
         scope.validateName = function(name) {
           var deferred = $q.defer()
 
-          utilsRouteSvc.getRoutes().then(function(routes) {
+          RoutesSvc.getRoutes().then(function(routes) {
             if (_.find(routes, function(route) {
               return route.name === name
             })) {

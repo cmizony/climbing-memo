@@ -16,20 +16,20 @@
     '$log',
     '$rootScope',
     'utilsChartSvc',
-    'utilsRouteSvc'
+    'RoutesSvc'
   ]
 
   function overviewController($scope, $log, $rootScope, utilsChartSvc,
-  utilsRouteSvc) {
+  RoutesSvc) {
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       $scope.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         $scope.initController(data)
       })
     })

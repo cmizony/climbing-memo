@@ -13,21 +13,21 @@
 
   chartsController.$inject = [
     '$rootScope',
-    'utilsRouteSvc'
+    'RoutesSvc'
   ]
 
-  function chartsController($rootScope, utilsRouteSvc) {
+  function chartsController($rootScope, RoutesSvc) {
     /* jshint validthis:true */
     var vm = this
 
     // Get Data
-    utilsRouteSvc.getRoutes().then(function(data) {
+    RoutesSvc.getRoutes().then(function(data) {
       vm.initController(data)
     })
 
     // Watch Update event
     $rootScope.$on('routesUpdated', function() {
-      utilsRouteSvc.getRoutes().then(function(data) {
+      RoutesSvc.getRoutes().then(function(data) {
         vm.initController(data)
       })
     })

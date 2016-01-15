@@ -9,6 +9,7 @@
   */
   angular.module('climbingMemo.routes', [
     'climbingMemo.core',
+    'climbingMemo.users',
     'hc.marked',
     'jlareau.pnotify',
     'ui.bootstrap',
