@@ -73,20 +73,14 @@
     *
     * @method createRoute
     * @private
-    * @param {Object} sourceRoute - reference to the original route
-    * @param {Object} route - copy or sourceRoute
+    * @param {Object} route - copy
     * @param {Object} deferred - parent promise to resolve
     */
-    RoutesSync.createRoute = function(sourceRoute, route, deferred) {
+    RoutesSync.createRoute = function(route, deferred) {
       RoutesPersistSvc.addRoute(route)
       .then(function(result) {
         route.id = result.data.name
         RoutesPersistSvc.updateRoute(route, route.id)
-
-        if (angular.isDefined(route.$copy)) {
-          sourceRoute = route.$copy // Revert source route
-          RoutesSync.cache[sourceRoute.id] = RoutesPersistSvc.cleanObjectProperties(sourceRoute)
-        }
 
         RoutesSync.cache = RoutesSync.cache || {}
         RoutesSync.cache[route.id] = RoutesPersistSvc.cleanObjectProperties(route)
@@ -145,7 +139,7 @@
         if (route.id) { // Update route
           RoutesSync.updateRoute(route, deferred)
         } else { // Create new route
-          RoutesSync.createRoute(sourceRoute, route, deferred)
+          RoutesSync.createRoute(route, deferred)
         }
       })
       .catch(function() {

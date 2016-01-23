@@ -1,0 +1,182 @@
+<div ng-if="!route.$editMode">
+  <span class="fa-stack fa-3x" uib-tooltip="{{getIndoorLabel(route)}} {{route.type}}" tooltip-placement="bottom">
+    <i class="fa fa-circle fa-stack-2x" style="color:{{getTypeColor(route)}}"></i>
+    <i class="fa {{getIconRock(route)}} fa-stack-1x fa-inverse"></i>
+  </span>
+  <h3 class="name">
+    <i class="fa fa-eye" ng-show="route.watch"></i>
+    {{ route.name }}
+    <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
+  </h3>
+  <div class="header">
+    <span>- {{ route.grade }} -</span>
+    <div class="rating">
+      <span ng-repeat="t in getTimes(route.rating) track by $index">
+        <i class="fa fa-star"></i>
+      </span>
+      <span class="hidden-xs" ng-repeat="t in getTimes(5 - route.rating) track by $index">
+        <i class="fa fa-star-o"></i>
+      </span>
+    </div>
+  </div>
+
+  <h5><i class="fa fa-map-marker fa-fw text-muted"></i> {{route.location}}</h5>
+  <h5><i class="fa fa-map-o fa-fw text-muted"></i> {{route.sector}}</h5>
+  <h5><i class="fa fa-calendar-o fa-fw text-muted"></i> {{route.date}}</h5>
+  <h5><i class="fa {{getIconRock(route)}} fa-fw text-muted"></i> {{route.rock}} </h5>
+  <h5><i class="fa {{getIconStatus(route)}} fa-fw text-muted"></i> {{route.status}} </h5>
+</div>
+
+<div ng-if="route.$editMode">
+  <span class="fa-stack fa-3x">
+    <i class="fa fa-circle fa-stack-2x" style="color:{{getTypeColor(route)}}"></i>
+    <i class="fa {{getIconRock(route)}} fa-stack-1x fa-inverse"></i>
+  </span>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-fw"
+        uib-tooltip="{{ form.name.$error.required ?  'Name is required' : '' }}{{ form.name.$error.routeName ? 'Name should be unique' : '' }}"
+        ng-class="{
+          'fa-pencil'           : !form.name.$pending,
+          'fa-spinner fa-pulse' : form.name.$pending,
+          'text-muted'          : form.name.$pristine,
+          'text-success'        : form.name.$valid && form.name.$dirty,
+          'text-danger'         : form.name.$invalid && form.name.$dirty,
+        }"></i>
+    </div>
+    <input name="name"
+           placeholder="Name"
+           class="form-control"
+           ng-model-options="{ debounce: 500 }"
+           type="required"
+           required
+           route-name
+           ng-model="route.name"></input>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-user fa-fw"
+        ng-class="{
+          'text-muted' :    form.grade.$pristine,
+          'text-success' :  form.grade.$valid && form.grade.$dirty,
+          'text-danger' :   form.grade.$invalid && form.grade.$dirty,
+        }"></i>
+    </div>
+    <input placeholder="Grade"
+           class="form-control"
+           type="text"
+           name="grade"
+           ng-model="route.grade"></input>
+  </div>
+  <uib-rating ng-model="route.rating"
+  state-on="'fa fa-star fa-lg'"
+  state-off="'fa fa-star-o fa-lg'"></uib-rating>
+
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa {{getIconStatus(route)}} fa-fw"
+        ng-class="{
+          'text-muted' :    form.status.$pristine,
+          'text-success' :  form.status.$valid && form.status.$dirty,
+          'text-danger' :   form.status.$invalid && form.status.$dirty,
+        }"></i>
+    </div>
+    <select class="form-control" name="status" ng-model="route.status">
+      <option>Attempt</option>
+      <option>Redpoint</option>
+      <option>Flash</option>
+      <option>Onsight</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar-o fa-fw"
+        ng-class="{
+          'text-muted' :    form.date.$pristine,
+          'text-success' :  form.date.$valid && form.date.$dirty,
+          'text-danger' :   form.date.$invalid && form.date.$dirty,
+        }"></i>
+    </div>
+    <input type="date"
+           class="form-control"
+           required=""
+           name="date"
+           ng-model="route.$date"></input>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-map-o fa-fw"
+        ng-class="{
+          'text-muted' :    form.sector.$pristine,
+          'text-success' :  form.sector.$valid && form.sector.$dirty,
+          'text-danger' :   form.sector.$invalid && form.sector.$dirty,
+        }"></i>
+    </div>
+    <input placeholder="Sector"
+           uib-typeahead="sector for sector in sectors | filter:$viewValue"
+           typeahead-on-select="sectorPopulatePlaceholder($item,route)"
+           class="form-control"
+           type="text"
+           name="sector"
+           ng-model="route.sector"></input>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-connectdevelop fa-fw"
+        ng-class="{
+          'text-muted' :    form.type.$pristine,
+          'text-success' :  form.type.$valid && form.type.$dirty,
+          'text-danger' :   form.type.$invalid && form.type.$dirty,
+        }"></i>
+    </div>
+    <select class="form-control" ng-model="route.type" name="type">
+      <option>Sport lead</option>
+      <option>Boulder</option>
+      <option>Traditional</option>
+      <option>Multi-pitch</option>
+      <option>Top rope</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa {{getIconRock(route)}} fa-fw"
+        ng-class="{
+          'text-muted' :    form.rock.$pristine,
+          'text-success' :  form.rock.$valid && form.rock.$dirty,
+          'text-danger' :   form.rock.$invalid && form.rock.$dirty,
+        }"></i>
+    </div>
+    <select class="form-control" ng-model="route.rock" name="rock">
+      <option>Granite</option>
+      <option>Sandstone</option>
+      <option>Limestone</option>
+      <option>Indoor</option>
+      <option>Conglomerate</option>
+      <option>Basalt</option>
+      <option>Volcanic</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-map-marker fa-fw"
+        uib-tooltip="{{ form.location.$error.routeLocation ? 'Sorry, location not found' : '' }}"
+        ng-class="{
+          'fa-pencil'           : !form.location.$pending,
+          'fa-spinner fa-pulse' : form.location.$pending,
+          'text-muted' :    form.location.$pristine,
+          'text-success' :  form.location.$valid && form.location.$dirty,
+          'text-danger' :   form.location.$invalid && form.location.$dirty,
+        }"></i>
+    </div>
+      <input placeholder="Location"
+             class="form-control"
+             name="location"
+             type="text"
+             route-location
+             ng-model-options="{ debounce: 500 }"
+             ng-model="route.location"
+             uib-typeahead="location for location in locations | filter:$viewValue">
+      </input>
+  </div>
+
+</div>

@@ -25,6 +25,7 @@ describe('Directive: sectorsMetrics', function() {
   it('should #openRouteModal', inject(function($compile) {
     httpBackend.whenGET('components/charts/views/_sectorsMetrics.html')
       .respond(templateCache.get('/components/charts/views/_sectorsMetrics.html'))
+    httpBackend.whenGET('components/routes/views/_cardRoute.html').respond('')
 
     element = angular.element('<sectors-metrics metrics="[{}]"></sectors-metrics>')
     element = $compile(element)(scope)

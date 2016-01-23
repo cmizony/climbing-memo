@@ -28,18 +28,6 @@ describe('Controller: ModaladdrouteCtrl', function() {
     spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
     spyOn(RoutesSvc, 'saveRoute').and.returnValue(deferred.promise)
 
-    // RoutesUtilsSvc Stub
-    RoutesUtilsSvc = {
-      getIconStatus:   function() {},
-      getIconRock:     function() {},
-      getIndoorLabel:  function() {},
-      getTypeColor:    function() {}
-    }
-    spyOn(RoutesUtilsSvc, 'getIconStatus')
-    spyOn(RoutesUtilsSvc, 'getIconRock')
-    spyOn(RoutesUtilsSvc, 'getIndoorLabel')
-    spyOn(RoutesUtilsSvc, 'getTypeColor')
-
     // utilsChartSvc stub
     utilsChartSvc = { arrayGroupBy: function() {} }
     spyOn(utilsChartSvc, 'arrayGroupBy').and.returnValue(['test'])
@@ -48,7 +36,6 @@ describe('Controller: ModaladdrouteCtrl', function() {
       $scope:             scope,
       $uibModalInstance:  modalInstance,
       RoutesSvc:          RoutesSvc,
-      RoutesUtilsSvc:     RoutesUtilsSvc,
       utilsChartSvc:      utilsChartSvc
     })
   }))
@@ -64,6 +51,7 @@ describe('Controller: ModaladdrouteCtrl', function() {
 
   it('should close the modal on #cancelEdit', function() {
     modalInstance.dismiss.calls.reset()
+    scope.initController()
     scope.cancelEdit()
 
     expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel')
@@ -96,6 +84,7 @@ describe('Controller: ModaladdrouteCtrl', function() {
 
   it('should #saveRoute and close the modal', function() {
     RoutesSvc.saveRoute.calls.reset()
+    scope.initController()
     scope.saveRoute()
 
     expect(RoutesSvc.saveRoute).toHaveBeenCalled()
@@ -109,33 +98,4 @@ describe('Controller: ModaladdrouteCtrl', function() {
     expect(scope.sectors.length).toBe(1)
     expect(scope.arrayRoutes.length).toBe(1)
   })
-
-  it('should #getIconRock', function() {
-    RoutesUtilsSvc.getIconRock.calls.reset()
-    scope.getIconRock()
-
-    expect(RoutesUtilsSvc.getIconRock).toHaveBeenCalled()
-  })
-
-  it('should #getIconStatus', function() {
-    RoutesUtilsSvc.getIconStatus.calls.reset()
-    scope.getIconStatus()
-
-    expect(RoutesUtilsSvc.getIconStatus).toHaveBeenCalled()
-  })
-
-  it('should #getIndoorLabel', function() {
-    RoutesUtilsSvc.getIndoorLabel.calls.reset()
-    scope.getIndoorLabel()
-
-    expect(RoutesUtilsSvc.getIndoorLabel).toHaveBeenCalled()
-  })
-
-  it('should #getTypeColor', function() {
-    RoutesUtilsSvc.getTypeColor.calls.reset()
-    scope.getTypeColor()
-
-    expect(RoutesUtilsSvc.getTypeColor).toHaveBeenCalled()
-  })
-
 })

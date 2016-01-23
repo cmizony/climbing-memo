@@ -73,7 +73,7 @@ describe('Service: RoutesSyncSvc', function() {
         resolve: jasmine.createSpy('resolve'),
         reject: jasmine.createSpy('reject')
       }
-      myService.createRoute(mockRoute, mockRoute, spyDeferred)
+      myService.createRoute(mockRoute, spyDeferred)
       deferred.resolve({data: mockRoute})
       scope.$digest()
 
@@ -90,7 +90,7 @@ describe('Service: RoutesSyncSvc', function() {
         reject: jasmine.createSpy('reject')
       }
 
-      myService.createRoute(mockRoute, mockRoute, spyDeferred)
+      myService.createRoute(mockRoute, spyDeferred)
       deferred.reject(false)
       scope.$digest()
 

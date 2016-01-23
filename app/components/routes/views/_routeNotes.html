@@ -1,0 +1,39 @@
+<div ng-if="!route.$editMode">
+  <div marked="route.notes"></div>
+</div>
+<div ng-if="route.$editMode">
+  <uib-tabset type="pills">
+    <uib-tab>
+      <uib-tab-heading>
+      <span style="cursor:pointer"><i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">Markdown</span></span>
+      </uib-tab-heading>
+
+      <textarea rows="12" ng-trim="false" maxlength="2000" class="form-control" ng-model="route.notes"></textarea>
+
+      <span class="text-muted" ng-show="route.notes.length > 1000">
+        <i class="fa fa-pencil"></i>
+        {{2001 - route.notes.length - route.notes.split("\n").length}}
+        characters left
+      </span>
+    </uib-tab>
+
+    <uib-tab>
+      <uib-tab-heading>
+      <span style="cursor:pointer"><i class="fa fa-search"></i> <span class="hidden-xs">Preview</span></span>
+      </uib-tab-heading>
+
+      <div marked="route.notes"></div>
+    </uib-tab>
+
+    <uib-tab>
+      <uib-tab-heading>
+      <span style="cursor:pointer"><i class="fa fa-question-circle"></i> <span class="hidden-xs">Help</span></span>
+      </uib-tab-heading>
+
+      <div class="hidden-xs hidden-sm" ng-include
+        src="'components/routes/views/_markdownReference.html'"></div>
+      <div class="visible-xs visible-sm" ng-include
+        src="'components/routes/views/_markdownReferenceSummary.html'"></div>
+    </uib-tab>
+  </uib-tabset>
+</div>
