@@ -20,12 +20,11 @@
     '$filter',
     'routesId',
     'routeNoteFormattingFilter',
-    'RoutesSvc',
-    'RoutesUtilsSvc'
+    'RoutesSvc'
   ]
 
   function modalSliderController($scope, $uibModalInstance, $localStorage, $log,
-  $rootScope, $filter, routesId, routeNoteFormattingFilter, RoutesSvc, RoutesUtilsSvc) {
+  $rootScope, $filter, routesId, routeNoteFormattingFilter, RoutesSvc) {
 
     /**
     * Close the modal
@@ -79,12 +78,6 @@
       $scope.closeModal()
     }
 
-    $scope.copyRoute = function(route) {
-      route.$copy = JSON.parse(JSON.stringify(route)) // Clone
-      route.id = false // Will create new route
-      $scope.editRoute(route)
-    }
-
     $scope.saveRoute = function(route) {
       route.$editMode = false
 
@@ -125,11 +118,6 @@
       }))
       activeSlide.$hover = !activeSlide.$hover
     }
-
-    $scope.getIconStatus  = function(route) { return RoutesUtilsSvc.getIconStatus(route) }
-    $scope.getIconRock    = function(route) { return RoutesUtilsSvc.getIconRock(route) }
-    $scope.getIndoorLabel = function(route) { return RoutesUtilsSvc.getIndoorLabel(route) }
-    $scope.getTypeColor   = function(route) { return RoutesUtilsSvc.getTypeColor(route) }
   }
 // jscs:disable disallowSemicolons
 })();

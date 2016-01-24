@@ -1,70 +1,69 @@
-<div class="e2e-route">
-  <div class="card-header">
-    <div class="text-center actions">
-      <button uib-tooltip="Edit"
-        ng-click="editRoute(route)"
-        tooltip-placement="bottom"
-        class="btn btn-default e2e-edit"
-        tooltip-animation="false">
-        <i class="fa fa-pencil text-info fa-lg"></i>
-      </button>
-      <button uib-tooltip="Duplicate"
-        ng-click="copyRoute(route)"
-        class="btn btn-default e2e-duplicate"
-        tooltip-placement="bottom"
-        tooltip-animation="false">
-        <i class="fa fa-files-o text-success fa-lg"></i>
-      </button>
-      <button uib-tooltip="Delete"
-        ng-click="deleteRoute(route)"
-        tooltip-placement="bottom"
-        class="btn btn-default e2e-delete"
-        tooltip-animation="false">
-        <i class="fa fa-trash text-danger fa-lg"></i>
-      </button>
-    </div>
+<div class="card-header">
+  <div class="text-center actions">
+    <button uib-tooltip="Edit"
+            ng-if="!route.$editMode"
+            ng-click="editRoute(route)"
+            tooltip-placement="bottom"
+            class="btn btn-default"
+            tooltip-animation="false">
+      <i class="fa fa-pencil text-info fa-lg"></i>
+    </button>
+    <button uib-tooltip="Delete"
+            ng-if="!route.$editMode"
+            ng-click="deleteRoute(route)"
+            tooltip-placement="bottom"
+            class="btn btn-default"
+            tooltip-animation="false">
+      <i class="fa fa-trash text-danger fa-lg"></i>
+    </button>
+    <button uib-tooltip="Save"
+          ng-if="route.$editMode"
+          class="btn btn-default"
+          ng-click="saveRoute(route)"
+          tooltip-placement="bottom"
+          tooltip-animation="false">
+      <i class="fa fa-check text-success fa-lg"></i>
+    </button>
+    <button uib-tooltip="Cancel"
+          ng-if="route.$editMode"
+          class="btn btn-default"
+          ng-click="cancelEdit(route)"
+          tooltip-placement="bottom"
+          tooltip-animation="false">
+      <i class="fa fa-times text-danger fa-lg"></i>
+    </button>
   </div>
-
-  <div class="card" >
-    <div class="front">
-      <div class="content">
-        <div class="main">
-          <span class="fa-stack fa-3x" uib-tooltip="{{getIndoorLabel(route)}} {{route.type}}" tooltip-placement="bottom">
-            <i class="fa fa-circle fa-stack-2x" style="color:{{getTypeColor(route)}}"></i>
-            <i class="fa {{getIconRock(route)}} fa-stack-1x fa-inverse"></i>
-          </span>
-          <h3 class="name">
-            <i class="fa fa-eye" ng-show="route.watch"></i>
-            {{ route.name }}
-            <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
-          </h3>
-          <div class="header">
-            <span>- {{ route.grade }} -</span>
-            <div class="rating">
-              <span ng-repeat="t in getTimes(route.rating) track by $index">
-                <i class="fa fa-star"></i>
-              </span>
-              <span class="hidden-xs" ng-repeat="t in getTimes(5 - route.rating) track by $index">
-                <i class="fa fa-star-o"></i>
-              </span>
-            </div>
-          </div>
-
-          <h5><i class="fa fa-map-marker fa-fw text-muted"></i> {{route.location}}</h5>
-          <h5><i class="fa fa-map-o fa-fw text-muted"></i> {{route.sector}}</h5>
-          <h5><i class="fa fa-calendar-o fa-fw text-muted"></i> {{route.date}}</h5>
-          <h5><i class="fa {{getIconRock(route)}} fa-fw text-muted"></i> {{route.rock}} </h5>
-          <h5><i class="fa {{getIconStatus(route)}} fa-fw text-muted"></i> {{route.status}} </h5>
-
-        </div>
-      </div>
-    </div> <!-- end front panel -->
-    <div class="back">
-      <div class="content">
-        <div class="main">
-          <div marked="route.notes"></div>
-        </div>
-      </div>
-    </div> <!-- end back panel -->
-  </div> <!-- end card -->
 </div>
+
+<div class="card" >
+  <div class="front">
+    <div class="content">
+      <div class="main">
+        <route-summary route="route"></route-summary>
+      </div>
+    </div>
+  </div> <!-- end front panel -->
+  <div class="back">
+    <div class="content">
+      <div class="main">
+        <uib-tabset justified="true">
+          <uib-tab ng-repeat="tab in tabs">
+            <uib-tab-heading>
+              <i class="fa fa-{{tab.icon}}"></i> {{tab.text}}
+            </uib-tab-heading>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div ng-switch="tab.type">
+                  <route-notes route="route" ng-switch-when="notes"></route-notes>
+                  <route-media route="route" ng-switch-when="media"></route-media>
+                  <route-ascents route="route" ng-switch-when="ascents"></route-ascents>
+                  <route-builder route="route" ng-switch-when="builder"></route-builder>
+                </div>
+              </div>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+  </div> <!-- end back panel -->
+</div> <!-- end card -->
