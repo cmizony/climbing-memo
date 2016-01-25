@@ -1,3 +1,88 @@
-<div class="alert alert-dismissible alert-info">
-  Media routes not yet implemented
+<div class="text-left">
+  <div ng-if="!route.$editMode">
+    <div ng-if="medias.length === 0">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <span class="fa-stack fa-2x text-muted">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <div class="col-xs-9">
+            <b>No media added</b> -
+            <i class="fa fa-lg fa-youtube text-danger" uib-tooltip="Youtube"></i>&nbsp;
+            <i class="fa fa-lg fa-instagram text-primary" uib-tooltip="Instagram"></i>&nbsp;
+            <i class="fa fa-lg fa-vimeo text-success" uib-tooltip="Vimeo"></i>&nbsp;
+            <i class="fa fa-lg fa-flickr" uib-tooltip="Flickr"></i>
+            <p style="margin-top:7px" class="text-muted">
+            Edit route to add external links
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-repeat="media in medias" class="route-media panel panel-default">
+      <div ng-if="isValidMedia(media.link)" class="panel-body" ng-click="openMedia(media)">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-3x fa-fw fa-{{media.provider}} {{media.color}}"></i>
+          </div>
+          <div class="col-xs-9">
+            <b>{{media.header}}</b>
+            <p class="visible-xs text-muted">{{media.link | prettyUrl:20}}</p>
+            <p class="hidden-xs text-muted">{{media.link | prettyUrl:50}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="route.$editMode">
+    <div ng-repeat="link in newMedias track by $index" class="route-media-edit panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-3x fa-fw fa-{{getMedia(link).provider}} {{getMedia(link).color}}"></i>
+          </div>
+          <div class="col-xs-9">
+            <div class="input-group" ng-if="!getMedia(link).header">
+              <div class="input-group-addon">
+                <i class="fa fa-lg fa-plus" uib-tooltip="Accepted sites"></i>
+              </div>
+              <i class="fa fa-lg fa-youtube text-danger" uib-tooltip="Youtube"></i>&nbsp;
+              <i class="fa fa-lg fa-instagram text-primary" uib-tooltip="Instagram"></i>&nbsp;
+              <i class="fa fa-lg fa-vimeo text-success" uib-tooltip="Vimeo"></i>&nbsp;
+              <i class="fa fa-lg fa-flickr" uib-tooltip="Flickr"></i>
+            </div>
+            <b>{{getMedia(link).header}}</b>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-globe"></i>
+              </div>
+              <input type="url" ng-model="newMedias[$index]" class="form-control" placeholder="URL">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="media in medias" class="route-media-edit panel panel-default">
+      <div ng-if="isValidMedia(media.link)" class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <button uib-tooltip="Delete media link" ng-click="deleteMedia(media.link)" tooltip-placement="bottom" class="btn btn-default ng-scope" tooltip-animation="false">
+              <i class="fa fa-trash text-danger fa-2x"></i>
+            </button>
+          </div>
+          <div class="col-xs-9">
+            <i class="fa fa-lg fa-fw fa-{{media.provider}} {{media.color}}"></i>
+            <b>{{media.header}}</b>
+            <p class="visible-xs text-muted">{{media.link | prettyUrl:20}}</p>
+            <p class="hidden-xs text-muted">{{media.link | prettyUrl:50}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

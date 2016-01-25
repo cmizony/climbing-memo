@@ -8,11 +8,21 @@
   * Service in the climbingMemoRoutes
   */
   angular.module('climbingMemo.routes')
-  .service('RoutesUtilsSvc', RoutesUtilsSvc)
+  .service('RoutesUtilsSvc', RoutesUtilsService)
 
-  RoutesUtilsSvc.$inject = []
+  RoutesUtilsService.$inject = [
+    'Utils'
+  ]
 
-  function RoutesUtilsSvc() {
+  /**
+   * @typedef Media
+   * @type {Object}
+   * @property {String} provider
+   * @property {String} color
+   * @property {String} link
+   * @property {String} header
+   */
+  function RoutesUtilsService(Utils) {
     var RoutesUtils = {}
 
     /**
@@ -71,6 +81,59 @@
         case 'Top rope':	return 'lightgray'
         default:			return 'lightgray'
       }
+    }
+
+    /**
+    * Create route media object from a url
+    *
+    * @method getRouteMedia
+    * @param {String} link
+    *
+    * @return {Media} media
+    */
+    RoutesUtils.getRouteMedia = function(link) {
+      var media = {
+        provider:  'question-circle',
+        color:     'text-muted',
+        link:      link
+      }
+
+      var url = Utils.parseHref(link)
+      if (!url) {
+        return media
+      }
+
+      var hostname = url.hostname
+
+      if (_.contains(hostname, 'youtube')) {
+        media.provider = 'youtube'
+        media.color    = 'text-danger'
+        media.header   = 'Youtube video'
+      } else if (_.contains(hostname, 'instagram')) {
+        media.provider = 'instagram'
+        media.color    = 'text-primary'
+        media.header   = 'Instagram photo'
+      } else if (_.contains(hostname, 'vimeo')) {
+        media.provider = 'vimeo'
+        media.color    = 'text-success'
+        media.header   = 'Vimeo video'
+      } else if (_.contains(hostname, 'flickr')) {
+        media.provider = 'flickr'
+        media.color    = ''
+        media.header   = 'Flickr photos'
+      }
+      return media
+    }
+
+    /**
+    * Validate a route media link
+    *
+    * @method isValidRouteMedia
+    * @param {String} link
+    * @return {Boolean}
+    */
+    RoutesUtils.isValidRouteMedia = function(link) {
+      return RoutesUtils.getRouteMedia(link).provider !== 'question-circle'
     }
 
     return RoutesUtils
