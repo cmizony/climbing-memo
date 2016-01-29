@@ -1,8 +1,7 @@
-| | Travis | Coverralls | Codacy
-|---|---|---|---|
-| **Develop** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=develop)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=develop&service=github)](https://coveralls.io/github/10alab/Siurana?branch=develop) | [![Codacy Badge](https://api.codacy.com/project/badge/82b99cbb621d4ee6ae23826ec798d7cd)](https://www.codacy.com/app/cmizony/Siurana)
-| **Master** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=master)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=master&service=github)](https://coveralls.io/github/10alab/Siurana?branch=master) | |
-
+| | Travis | Coverralls | Codacy | Heroku
+|---|---|---|---|---|
+| **Develop** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=develop)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=develop&service=github)](https://coveralls.io/github/10alab/Siurana?branch=develop) | [![Codacy Badge](https://api.codacy.com/project/badge/82b99cbb621d4ee6ae23826ec798d7cd)](https://www.codacy.com/app/cmizony/Siurana) | [![Demo latest](https://img.shields.io/badge/demo-latest-brightgreen.svg)](https://test-climbing-memo.herokuapp.com/)
+| **Master** | [![Build Status](https://travis-ci.org/10alab/Siurana.svg?branch=master)](https://travis-ci.org/10alab/Siurana) | [![Coverage Status](https://coveralls.io/repos/10alab/Siurana/badge.svg?branch=master&service=github)](https://coveralls.io/github/10alab/Siurana?branch=master) | | [![Demo stable](https://img.shields.io/badge/demo-stable-brightgreen.svg)](https://climbing-memo.herokuapp.com/)
 
 [![Gitter Chat](http://img.shields.io/badge/gitter-cmizony / 10aLab-blue.svg)](https://gitter.im/cmizony/10aLab)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/cmizony)](https://saucelabs.com/u/cmizony)
@@ -24,7 +23,7 @@
 Demo
 -----
 
-Hosted demo is available on heroku at [climbing-memo.herokuapp.com](http://climbing-memo.herokuapp.com/)
+Hosted demo is available on heroku for both stable and latest version (cf heroku badges above)
 
 [![App screenshot](gallery/timeline.png)](gallery)
 
