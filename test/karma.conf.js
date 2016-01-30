@@ -83,6 +83,8 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js',
       'bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js',
       'bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js',
+      'bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js',
+      'bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/firebase/firebase.js',
       // endbower

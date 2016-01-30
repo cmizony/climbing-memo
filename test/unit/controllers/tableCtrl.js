@@ -55,7 +55,10 @@ describe('Controller: tableCtrl', function() {
 
   it('should #initController', function() {
     utilsChartSvc.arrayGroupBy.calls.reset()
-    var data = {key1: 'test1', key2: 'test2'}
+    var data = {
+      key1: {},
+      key2: {}
+    }
     scope.tableVm.initController(data)
 
     expect(scope.tableVm.routes.length).toBe(2)
