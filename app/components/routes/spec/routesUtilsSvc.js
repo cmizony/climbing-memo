@@ -55,4 +55,35 @@ describe('Service: RoutesUtilsSvc', function() {
     output = RoutesUtilsSvc.getIconStatus()
     expect(output).toMatch('fa-connectdevelop')
   })
+
+  describe('#getRouteMedia', function() {
+    it('should return default media if link invalid', function() {
+      var invalidUrl = 'htpr://invalid.com'
+      var media = RoutesUtilsSvc.getRouteMedia(invalidUrl)
+      expect(media.provider).toBe('question-circle')
+    })
+
+    it('should parse valid media providers', function() {
+      var medias = {
+        youtube:    RoutesUtilsSvc.getRouteMedia('https://youtube.com/'),
+        instagram:  RoutesUtilsSvc.getRouteMedia('https://instagram.com/'),
+        vimeo:      RoutesUtilsSvc.getRouteMedia('https://vimeo.com/'),
+        flickr:     RoutesUtilsSvc.getRouteMedia('https://flickr.com/')
+      }
+
+      expect(medias.youtube.provider).toBe('youtube')
+      expect(medias.instagram.provider).toBe('instagram')
+      expect(medias.vimeo.provider).toBe('vimeo')
+      expect(medias.flickr.provider).toBe('flickr')
+    })
+  })
+
+  describe('#isValidRouteMedia', function() {
+    it('should detect a valid link', function() {
+      var validLink = 'http://youtube.com/'
+      var invalidLink = 'htpr://invalid.com'
+      expect(RoutesUtilsSvc.isValidRouteMedia(validLink)).toBe(true)
+      expect(RoutesUtilsSvc.isValidRouteMedia(invalidLink)).toBe(false)
+    })
+  })
 })

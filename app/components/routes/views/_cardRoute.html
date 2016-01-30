@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<div class="card" >
+<div class="card card-route">
   <div class="front">
     <div class="content">
       <div class="main">
@@ -47,9 +47,10 @@
     <div class="content">
       <div class="main">
         <uib-tabset justified="true">
-          <uib-tab ng-repeat="tab in tabs">
+          <uib-tab ng-repeat="tab in tabs" vertical="true">
             <uib-tab-heading>
-              <i class="fa fa-{{tab.icon}}"></i> {{tab.text}}
+              <i class="fa fa-{{tab.icon}}"></i>
+              <span class="hidden-xs">{{tab.text}}</span>
             </uib-tab-heading>
             <div class="panel panel-default">
               <div class="panel-body">
