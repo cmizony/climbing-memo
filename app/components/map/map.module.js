@@ -12,6 +12,7 @@
     'climbingMemo.charts',
     'climbingMemo.routes',
     'ngRoute',
+    'uiGmapgoogle-maps',
     'ui.bootstrap'
   ])
 // jscs:disable disallowSemicolons
