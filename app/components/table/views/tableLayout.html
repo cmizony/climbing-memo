@@ -18,64 +18,7 @@
     </div>
 
     <div class="panel-body">
-
-      <p class="hidden-xs">
-        <button uib-tooltip="Add route" class="btn btn-fab btn-raised btn-success" ng-click="tableVm.addRoute()"><i class="fa fa-plus"></i></button>
-      </p>
-
-      <div ng-swipe-left="tableVm.nextPage()" ng-swipe-right="tableVm.previousPage()">
-        <table data-datatable="ng" data-dt-options="tableVm.dtOptions" dt-instance="tableVm.dtInstance" class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th class="">Name</th>
-              <th class="">Grade</th>
-              <th class="hidden-xs hidden-sm">Rating</th>
-              <th class="hidden-xs">Status</th>
-              <th class="hidden-xs">Date</th>
-              <th class="">Sector</th>
-              <th class="hidden-xs">Type</th>
-              <th class="hidden-xs hidden-sm">Rock</th>
-              <th class="hidden-xs">Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="route in tableVm.routes" ng-click="tableVm.openRouteModal(route)" style="cursor:pointer">
-              <td>
-                <i ng-class="{'fa fa-eye': route.watch}"></i>
-                <a title="Route Details">
-                  {{route.name}}
-                </a>
-                  <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
-              </td>
-              <td class="">
-                <span>{{route.grade}}</span>
-              </td>
-              <td class="hidden-xs hidden-sm">
-                <uib-rating readonly="true" ng-model="route.rating"></uib-rating>
-              </td>
-              <td class="hidden-xs">
-                <span>{{route.status}}</span>
-              </td>
-              <td  class="hidden-xs">
-                <span>{{route.date}}</span>
-              </td>
-              <td  class="">
-                <span>{{route.sector}}</span>
-              </td>
-              <td  class="hidden-xs">
-                <span class="label label-success" style="background-color:{{getTypeColor(route)}}"> {{route.type}} </span>
-              </td>
-              <td  class="hidden-xs hidden-sm">
-                <span>{{route.rock}}</span>
-              </td>
-              <td  class="hidden-xs">
-                <span>{{route.location}}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+        <routes-table></routes-table>
     </div>
   </div>
 </div>

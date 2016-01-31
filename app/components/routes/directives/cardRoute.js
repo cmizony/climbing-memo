@@ -18,7 +18,7 @@
         link: function(scope) {
           scope.tabs = [
             {
-              icon: 'pencil',
+              icon: 'sticky-note',
               text: 'Notes',
               type: 'notes'
             },
