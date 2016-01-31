@@ -18,7 +18,6 @@
     'ui.bootstrap',
     'jlareau.pnotify',
     'ngStorage',
-    'uiGmapgoogle-maps',
     'ngTouch',
     'angular-scroll-animate'
   ])

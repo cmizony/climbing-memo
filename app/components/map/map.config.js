@@ -14,4 +14,5 @@
       libraries: 'weather,geometry,visualization'
     })
   })
-})
+// jscs:disable disallowSemicolons
+})();

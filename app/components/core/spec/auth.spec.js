@@ -48,6 +48,8 @@ describe('Service: auth', function() {
 
     it('should return empty object when no session exist', function() {
       myService.cachedSession = false
+      $localStorage.mySession = false
+
       expect(myService.getSession()).toEqual({})
     })
   })
