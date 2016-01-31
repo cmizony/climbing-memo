@@ -20,8 +20,8 @@ describe('Controller: ModaladdrouteCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:       function() {},
-      saveRoute:       function() {}
+      getRoutes:            function() {},
+      saveRoute:            function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
@@ -40,10 +40,7 @@ describe('Controller: ModaladdrouteCtrl', function() {
     })
   }))
 
-  it('should watch for #routesUpdated event', function() {
-    RoutesSvc.getRoutes.calls.reset()
-
-    rootScope.$emit('routesUpdated')
+  it('should listen on event routes change', function() {
     rootScope.$digest()
 
     expect(RoutesSvc.getRoutes).toHaveBeenCalled()

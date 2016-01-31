@@ -14,11 +14,13 @@ describe('Controller: mapCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:       function() {}
+      getRoutes:            function() {},
+      subscribeForUpdates:  function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
     spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'subscribeForUpdates')
 
     // mapChartSvc stub
     mapChartSvc = { processData: function() {} }
@@ -28,19 +30,17 @@ describe('Controller: mapCtrl', function() {
     ])
 
     mapCtrl = $controller('mapCtrl as mapVm', {
-      $scope:       scope,
-      RoutesSvc:    RoutesSvc,
-      mapChartSvc:  mapChartSvc
+      $scope:          scope,
+      RoutesSvc:       RoutesSvc,
+      mapChartSvc:     mapChartSvc,
+      ResolvedRoutes:  {}
     })
   }))
 
-  it('should watch for #routesUpdated event', function() {
-    RoutesSvc.getRoutes.calls.reset()
-
-    rootScope.$emit('routesUpdated')
+  it('should listen on event routes change', function() {
     rootScope.$digest()
 
-    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.subscribeForUpdates).toHaveBeenCalled()
   })
 
   it('should #initController with new empty route', function() {

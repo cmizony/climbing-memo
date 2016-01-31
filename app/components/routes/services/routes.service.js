@@ -5,8 +5,31 @@
   * @module climbingMemoRoutes
   * @name climbingMemoRoutes.service:RoutesSvc
   * @description
-  * # RoutesSvc
-  * Service in the climbingMemoRoutes
+  * # Routes service architecture interface:
+  * ```sh
+  *                               +---------------------+
+  *                               | RoutesCache service |
+  *                               +---------------------+
+  * +--------------+              |  Caching Interface  |
+  * | Directive A  +--+           |  Handle events      |
+  * +--------------+  |           +---------^-----------+
+  *                   |                     |
+  * +--------------+  |          +----------+-----------+
+  * | Directive B  +--+          |                      |
+  * +--------------+  |  +-------+--------+   +---------+----------+
+  *                   |  | Routes service +---> RoutesSync service |
+  * +--------------+  |  +----------------+   +--------------------+
+  * | Directive N  +--+--> Main Interface |   |  Handle offline    |
+  * +--------------+  |  | Notifications  |   |  Handle sync       |
+  *                   |  +----------------+   +---------+----------+
+  * +--------------+  |                                 |
+  * | Controller A +--+                    +------------v----------+
+  * +--------------+  |                    | RoutesPersist service |
+  *                   |                    +-----------------------+
+  * +--------------+  |                    |  Store on Firebase    |
+  * | ...          +--+                    |  Clean sproperties    |
+  * +--------------+                       +-----------------------+
+  * ```
   */
   angular.module('climbingMemo.routes')
   .service('RoutesSvc', RoutesService)
@@ -14,11 +37,24 @@
   RoutesService.$inject = [
     '$q',
     'notificationService',
-    'RoutesSyncSvc'
+    'RoutesSyncSvc',
+    'RoutesCache'
   ]
 
-  function RoutesService($q, notificationService, RoutesSyncSvc) {
+  /**
+  * Routes update event callback definition
+  * @callback routesUpdate
+  * @param {Array} routes
+  */
+  function RoutesService($q, notificationService, RoutesSyncSvc, RoutesCache) {
     var Routes = {}
+
+    /**
+     * @method subscribeForUpdates
+     * @param {routesUpdate} - Callback
+     * @description Map to RoutesCache service
+     */
+    Routes.subscribeForUpdates = RoutesCache.addListener
 
     Routes.getRoutes = function() {
       return RoutesSyncSvc.getRoutes()

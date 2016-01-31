@@ -72,22 +72,13 @@
     $scope.deleteRoute = function(route) {
       route.$editMode = false
       RoutesSvc.deleteRoute(route)
-      .then(function(routeId) {
-        $rootScope.$broadcast('routesUpdated', routeId)
-      })
 
       $scope.closeModal()
     }
 
     $scope.saveRoute = function(route) {
       route.$editMode = false
-
       RoutesSvc.saveRoute(route)
-      .then(function(routeId) {
-        $rootScope.$broadcast('routesUpdated', routeId)
-      }).catch(function(routeId) {
-        $rootScope.$broadcast('routesUpdated', routeId)
-      })
     }
 
     $scope.cancelEdit = function(route) {

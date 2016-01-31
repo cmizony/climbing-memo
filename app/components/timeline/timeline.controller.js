@@ -13,30 +13,17 @@
 
   timelineController.$inject = [
     '$log',
-    '$rootScope',
     '$uibModal',
     'timelineSvc',
     'RoutesSvc',
-    'RoutesUtilsSvc'
+    'RoutesUtilsSvc',
+    'ResolvedRoutes'
   ]
 
-  function timelineController($log, $rootScope, $uibModal,timelineSvc,
-  RoutesSvc, RoutesUtilsSvc) {
+  function timelineController($log, $uibModal,timelineSvc,
+  RoutesSvc, RoutesUtilsSvc, ResolvedRoutes) {
     /* jshint validthis:true */
     var vm = this
-
-    // Get Data
-    RoutesSvc.getRoutes().then(function(data) {
-      vm.initController(data)
-    })
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        vm.initController(data)
-      })
-    })
-
 
     /**
     * Get route color based on type
@@ -116,6 +103,9 @@
 
       vm.events = events
     }
+
+    vm.initController(ResolvedRoutes)
+    RoutesSvc.subscribeForUpdates(vm.initController)
   }
 // jscs:disable disallowSemicolons
 })();

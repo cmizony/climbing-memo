@@ -1,7 +1,6 @@
 'use strict'
 
 describe('Service: RoutesSyncSvc', function() {
-
   beforeEach(module('climbingMemo.routes', function($provide) {
     RoutesPersistSvc = {
       getRoutes:              function() {},
@@ -10,16 +9,25 @@ describe('Service: RoutesSyncSvc', function() {
       addRoute:               function() {},
       cleanObjectProperties:  function() {}
     }
+    RoutesCache = {
+      getData:     function() {},
+      setData:     function() {},
+      removeData:  function() {}
+    }
+    $provide.value('RoutesCache', RoutesCache)
     $provide.value('RoutesPersistSvc', RoutesPersistSvc)
   }))
 
-  var mockRoute, scope, deferred, myService, RoutesPersistSvc, localStorage
+  var mockRoute, scope, deferred, myService, RoutesPersistSvc, localStorage,
+  RoutesCache, log
   beforeEach(inject(function(_RoutesSyncSvc_, _RoutesPersistSvc_, $q,
-  $rootScope, $localStorage) {
+  $rootScope, $localStorage, _RoutesCache_, $log) {
     myService = _RoutesSyncSvc_
     mockRoute= { id: 1, name: 'test' }
     RoutesPersistSvc = _RoutesPersistSvc_
+    RoutesCache = _RoutesCache_
     localStorage = $localStorage
+    log = $log
 
     scope = $rootScope.$new()
     deferred = $q.defer()
@@ -33,28 +41,39 @@ describe('Service: RoutesSyncSvc', function() {
 
   describe('#getRoutes method', function() {
     it('should use cache if exists', function() {
-      myService.cache = 'test'
+      spyOn(RoutesCache, 'getData').and.returnValue('exists')
       myService.getRoutes()
       scope.$digest()
       expect(RoutesPersistSvc.getRoutes).not.toHaveBeenCalled()
+      expect(RoutesCache.getData).toHaveBeenCalled()
     })
     it('should persist to session localStorage', function() {
+      spyOn(RoutesCache, 'setData')
       myService.getRoutes()
       deferred.resolve({data: 'test'})
       scope.$digest()
 
       expect(RoutesPersistSvc.getRoutes).toHaveBeenCalled()
       expect(localStorage.routes).toBe('test')
-      expect(myService.cache).toBe('test')
+      expect(RoutesCache.setData).toHaveBeenCalledWith('test')
     })
     it('should use localStorage if network query failed', function() {
+      spyOn(RoutesCache, 'setData')
       localStorage.routes = 'test'
       myService.getRoutes()
       deferred.reject(false)
       scope.$digest()
 
       expect(RoutesPersistSvc.getRoutes).toHaveBeenCalled()
-      expect(myService.cache).toBe('test')
+      expect(RoutesCache.setData).toHaveBeenCalledWith('test')
+    })
+    it('should log message if forceRefresh fail', function() {
+      spyOn(log, 'log')
+      myService.getRoutes(true)
+      deferred.reject(false)
+      scope.$digest()
+
+      expect(log.log).toHaveBeenCalled()
     })
     it('should create timeout to sync if network query failed', function() {
       spyOn(myService, 'createTimeout')
@@ -73,6 +92,7 @@ describe('Service: RoutesSyncSvc', function() {
         resolve: jasmine.createSpy('resolve'),
         reject: jasmine.createSpy('reject')
       }
+      spyOn(RoutesCache, 'setData')
       myService.createRoute(mockRoute, spyDeferred)
       deferred.resolve({data: mockRoute})
       scope.$digest()
@@ -80,7 +100,7 @@ describe('Service: RoutesSyncSvc', function() {
       expect(RoutesPersistSvc.addRoute).toHaveBeenCalled()
       expect(RoutesPersistSvc.updateRoute).toHaveBeenCalled()
       expect(spyDeferred.resolve).toHaveBeenCalledWith(mockRoute)
-      expect(myService.cache.test).toBe(mockRoute)
+      expect(RoutesCache.setData).toHaveBeenCalledWith(mockRoute, mockRoute.id)
     })
 
     it('should sync route if network query failed', function() {
@@ -105,13 +125,14 @@ describe('Service: RoutesSyncSvc', function() {
         resolve: jasmine.createSpy('resolve'),
         reject: jasmine.createSpy('reject')
       }
+      spyOn(RoutesCache, 'setData')
       myService.updateRoute(mockRoute, spyDeferred)
       deferred.resolve()
       scope.$digest()
 
       expect(RoutesPersistSvc.updateRoute).toHaveBeenCalled()
       expect(spyDeferred.resolve).toHaveBeenCalled()
-      expect(myService.cache[1]).toBe(mockRoute)
+      expect(RoutesCache.setData).toHaveBeenCalledWith(mockRoute, mockRoute.id)
     })
 
     it('should sync route if network query failed', function() {
@@ -132,15 +153,13 @@ describe('Service: RoutesSyncSvc', function() {
 
   describe('#deleteRoute method', function() {
     it('should persist to session and localStorage with id', function() {
-      myService.cache = {
-        '1': mockRoute
-      }
+      spyOn(RoutesCache, 'removeData')
       myService.deleteRoute(mockRoute)
       deferred.resolve()
       scope.$digest()
 
       expect(RoutesPersistSvc.deleteRoute).toHaveBeenCalled()
-      expect(myService.cache).toEqual({})
+      expect(RoutesCache.removeData).toHaveBeenCalledWith(mockRoute.id)
     })
 
     it('should sync route if network query failed', function() {

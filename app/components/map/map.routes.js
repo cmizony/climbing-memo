@@ -16,7 +16,12 @@
     .when('/map', {
       controller: 'mapCtrl',
       templateUrl: 'components/map/views/mapLayout.html',
-      controllerAs: 'mapVm'
+      controllerAs: 'mapVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
     })
   })
 // jscs:disable disallowSemicolons

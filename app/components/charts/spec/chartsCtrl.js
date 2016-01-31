@@ -14,25 +14,23 @@ describe('Controller: chartsCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:       function() {}
+      subscribeForUpdates:  function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'subscribeForUpdates')
 
     chartsCtrl = $controller('chartsCtrl as chartsVm', {
       $scope:          scope,
-      RoutesSvc:   RoutesSvc
+      RoutesSvc:       RoutesSvc,
+      ResolvedRoutes:  {}
     })
   }))
 
-  it('should watch for #routesUpdated event', function() {
-    RoutesSvc.getRoutes.calls.reset()
-
-    rootScope.$emit('routesUpdated')
+  it('should listen on event routes change', function() {
     rootScope.$digest()
 
-    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.subscribeForUpdates).toHaveBeenCalled()
   })
 
   it('should #initController with new empty route', function() {

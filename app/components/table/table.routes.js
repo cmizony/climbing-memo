@@ -16,7 +16,12 @@
     .when('/table', {
       controller: 'tableCtrl',
       templateUrl: 'components/table/views/tableLayout.html',
-      controllerAs: 'tableVm'
+      controllerAs: 'tableVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
     })
   })
 // jscs:disable disallowSemicolons

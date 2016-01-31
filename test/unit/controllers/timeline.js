@@ -25,11 +25,13 @@ describe('Controller: TimelineCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:       function() {}
+      getRoutes:            function() {},
+      subscribeForUpdates:  function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
     spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'subscribeForUpdates')
 
     // RoutesUtilsSvc Stub
     RoutesUtilsSvc = {
@@ -54,16 +56,15 @@ describe('Controller: TimelineCtrl', function() {
       utilsChartSvc:   utilsChartSvc,
       RoutesSvc:       RoutesSvc,
       RoutesUtilsSvc:  RoutesUtilsSvc,
-      $uibModal:       modal
+      $uibModal:       modal,
+      ResolvedRoutes:  {}
     })
   }))
 
-  it('should listen on event #routesUpdated', function() {
-    RoutesSvc.getRoutes.calls.reset()
-    rootScope.$emit('routesUpdated')
+  it('should listen on event routes change', function() {
     rootScope.$digest()
 
-    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.subscribeForUpdates).toHaveBeenCalled()
   })
 
   it('should #getTypeColor', function() {

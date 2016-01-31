@@ -19,7 +19,8 @@
     return {
       scope: true,
       restrict: 'E',
-      templateUrl: 'components/charts/views/_headerOverview.html'
+      templateUrl: 'components/charts/views/_headerOverview.html',
+      controller: 'overviewCtrl'
     }
   }
 // jscs:disable disallowSemicolons

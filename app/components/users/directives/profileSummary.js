@@ -31,7 +31,6 @@
         }
 
         scope.initDirective()
-        $rootScope.$on('userUpdated', scope.initDirective)
       }
     }
   }

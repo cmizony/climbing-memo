@@ -15,25 +15,14 @@
     '$log',
     '$rootScope',
     'mapChartSvc',
-    'RoutesSvc'
+    'RoutesSvc',
+    'ResolvedRoutes'
   ]
 
   function mapController($log, $rootScope, mapChartSvc,
-  RoutesSvc) {
+  RoutesSvc, ResolvedRoutes) {
     /* jshint validthis:true */
     var vm = this
-
-    // Get Data
-    RoutesSvc.getRoutes().then(function(data) {
-      vm.initController(data)
-    })
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        vm.initController(data)
-      })
-    })
 
     /**
     * Initialize map controller
@@ -78,6 +67,9 @@
       }
       return markerIcon
     }
+
+    vm.initController(ResolvedRoutes)
+    RoutesSvc.subscribeForUpdates(vm.initController)
   }
 // jscs:disable disallowSemicolons
 })();

@@ -20,11 +20,14 @@ describe('Controller: tableCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:       function() {}
+      getRoutes:            function() {},
+      subscribeForUpdates:  function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
     spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
+    spyOn(RoutesSvc, 'subscribeForUpdates')
+
 
     // RoutesUtilsSvc Stub
     RoutesUtilsSvc = {
@@ -41,16 +44,15 @@ describe('Controller: tableCtrl', function() {
       $uibModal:       modal,
       RoutesSvc:       RoutesSvc,
       RoutesUtilsSvc:  RoutesUtilsSvc,
-      utilsChartSvc:   utilsChartSvc
+      utilsChartSvc:   utilsChartSvc,
+      ResolvedRoutes:  {}
     })
   }))
 
-  it('should listen to #routesUpdated event', function() {
-    RoutesSvc.getRoutes.calls.reset()
-    rootScope.$emit('routesUpdated')
+  it('should listen on event routes change', function() {
     rootScope.$digest()
 
-    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
+    expect(RoutesSvc.subscribeForUpdates).toHaveBeenCalled()
   })
 
   it('should #initController', function() {

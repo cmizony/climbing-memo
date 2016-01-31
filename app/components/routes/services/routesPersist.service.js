@@ -3,7 +3,7 @@
 
   /**
   * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.service:
+  * @name climbingMemoRoutes.service:RoutesPersistSvc
   * @description
   * Service of the climbingMemoRoutes
   */

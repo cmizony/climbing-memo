@@ -16,7 +16,12 @@
     .when('/charts', {
       controller: 'chartsCtrl',
       templateUrl: 'components/charts/chartsLayout.html',
-      controllerAs: 'chartsVm'
+      controllerAs: 'chartsVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
     })
   })
 // jscs:disable disallowSemicolons
