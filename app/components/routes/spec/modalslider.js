@@ -62,16 +62,15 @@ describe('Controller: ModalsliderCtrl', function() {
     scope.editRoute(route)
 
     expect(route.$editMode).toBe(true)
+    expect(route.$copy).toBeDefined()
   })
 
   it("should #saveRoute", function() {
-    modalInstance.dismiss.calls.reset()
     RoutesSvc.saveRoute.calls.reset()
     var route = {}
     scope.saveRoute(route)
 
     expect(RoutesSvc.saveRoute).toHaveBeenCalled()
-    expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel')
     expect(route.$editMode).toBe(false)
   })
 
@@ -88,11 +87,16 @@ describe('Controller: ModalsliderCtrl', function() {
 
   it("should #cancelEdit", function() {
     modalInstance.dismiss.calls.reset()
-    var route = {}
+    var route = {
+      '$copy': {
+        test: 'test'
+      }
+    }
     scope.cancelEdit(route)
 
-    expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel')
     expect(route.$editMode).toBe(false)
+    expect(route.test).toBe('test')
+    expect(route.$copy).toBeUndefined()
   })
 
   it("should #closeModal", function() {

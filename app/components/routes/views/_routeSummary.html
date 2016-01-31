@@ -161,7 +161,7 @@
           uib-tooltip="{{ form.location.$error.routeLocation ? 'Sorry, location not found' : '' }}"
           ng-class="{
             'fa-pencil'           : !form.location.$pending,
-            'fa-spinner fa-pulse' : form.location.$pending,
+            'fa-spinner fa-pulse' : form.location.$dirty && form.location.$pending,
             'text-muted' :    form.location.$pristine,
             'text-success' :  form.location.$valid && form.location.$dirty,
             'text-danger' :   form.location.$invalid && form.location.$dirty,

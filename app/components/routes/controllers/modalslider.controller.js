@@ -64,6 +64,7 @@
     }
 
     $scope.editRoute = function(route) {
+      route.$copy = _.clone(route)
       route.$date = new Date(route.date)
       route.$editMode = true
     }
@@ -87,13 +88,12 @@
       }).catch(function(routeId) {
         $rootScope.$broadcast('routesUpdated', routeId)
       })
-
-      $scope.closeModal()
     }
 
     $scope.cancelEdit = function(route) {
+      route = _.merge(route, route.$copy)
       route.$editMode = false
-      $scope.closeModal()
+      delete route.$copy
     }
 
     /**
