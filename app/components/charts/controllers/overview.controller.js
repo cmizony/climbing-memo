@@ -14,24 +14,16 @@
   overviewController.$inject = [
     '$scope',
     '$log',
-    '$rootScope',
     'utilsChartSvc',
     'RoutesSvc'
   ]
 
-  function overviewController($scope, $log, $rootScope, utilsChartSvc,
-  RoutesSvc) {
+  function overviewController($scope, $log, utilsChartSvc, RoutesSvc) {
 
     // Get Data
     RoutesSvc.getRoutes().then(function(data) {
       $scope.initController(data)
-    })
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
-      })
+      RoutesSvc.subscribeForUpdates($scope.initController)
     })
 
     /**

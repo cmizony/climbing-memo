@@ -12,23 +12,18 @@
   .controller('tableCtrl', tableController)
 
   tableController.$inject = [
-    '$rootScope',
     '$uibModal',
     'utilsChartSvc',
     'RoutesSvc',
     'DTOptionsBuilder',
-    'RoutesUtilsSvc'
+    'RoutesUtilsSvc',
+    'ResolvedRoutes'
   ]
 
-  function tableController($rootScope, $uibModal, utilsChartSvc, RoutesSvc,
-  DTOptionsBuilder, RoutesUtilsSvc) {
+  function tableController($uibModal, utilsChartSvc, RoutesSvc,
+  DTOptionsBuilder, RoutesUtilsSvc, ResolvedRoutes) {
     /* jshint validthis:true */
     var vm = this
-
-    // Get Data
-    RoutesSvc.getRoutes().then(function(data) {
-      vm.initController(data)
-    })
 
     vm.dtInstance = {}
     vm.dtOptions = DTOptionsBuilder
@@ -53,13 +48,6 @@
       })
       .withOption('pageLength', 6)
       .withOption('lengthMenu', [6, 10, 25, 50, 100])
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        vm.initController(data)
-      })
-    })
 
     /**
     * Render next page of datatable
@@ -146,6 +134,9 @@
         }
       })
     }
+
+    vm.initController(ResolvedRoutes)
+    RoutesSvc.subscribeForUpdates(vm.initController)
   }
 // jscs:disable disallowSemicolons
 })();

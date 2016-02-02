@@ -14,14 +14,13 @@
   modalAddRouteController.$inject = [
     '$uibModalInstance',
     '$scope',
-    '$rootScope',
     '$log',
     'routeNoteFormattingFilter',
     'utilsChartSvc',
     'RoutesSvc'
   ]
 
-  function modalAddRouteController($uibModalInstance, $scope, $rootScope, $log,
+  function modalAddRouteController($uibModalInstance, $scope, $log,
   routeNoteFormattingFilter, utilsChartSvc, RoutesSvc)  {
     // Buffer for all routes
     $scope.arrayRoutes = []
@@ -29,13 +28,6 @@
     // Get Data
     RoutesSvc.getRoutes().then(function(data) {
       $scope.initController(data)
-    })
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        $scope.initController(data)
-      })
     })
 
     /**
@@ -86,11 +78,6 @@
     $scope.saveRoute = function() {
       $scope.route.$editMode = false
       RoutesSvc.saveRoute($scope.route)
-      .then(function(routeId) {
-        $rootScope.$broadcast('routesUpdated', routeId)
-      }).catch(function(routeId) {
-        $rootScope.$broadcast('routesUpdated', routeId)
-      })
 
       $scope.cancelEdit()
     }

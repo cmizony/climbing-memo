@@ -16,7 +16,12 @@
     .when('/timeline', {
       controller: 'TimelineCtrl',
       templateUrl: 'components/timeline/views/timelineLayout.html',
-      controllerAs: 'timelineVm'
+      controllerAs: 'timelineVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
     })
   })
 // jscs:disable disallowSemicolons

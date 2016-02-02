@@ -18,13 +18,13 @@
     '$rootScope',
     '$timeout',
     '$log',
-    'RoutesPersistSvc'
+    'RoutesPersistSvc',
+    'RoutesCache'
   ]
 
   function RoutesSyncService($filter, $http, $q, $localStorage, $rootScope,
-  $timeout, $log, RoutesPersistSvc) {
+  $timeout, $log, RoutesPersistSvc, RoutesCache) {
     var RoutesSync = {}
-    RoutesSync.cache = null
 
     /**
     * Get routes - from firebase or localStorage
@@ -36,31 +36,30 @@
     RoutesSync.getRoutes = function(forceRefresh) {
       var deferred = $q.defer()
 
-      if (RoutesSync.cache && !forceRefresh) { // Use Cache
-        deferred.resolve(RoutesSync.cache)
+      if (RoutesCache.getData() && !forceRefresh) { // Use Cache
+        deferred.resolve(RoutesCache.getData())
       } else { // Query network
         RoutesPersistSvc.getRoutes().then(function(result) {
           RoutesSync.syncRoutes()
 
           var data = result.data || {}
           $localStorage.routes = data
-          RoutesSync.cache = data
+          RoutesCache.setData(data)
           deferred.resolve(data)
         })
         .catch(function() {
-          if (forceRefresh) { // Should come from the network
+          if (forceRefresh) {
             $log.log('Offline mode: can\'t refresh routes')
-            deferred.reject(false)
-          } else { // Use LocalStorage
-            $log.log('Local Storage used - routes')
-            RoutesSync.cache = $localStorage.routes
-            deferred.resolve($localStorage.routes || [])
+          }
+          // Use LocalStorage
+          $log.log('Local Storage used - routes')
+          RoutesCache.setData($localStorage.routes)
+          deferred.resolve($localStorage.routes || [])
 
-            if (_.find(RoutesSync.cache, function(cachedRoute) {
-              return angular.isDefined(cachedRoute.$sync)
-            })) {
-              RoutesSync.createTimeout()
-            }
+          if (_.find($localStorage.routes, function(localRoute) {
+            return angular.isDefined(localRoute.$sync)
+          })) {
+            RoutesSync.createTimeout()
           }
         })
       }
@@ -82,8 +81,9 @@
         route.id = result.data.name
         RoutesPersistSvc.updateRoute(route, route.id)
 
-        RoutesSync.cache = RoutesSync.cache || {}
-        RoutesSync.cache[route.id] = RoutesPersistSvc.cleanObjectProperties(route)
+        RoutesCache.setData(
+          RoutesPersistSvc.cleanObjectProperties(route),
+          route.id)
         deferred.resolve(route)
       })
       .catch(function() {
@@ -103,8 +103,9 @@
     RoutesSync.updateRoute = function(route, deferred) {
       RoutesPersistSvc.updateRoute(route, route.id)
       .then(function() {
-        RoutesSync.cache = RoutesSync.cache || {}
-        RoutesSync.cache[route.id] = RoutesPersistSvc.cleanObjectProperties(route)
+        RoutesCache.setData(
+          RoutesPersistSvc.cleanObjectProperties(route),
+          route.id)
         deferred.resolve(route)
       })
       .catch(function() {
@@ -163,9 +164,7 @@
 
       RoutesPersistSvc.deleteRoute(route.id)
       .then(function() {
-        if (RoutesSync.cache) { // Update Cache
-          delete RoutesSync.cache[route.id]
-        }
+        RoutesCache.removeData(route.id)
         deferred.resolve(route)
       })
       .catch(function() {
@@ -208,7 +207,7 @@
         route.$sync = event
         route.id = "tmp_" + _.random(10000, 99999)
         $localStorage.routes.push(route)
-        RoutesSync.cache[route.id] = route
+        RoutesCache.setData(route, route.id)
         RoutesSync.createTimeout()
       }
     }
@@ -233,7 +232,6 @@
               RoutesSync.saveRoute(route).then(function(routeId) {
                 intervalDelay = 30000 // 30 sec
                 delete route.$sync
-                $rootScope.$broadcast('routesUpdated', routeId)
               }).catch(function() {
                 route.id = savedRouteId
               })
@@ -243,7 +241,6 @@
               RoutesSync.deleteRoute(route).then(function(routeId) {
                 intervalDelay = 30000 // 30 sec
                 delete route.$sync
-                $rootScope.$broadcast('routesUpdated', routeId)
               })
               break
           }

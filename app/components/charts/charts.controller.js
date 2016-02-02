@@ -12,25 +12,13 @@
   .controller('chartsCtrl', chartsController)
 
   chartsController.$inject = [
-    '$rootScope',
-    'RoutesSvc'
+    'RoutesSvc',
+    'ResolvedRoutes'
   ]
 
-  function chartsController($rootScope, RoutesSvc) {
+  function chartsController(RoutesSvc, ResolvedRoutes) {
     /* jshint validthis:true */
     var vm = this
-
-    // Get Data
-    RoutesSvc.getRoutes().then(function(data) {
-      vm.initController(data)
-    })
-
-    // Watch Update event
-    $rootScope.$on('routesUpdated', function() {
-      RoutesSvc.getRoutes().then(function(data) {
-        vm.initController(data)
-      })
-    })
 
     /**
     * Initialize controller
@@ -41,6 +29,9 @@
     vm.initController = function(data) {
       vm.routes = _.toArray(data)
     }
+
+    vm.initController(ResolvedRoutes)
+    RoutesSvc.subscribeForUpdates(vm.initController)
   }
 // jscs:disable disallowSemicolons
 })();
