@@ -16,20 +16,11 @@
     '$scope',
     '$log',
     'routeNoteFormattingFilter',
-    'utilsChartSvc',
     'RoutesSvc'
   ]
 
   function modalAddRouteController($uibModalInstance, $scope, $log,
-  routeNoteFormattingFilter, utilsChartSvc, RoutesSvc)  {
-    // Buffer for all routes
-    $scope.arrayRoutes = []
-
-    // Get Data
-    RoutesSvc.getRoutes().then(function(data) {
-      $scope.initController(data)
-    })
-
+  routeNoteFormattingFilter, RoutesSvc)  {
     /**
     * Close the modal
     *
@@ -50,27 +41,6 @@
     }
 
     /**
-    * Populate smart default values when a sector is selected
-    *
-    * @method sectorPopulatePlaceholder
-    */
-    $scope.sectorPopulatePlaceholder = function() {
-
-      var filteredArrayRoutes = $scope.arrayRoutes.filter(function(n) {
-        return n.sector === $scope.route.sector
-      })
-
-      var properties = ['type','rock','location']
-
-      for (var i=0 ; i < properties.length ; i++) {
-        var property = properties[i]
-        if (!$scope.route.hasOwnProperty(property)) {
-          $scope.route[property] = utilsChartSvc.arrayGroupBy(filteredArrayRoutes,property)[0]
-        }
-      }
-    }
-
-    /**
     * Save route - it will calculate the lat long
     *
     * @method saveRoute
@@ -82,19 +52,17 @@
       $scope.cancelEdit()
     }
 
-    $scope.initController = function(data) {
+    $scope.initController = function() {
       var route = {}
       route.notes = routeNoteFormattingFilter()
       route.$date = new Date()
       route.$editMode = true
       route.status = 'Attempt'
 
-      $scope.arrayRoutes    = _.toArray(data)
-      $scope.locations = utilsChartSvc.arrayGroupBy($scope.arrayRoutes,"location")
-      $scope.sectors = utilsChartSvc.arrayGroupBy($scope.arrayRoutes,"sector")
-
       $scope.route = route
     }
+
+    $scope.initController()
   }
 // jscs:disable disallowSemicolons
 })();
