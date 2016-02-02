@@ -4,7 +4,6 @@
     <i class="fa {{getIconRock(route)}} fa-stack-1x fa-inverse"></i>
   </span>
   <h3 class="name">
-    <i class="fa fa-eye" ng-show="route.watch"></i>
     {{ route.name }}
     <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
   </h3>

@@ -20,7 +20,7 @@
     <tbody>
       <tr ng-repeat="route in tableVm.routes" ng-click="tableVm.openRouteModal(route)" style="cursor:pointer">
         <td>
-          <i ng-class="{'fa fa-eye': route.watch}"></i>
+          <i class="fa {{tableVm.getIconStatus(route)}} text-muted"></i>
           <a title="Route Details">
             {{route.name}}
           </a>

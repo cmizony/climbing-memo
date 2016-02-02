@@ -37,6 +37,8 @@
       return RoutesUtilsSvc.getTypeColor({type: event.mainType})
     }
 
+    vm.getIconStatus = RoutesUtilsSvc.getIconStatus
+
     /**
     * Get tooltip text based on rock type
     *

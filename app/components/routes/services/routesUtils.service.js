@@ -36,7 +36,7 @@
       if (!(route && route.status)) {
         return 'fa-connectdevelop'
       }
-      return route.status === 'Attempt' ? 'fa-times' : 'fa-check'
+      return route.status === 'Attempt' ? 'fa-square-o' : 'fa-check-square-o'
     }
 
     /**

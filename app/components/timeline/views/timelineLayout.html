@@ -24,47 +24,7 @@
           <i class="fa fa-plus"></i>
         </button>
       </p>
-
-      <timeline>
-        <timeline-event ng-repeat="event in timelineVm.events">
-        <timeline-badge style="background-color:{{ timelineVm.getTypeColor(event) }}"
-        uib-tooltip="{{ timelineVm.getBadgeTooltip(event) }}">
-            <i class="fa {{ timelineVm.getBadgeIcon(event) }}"></i>
-          </timeline-badge>
-
-          <timeline-panel>
-            <timeline-heading>
-            <h4><i class="fa fa-map-marker"></i> {{event.content.areaLocation}}</h4>
-            <p>
-            <small class="text-muted">
-              <span class="hidden-xs">
-                <i class="fa fa-calendar"></i>
-                From {{event.content.start }} to {{event.content.end}}</span>
-              <span class="visible-xs">
-                {{event.content.start | date:'shortdate' }} to {{event.content.end | date:'shortdate'}}
-              </span>
-            </small>
-            </p>
-            </timeline-heading>
-
-            <div ng-repeat="routes in event.content.sectors">
-              <p>
-              <i class="fa fa-map-o"></i> {{ routes[0].sector }}
-              <span class="badge">{{ routes.length }}</span>
-              </p>
-              <span ng-repeat="route in routes">
-                <span class="text-muted">{{route.grade}}</span>
-                <i ng-class="{'fa fa-eye': route.watch}"></i>
-                <a style="cursor:pointer" title="Route Details" ng-click="timelineVm.openRouteModal(route, routes)">
-                  {{route.name}}
-                </a>
-                <i ng-if="route.$sync" class="fa fa-refresh text-info" uib-tooltip="Offline {{route.$sync}}"></i>
-                <br>
-              </span>
-            </div>
-          </timeline-panel>
-        </timeline-event>
-      </timeline>
+      <routes-timeline></routes-timeline>
     </div>
   </div>
 </div>
