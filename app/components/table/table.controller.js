@@ -92,17 +92,8 @@
       vm.sectors   = arraySectors
     }
 
-    /**
-     * Get route color based on type
-     *
-     * @method getTypeColor
-     * @param {Object} Route
-     *
-     * @return {String} Css color
-     */
-    vm.getTypeColor = function(route) {
-      return RoutesUtilsSvc.getTypeColor(route)
-    }
+    vm.getTypeColor = RoutesUtilsSvc.getTypeColor
+    vm.getIconStatus = RoutesUtilsSvc.getIconStatus
 
     /**
     * Create a route object in the scope using default values

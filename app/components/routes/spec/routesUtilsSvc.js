@@ -46,11 +46,11 @@ describe('Service: RoutesUtilsSvc', function() {
   it('should #getIconStatus', function() {
     var route = { status: 'Attempt' }
     var output = RoutesUtilsSvc.getIconStatus(route)
-    expect(output).toMatch('fa-times')
+    expect(output).toMatch('fa-square-o')
 
     route = { status: 'Other' }
     output = RoutesUtilsSvc.getIconStatus(route)
-    expect(output).toMatch('fa-check')
+    expect(output).toMatch('fa-check-square-o')
 
     output = RoutesUtilsSvc.getIconStatus()
     expect(output).toMatch('fa-connectdevelop')

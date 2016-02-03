@@ -16,7 +16,8 @@
   function routesTimelineDirective() {
     return {
       templateUrl: 'components/timeline/views/_routesTimeline.html',
-      restrict: 'E'
+      restrict: 'E',
+      replace: true
     }
   }
 // jscs:disable disallowSemicolons
