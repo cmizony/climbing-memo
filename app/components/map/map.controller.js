@@ -44,7 +44,10 @@
       })
 
       vm.locations = arrayLocations
-      vm.map = { center: { latitude: 37.7833, longitude: -122.4167 }, zoom: 8 }
+      vm.map = {
+        center: _.last(arrayLocations).coords,
+        zoom: 8
+      }
     }
 
     /**

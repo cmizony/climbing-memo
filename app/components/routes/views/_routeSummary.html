@@ -45,6 +45,7 @@
           }"></i>
       </div>
       <input name="name"
+             autocomplete='off'
              placeholder="Name"
              class="form-control"
              type="required"
@@ -61,6 +62,7 @@
           }"></i>
       </div>
       <input placeholder="Grade"
+             autocomplete='off'
              class="form-control"
              type="text"
              name="grade"
@@ -111,6 +113,7 @@
           }"></i>
       </div>
       <input placeholder="Sector"
+             autocomplete='off'
              uib-typeahead="sector for sector in sectors | filter:$viewValue"
              typeahead-on-select="sectorPopulatePlaceholder($item,route)"
              class="form-control"
@@ -173,6 +176,7 @@
                route-location
                ng-model-options="{ debounce: 500 }"
                ng-model="route.location"
+               autocomplete='off'
                uib-typeahead="location for location in locations | filter:$viewValue">
         </input>
     </div>

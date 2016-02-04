@@ -41,7 +41,7 @@
             count: sectorRoutes.length,
             type: utilsChartSvc.arrayGroupBy(sectorRoutes, 'type')[0],
             rating: (_.reduce(sectorRoutes, function(result, n) {
-              return result += n.rating
+              return result += n.rating || 0
             }, 0) / sectorRoutes.length).toFixed(1)
           })
         })

@@ -116,10 +116,6 @@ describe('Controller: ModalsliderCtrl', function() {
     expect(filters.routeNoteFormattingFilter).toHaveBeenCalled()
   })
 
-  it("should #getTimes", function() {
-    expect(scope.getTimes(5).length).toBe(5)
-  })
-
   it("should #flipCard", function() {
     var slides = [{}, {active: true}, {}]
     scope.slides = slides

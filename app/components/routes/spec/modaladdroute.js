@@ -20,12 +20,10 @@ describe('Controller: ModaladdrouteCtrl', function() {
 
     // RoutesSvc Stub
     RoutesSvc = {
-      getRoutes:            function() {},
       saveRoute:            function() {}
     }
     deferred = $q.defer()
     deferred.resolve({})
-    spyOn(RoutesSvc, 'getRoutes').and.returnValue(deferred.promise)
     spyOn(RoutesSvc, 'saveRoute').and.returnValue(deferred.promise)
 
     // utilsChartSvc stub
@@ -39,12 +37,6 @@ describe('Controller: ModaladdrouteCtrl', function() {
       utilsChartSvc:      utilsChartSvc
     })
   }))
-
-  it('should listen on event routes change', function() {
-    rootScope.$digest()
-
-    expect(RoutesSvc.getRoutes).toHaveBeenCalled()
-  })
 
   it('should close the modal on #cancelEdit', function() {
     modalInstance.dismiss.calls.reset()
@@ -61,24 +53,6 @@ describe('Controller: ModaladdrouteCtrl', function() {
     expect(scope.route.$hover).toBe(true)
   })
 
-  it('should #sectorPopulatePlaceholder', function() {
-    modalInstance.dismiss.calls.reset()
-
-    var sectorA = { sector: 'sectorA' }
-    var sectorB = { sector: 'sectorB' }
-    scope.route = sectorA
-    scope.arrayRoutes = [sectorA, sectorB]
-
-    scope.sectorPopulatePlaceholder()
-
-    expect(utilsChartSvc.arrayGroupBy.calls.mostRecent().args).toEqual(
-      [[sectorA], 'location']
-    )
-    expect(scope.route.type).toMatch('test')
-    expect(scope.route.rock).toMatch('test')
-    expect(scope.route.location).toMatch('test')
-  })
-
   it('should #saveRoute and close the modal', function() {
     RoutesSvc.saveRoute.calls.reset()
     scope.initController()
@@ -88,11 +62,9 @@ describe('Controller: ModaladdrouteCtrl', function() {
   })
 
   it('should #initController with new empty route', function() {
-    scope.initController({test:'data'})
-
+    scope.initController()
     expect(scope.route).toBeDefined()
-    expect(scope.locations.length).toBe(1)
-    expect(scope.sectors.length).toBe(1)
-    expect(scope.arrayRoutes.length).toBe(1)
+    expect(scope.route.notes).toBeDefined()
+    expect(scope.route.status).toBeDefined()
   })
 })

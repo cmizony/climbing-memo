@@ -88,17 +88,6 @@
     }
 
     /**
-    * Create an array of size N
-    *
-    * @method getTimes
-    * @param {Integer} n
-    * @return {Array}
-    */
-    $scope.getTimes = function(n) {
-      return new Array(n)
-    }
-
-    /**
     * Flip the active slide
     *
     * @method flipCard
