@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoCharts
-  * @name climbingMemoCharts.directive:sectorsMetrics
+  * @module siuranaCharts
+  * @name siuranaCharts.directive:sectorsMetrics
   * @description
   * # sectorsMetrics
   */
-  angular.module('climbingMemo.charts')
+  angular.module('siurana.charts')
   .directive('sectorsMetrics', sectorsMetricsDirective)
 
   sectorsMetricsDirective.$inject = []

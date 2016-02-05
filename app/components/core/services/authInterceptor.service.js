@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.service:authInterceptor
+  * @module siuranaCore
+  * @name siuranaCore.service:authInterceptor
   * @description
   * # authInterceptor
-  * Service in the climbingMemo core module
+  * Service in the siurana core module
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .service('authInterceptor', authInterceptorService)
 
   authInterceptorService.$inject = [

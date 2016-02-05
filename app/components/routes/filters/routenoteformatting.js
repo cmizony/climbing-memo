@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.filter:routeNoteFormatting
+  * @module siuranaRoutes
+  * @name siuranaRoutes.filter:routeNoteFormatting
   * @description
   * # routeNoteFormatting
-  * Filter in the climbingMemoRoutes.
+  * Filter in the siuranaRoutes.
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .filter('routeNoteFormatting', routeNoteFormattingFilter)
 
   routeNoteFormattingFilter.$inject = []

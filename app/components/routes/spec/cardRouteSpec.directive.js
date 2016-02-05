@@ -3,7 +3,7 @@
 describe('Directive: cardRoute', function() {
 
   // load the directive's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana'))
 
   var element, scope, httpBackend
 

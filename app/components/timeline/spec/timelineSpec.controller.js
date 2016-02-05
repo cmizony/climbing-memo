@@ -3,7 +3,7 @@
 describe('Controller: TimelineCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.timeline'))
 
   /**
   * Initialize local variables for unit-test

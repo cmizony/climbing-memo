@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoTimeline
-  * @name climbingMemoTimeline.directive:routesTimeline
+  * @module siuranaTimeline
+  * @name siuranaTimeline.directive:routesTimeline
   * @description
   * # routesTimeline
   */
-  angular.module('climbingMemo.timeline')
+  angular.module('siurana.timeline')
   .directive('routesTimeline', routesTimelineDirective)
 
   routesTimelineDirective.$inject = [

@@ -4,7 +4,7 @@ describe('Directive: routeSummary', function() {
 
   // load the directive's module
   beforeEach(module('templates'))
-  beforeEach(angular.mock.module('climbingMemo.routes', function($provide) {
+  beforeEach(angular.mock.module('siurana.routes', function($provide) {
     $provide.service('RoutesSvc', function() {
       return {
         getRoutes: function() {}

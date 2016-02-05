@@ -1,6 +1,14 @@
 {
-  "name": "climbing-memo",
-  "version": "0.0.0",
+  "name": "siurana",
+  "version": "0.1",
+  "main": [
+    "bundle/siurana.min.js",
+    "bundle/siurana.min.css"
+  ],
+  "ignore": [
+    "**/*",
+    "!bundle"
+  ],
   "dependencies": {
     "jquery": ">=1.9.1",
     "bootstrap": "~3.3.4",
@@ -26,7 +34,7 @@
     "firebase": "~2.3.2"
   },
   "appPath": "app",
-  "moduleName": "climbingMemo",
+  "moduleName": "siurana",
   "overrides": {
     "bootstrap": {
       "main": [

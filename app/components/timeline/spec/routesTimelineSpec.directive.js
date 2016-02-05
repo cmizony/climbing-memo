@@ -3,7 +3,7 @@
 describe('Directive: routesTimeline', function() {
 
   beforeEach(module('templates'))
-  beforeEach(angular.mock.module('climbingMemo.timeline'))
+  beforeEach(angular.mock.module('siurana.timeline'))
 
   var element, scope
   beforeEach(inject(function($rootScope, $httpBackend, $templateCache,

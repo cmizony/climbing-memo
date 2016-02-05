@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.directive:routeNotes
+  * @module siuranaRoutes
+  * @name siuranaRoutes.directive:routeNotes
   * @description
   * Angular directive which represent summary of a
   * route display on a card
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .directive('routeNotes', routeNotesDirective)
 
     routeNotesDirective.$inject = [

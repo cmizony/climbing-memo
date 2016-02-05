@@ -2,10 +2,10 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.directive:cardRoute
+  * @module siuranaRoutes
+  * @name siuranaRoutes.directive:cardRoute
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .directive('cardRoute', cardRouteDirective)
 
     cardRouteDirective.$inject = [

@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoUsers
-  * @name climbingMemoUsers.service:UsersSvc
+  * @module siuranaUsers
+  * @name siuranaUsers.service:UsersSvc
   * @description
   * # UsersSvc
-  * Service of the climbingMemoUsers
+  * Service of the siuranaUsers
   */
-  angular.module('climbingMemo.users')
+  angular.module('siurana.users')
   .service('UsersSvc', usersService)
 
   usersService.$inject = [

@@ -3,7 +3,7 @@
 describe('Directive: routesTable', function() {
 
   beforeEach(module('templates'))
-  beforeEach(angular.mock.module('climbingMemo.table'))
+  beforeEach(angular.mock.module('siurana.table'))
 
   var element, scope
   beforeEach(inject(function($rootScope, $httpBackend, $templateCache,

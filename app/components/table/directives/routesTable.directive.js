@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoTable
-  * @name climbingMemoTable.directive:routesTable
+  * @module siuranaTable
+  * @name siuranaTable.directive:routesTable
   * @description
   * # routesTable
   */
-  angular.module('climbingMemo.table')
+  angular.module('siurana.table')
   .directive('routesTable', routesTableDirective)
 
   routesTableDirective.$inject = [

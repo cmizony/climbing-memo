@@ -3,7 +3,7 @@
 describe('Controller: overviewCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.charts'))
 
   var overviewCtrl, scope, rootScope, RoutesSvc,
   deferred, utilsChartSvc

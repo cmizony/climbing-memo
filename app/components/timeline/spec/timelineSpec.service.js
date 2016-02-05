@@ -3,7 +3,7 @@
 describe('Service: timelineSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.timeline'))
 
   // instantiate service
   var timelineSvc

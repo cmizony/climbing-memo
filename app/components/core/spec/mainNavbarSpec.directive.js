@@ -3,7 +3,7 @@
 describe('Directive: mainNavbar', function() {
 
   // load the directive's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.core'))
   beforeEach(module('templates'))
 
   var element, scope, httpBackend, templateCache

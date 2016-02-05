@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoCharts
-  * @name climbingMemoCharts.directive:gridCharts
+  * @module siuranaCharts
+  * @name siuranaCharts.directive:gridCharts
   * @description
   * # gridCharts
   */
-  angular.module('climbingMemo.charts')
+  angular.module('siurana.charts')
   .directive('gridCharts', gridChartsDirective)
 
   gridChartsDirective.$inject = [

@@ -32,6 +32,18 @@ module.exports = {
     'connect:test',
     'protractor:sauceLab'
   ],
+  'bundle': [
+    'clean:bundle',
+    'copy:bundle',
+    'ngtemplates:bundleTimeline',
+    'ngtemplates:bundleTable',
+    'ngtemplates:bundleMap',
+    'ngtemplates:bundleCharts',
+    'concat:bundle',
+    'uglify:bundle',
+    'compass',
+    'cssmin:bundle'
+  ],
   'build': [
     'clean:dist',
     'wiredep',

@@ -3,7 +3,7 @@
 describe('Filter: routeNoteFormatting', function() {
 
   // load the filter's module
-  beforeEach(module('climbingMemo.routes'))
+  beforeEach(module('siurana.routes'))
 
   // initialize a new instance of the filter before each test
   var routeNoteFormatting

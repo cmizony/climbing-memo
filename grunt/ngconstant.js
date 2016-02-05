@@ -2,7 +2,7 @@ module.exports = {
   options: {
     dest: '<%= path.app %>/components/core/core.config.js',
     deps: false,
-    name: 'climbingMemo.core',
+    name: 'siurana.core',
     wrap: '// jscs:disable\n(function() {\n{%= __ngModule %} })();'
   },
   dist: {

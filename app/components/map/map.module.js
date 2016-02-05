@@ -2,15 +2,15 @@
   'use strict'
 
   /**
-  * @module climbingMemoMap
-  * @name climbingMemoMap.app:Module
+  * @module siuranaMap
+  * @name siuranaMap.app:Module
   * @description
   * Module creation for map
   */
-  angular.module('climbingMemo.map', [
-    'climbingMemo.core',
-    'climbingMemo.charts',
-    'climbingMemo.routes',
+  angular.module('siurana.map', [
+    'siurana.core',
+    'siurana.charts',
+    'siurana.routes',
     'ngRoute',
     'uiGmapgoogle-maps',
     'ui.bootstrap'

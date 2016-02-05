@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoMap
-  * @name climbingMemoMap.controller:mapCtrl
+  * @module siuranaMap
+  * @name siuranaMap.controller:mapCtrl
   * @description
   * # mapCtrl
-  * Controller of the climbingMemoMap
+  * Controller of the siuranaMap
   */
-  angular.module('climbingMemo.map')
+  angular.module('siurana.map')
   .controller('mapCtrl', mapController)
 
   mapController.$inject = [

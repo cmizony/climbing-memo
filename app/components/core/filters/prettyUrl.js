@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.filter:prettyUrl
+  * @module siuranaCore
+  * @name siuranaCore.filter:prettyUrl
   * @description
   * # prettyUrl
-  * Filter in the climbingMemoCore
+  * Filter in the siuranaCore
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .filter('prettyUrl', prettyUrlFilter)
 
   prettyUrlFilter.$inject = [

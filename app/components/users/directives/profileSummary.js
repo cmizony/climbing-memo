@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoUsers
-  * @name climbingMemoUsers.directive:profileSummary
+  * @module siuranaUsers
+  * @name siuranaUsers.directive:profileSummary
   * @description
   * # profileSummary
-  * Directive of the climbingMemoUsers
+  * Directive of the siuranaUsers
   */
-  angular.module('climbingMemo.users')
+  angular.module('siurana.users')
   .directive('profileSummary', profileSummaryDirective)
 
   profileSummaryDirective.$inject = [

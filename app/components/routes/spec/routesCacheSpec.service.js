@@ -1,7 +1,7 @@
 'use strict'
 
 describe('Service: RoutesCache', function() {
-  beforeEach(module('climbingMemo.routes'))
+  beforeEach(module('siurana.routes'))
 
   var myService
   beforeEach(inject(function(_RoutesCache_) {

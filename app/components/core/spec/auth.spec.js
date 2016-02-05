@@ -1,8 +1,8 @@
 'use strict'
 
 describe('Service: auth', function() {
-  beforeEach(module('climbingMemo.core'))
-  beforeEach(angular.mock.module('climbingMemo.core'))
+  beforeEach(module('siurana.core'))
+  beforeEach(angular.mock.module('siurana.core'))
 
   var myService, $localStorage
   beforeEach(inject(function(Auth, _$localStorage_) {

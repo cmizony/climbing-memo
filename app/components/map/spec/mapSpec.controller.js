@@ -3,7 +3,7 @@
 describe('Controller: mapCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.map'))
 
   var mapCtrl, scope, rootScope, RoutesSvc,
   deferred, mapChartSvc

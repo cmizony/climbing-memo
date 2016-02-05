@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.service:Utils
+  * @module siuranaCore
+  * @name siuranaCore.service:Utils
   * @description
   * Javascript utils function
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .service('Utils', UtilsService)
 
   UtilsService.$inject = [

@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.service:RoutesSyncSvc
+  * @module siuranaRoutes
+  * @name siuranaRoutes.service:RoutesSyncSvc
   * @description
-  * Service in the climbingMemoRoutes
+  * Service in the siuranaRoutes
  s */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .service('RoutesSyncSvc', RoutesSyncService)
 
   RoutesSyncService.$inject = [

@@ -2,15 +2,15 @@
   'use strict'
 
   /**
-  * @module climbingMemoTable
-  * @name climbingMemoTable.app:Module
+  * @module siuranaTable
+  * @name siuranaTable.app:Module
   * @description
   * Module creation for table
   */
-  angular.module('climbingMemo.table', [
-    'climbingMemo.core',
-    'climbingMemo.routes',
-    'climbingMemo.charts',
+  angular.module('siurana.table', [
+    'siurana.core',
+    'siurana.routes',
+    'siurana.charts',
     'datatables',
     'datatables.bootstrap',
     'ngRoute',

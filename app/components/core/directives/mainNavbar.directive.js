@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.directive:mainNavbar
+  * @module siuranaCore
+  * @name siuranaCore.directive:mainNavbar
   * @description
   * # mainNavbar
-  * Directive of the climbingMemoCore
+  * Directive of the siuranaCore
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .directive('mainNavbar', mainNavbarDirective)
 
   mainNavbarDirective.$inject = []

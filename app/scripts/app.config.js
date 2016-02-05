@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.app:Config
+  * @modulesiurana
+  * @name siurana.app:Config
   * @description
   * Application configuration
   */
-  angular.module('climbingMemo')
+  angular.module('siurana')
   .run(function($rootScope) {
     $rootScope.online = navigator.onLine // jshint ignore:line
   })

@@ -1,7 +1,7 @@
 'use strict'
 
 describe('Filter: prettyUrl', function() {
-  beforeEach(module('climbingMemo.core'))
+  beforeEach(module('siurana.core'))
 
   var myFilter
   beforeEach(inject(function($filter) {

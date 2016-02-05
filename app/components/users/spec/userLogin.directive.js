@@ -5,7 +5,7 @@ describe('Directive: userLogin', function() {
   // load the directive's module
   beforeEach(module('templates'))
 
-  beforeEach(angular.mock.module('climbingMemo.users', function($provide) {
+  beforeEach(angular.mock.module('siurana.users', function($provide) {
     $provide.service('Auth', function() {
       return {
         isLoggedIn: jasmine.createSpy('isLoggedIn').and.returnValue(function() { return true }),

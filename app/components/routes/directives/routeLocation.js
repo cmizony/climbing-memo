@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.directive:routeLocation
+  * @module siuranaRoutes
+  * @name siuranaRoutes.directive:routeLocation
   * @description
   * # mainNavbar
   * Angular form validation for route location
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .directive('routeLocation', function($q, $http) {
     return {
       require: 'ngModel',
