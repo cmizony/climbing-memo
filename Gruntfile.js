@@ -8,11 +8,12 @@ module.exports = function(grunt) {
   var config = require('load-grunt-config')(grunt, {
 		data: {
       path: {
-        app: 'app',
-        dist: 'dist',
-        test: 'test',
-        doc: 'dist/doc',
-        karmaConf: 'test/karma.conf.js'
+        app:        'app',
+        dist:       'dist',
+        bundle:     'bundle',
+        test:       'test',
+        doc:        'dist/doc',
+        karmaConf:  'test/karma.conf.js'
       },
       options: {
         port: 9000,
@@ -52,16 +53,6 @@ module.exports = function(grunt) {
       }
     }
   })
-
-  // config.uglify = {
-  //   dist: {
-  //     files: {
-  //       'dist/scripts/scripts.js': [
-  //         'dist/scripts/scripts.js'
-  //       ]
-  //     }
-  //   }
-  // }
 
   grunt.initConfig(config)
 

@@ -3,13 +3,13 @@
 describe('Directive: sectorsMetrics', function() {
 
   // load the directive's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.charts'))
   beforeEach(module('templates'))
 
   var element, scope, httpBackend, templateCache
 
   beforeEach(function() {
-    module('climbingMemo', function($controllerProvider) {
+    module('siurana', function($controllerProvider) {
       $controllerProvider.register('ModalsliderCtrl', function() {
         // Controller Mock
       })

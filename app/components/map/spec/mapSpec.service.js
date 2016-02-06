@@ -3,7 +3,7 @@
 describe('Service: mapChartSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.map'))
 
   // instantiate service
   var mapChartSvc

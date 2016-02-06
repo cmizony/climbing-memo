@@ -2,14 +2,15 @@
   'use strict'
 
   /**
-  * @module climbingMemoTimeline
-  * @name climbingMemoTimeline.app:Module
+  * @module siuranaTimeline
+  * @name siuranaTimeline.app:Module
   * @description
   * Module creation for timeline
   */
-  angular.module('climbingMemo.timeline', [
-    'climbingMemo.core',
-    'climbingMemo.routes',
+  angular.module('siurana.timeline', [
+    'siurana.core',
+    'siurana.routes',
+    'siurana.charts',
     'ngRoute',
     'angular-timeline',
     'ui.bootstrap'

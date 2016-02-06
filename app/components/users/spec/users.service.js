@@ -2,7 +2,7 @@
 
 describe('Service: UsersSvc', function() {
 
-  beforeEach(angular.mock.module('climbingMemo.users', function($provide) {
+  beforeEach(angular.mock.module('siurana.users', function($provide) {
     $provide.constant('APP_CONFIG', {
       url: 'test.mock/'
     })

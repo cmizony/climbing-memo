@@ -3,7 +3,7 @@
 describe('Directive: sliderCharts', function() {
 
   // load the directive's module
-  beforeEach(module('climbingMemo.charts'))
+  beforeEach(module('siurana.charts'))
   beforeEach(module('templates'))
 
   var element, scope, httpBackend, templateCache, timeout

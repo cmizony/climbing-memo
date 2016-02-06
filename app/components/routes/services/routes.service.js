@@ -2,8 +2,8 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.service:RoutesSvc
+  * @module siuranaRoutes
+  * @name siuranaRoutes.service:RoutesSvc
   * @description
   * # Routes service architecture interface:
   * ```sh
@@ -31,7 +31,7 @@
   * +--------------+                       +-----------------------+
   * ```
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .service('RoutesSvc', RoutesService)
 
   RoutesService.$inject = [

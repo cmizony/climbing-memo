@@ -3,7 +3,7 @@
 describe('Controller: navbarCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo'))
+  beforeEach(module('siurana.core'))
 
   /**
   * Initialize local variables for unit-test

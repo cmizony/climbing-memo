@@ -1,0 +1,60 @@
+//   ____ _                _
+//  / ___| |__   __ _ _ __| |_ ___
+// | |   | '_ \ / _` | '__| __/ __|
+// | |___| | | | (_| | |  | |_\__ \
+//  \____|_| |_|\__,_|_|   \__|___/
+
+.overview {
+  .panel-body {
+    padding:4px;
+  }
+
+  svg {
+    margin-top:10px;
+  }
+  .metrics {
+    padding-left:15px;
+    padding-right:15px;
+  }
+}
+
+.carousel-control {
+  height:35px;
+}
+
+//  _____           _ _   _
+// |_   _|__   ___ | | |_(_)_ __
+//   | |/ _ \ / _ \| | __| | '_ \
+//   | | (_) | (_) | | |_| | |_) |
+//   |_|\___/ \___/|_|\__|_| .__/
+//                         |_|
+
+.d3-tip {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
+  color: #fff;
+  font-weight: bold;
+  font: 10px;
+  line-height: 1;
+  padding: 12px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  display: inline;
+  font-size: 10px;
+  line-height: 1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

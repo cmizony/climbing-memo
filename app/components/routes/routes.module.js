@@ -2,14 +2,14 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.app:Module
+  * @module siuranaRoutes
+  * @name siuranaRoutes.app:Module
   * @description
   * Module creation for routes
   */
-  angular.module('climbingMemo.routes', [
-    'climbingMemo.core',
-    'climbingMemo.users',
+  angular.module('siurana.routes', [
+    'siurana.core',
+    'siurana.users',
     'hc.marked',
     'jlareau.pnotify',
     'ui.bootstrap',

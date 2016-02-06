@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoTimeline
-  * @name climbingMemoTimeline.controller:TimelineCtrl
+  * @module siuranaTimeline
+  * @name siuranaTimeline.controller:TimelineCtrl
   * @description
   * # TimelineCtrl
-  * Controller of the climbingMemoTimeline
+  * Controller of the siuranaTimeline
   */
-  angular.module('climbingMemo.timeline')
+  angular.module('siurana.timeline')
   .controller('TimelineCtrl', timelineController)
 
   timelineController.$inject = [

@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoMap
-  * @name climbingMemoMap.app:Config
+  * @module siuranaMap
+  * @name siuranaMap.app:Config
   * @description
   * Application configuration
   */
-  angular.module('climbingMemo.map')
+  angular.module('siurana.map')
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
       v: '3.17',

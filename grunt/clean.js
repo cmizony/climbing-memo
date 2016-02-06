@@ -12,5 +12,14 @@ module.exports = {
       ]
     }]
   },
+  bundle: {
+    files: [{
+      dot: true,
+      src: [
+        '.tmp',
+        '<%= path.bundle %>/**/*'
+      ]
+    }]
+  },
   server: '.tmp'
 }

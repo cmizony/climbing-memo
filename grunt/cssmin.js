@@ -5,5 +5,12 @@ module.exports = {
         '.tmp/styles/**/*.css'
       ]
     }
+  },
+  bundle: {
+    files: {
+      '<%= path.bundle %>/siurana.min.css': [
+        '.tmp/styles/**/*.css'
+      ]
+    }
   }
 }

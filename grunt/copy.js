@@ -29,6 +29,21 @@ module.exports = {
       dest: '<%= path.dist %>'
     }]
   },
+  bundle: {
+    files: [{
+      expand: true,
+      dot: true,
+      cwd: '<%= path.app %>/styles',
+      dest: '<%= path.bundle %>/sass',
+      src: '**/*.scss'
+    }, {
+      expand: true,
+      dot: true,
+      cwd: '<%= path.app %>/images',
+      dest: '<%= path.bundle %>/images',
+      src: '**/*'
+    }]
+  },
   styles: {
     expand: true,
     cwd: '<%= path.app %>/styles',

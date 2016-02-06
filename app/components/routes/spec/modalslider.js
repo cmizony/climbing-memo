@@ -3,7 +3,7 @@
 describe('Controller: ModalsliderCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('climbingMemo.routes'))
+  beforeEach(module('siurana.routes'))
 
   var ModalsliderCtrl, scope, modalInstance, utilsChartSvc, routesId, filters,
   RoutesSvc, deferred

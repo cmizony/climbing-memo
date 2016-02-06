@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCharts
-  * @name climbingMemoCharts.service:overviewChartSvc
+  * @module siuranaCharts
+  * @name siuranaCharts.service:overviewChartSvc
   * @description
   * # overviewChartSvc
-  * Service of the climbingMemoCharts
+  * Service of the siuranaCharts
   */
-  angular.module('climbingMemo.charts')
+  angular.module('siurana.charts')
   .service('overviewChartSvc', overviewChartService)
 
   overviewChartService.$inject = [

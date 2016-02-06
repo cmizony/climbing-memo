@@ -3,7 +3,7 @@
 describe('Service: RoutesSvc', function() {
 
   // load the service's module
-  beforeEach(module('climbingMemo.routes'))
+  beforeEach(module('siurana.routes'))
 
   // instantiate service
   var mockRoute, notificationService, scope, deferred, RoutesSyncSvc, myService

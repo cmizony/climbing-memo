@@ -3,7 +3,7 @@
 describe('Directive: gridCharts', function() {
 
   beforeEach(module('templates'))
-  beforeEach(angular.mock.module('climbingMemo.charts'))
+  beforeEach(angular.mock.module('siurana.charts'))
 
   var element, scope
   beforeEach(inject(function($rootScope, $httpBackend, $templateCache,

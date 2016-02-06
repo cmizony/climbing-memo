@@ -2,7 +2,7 @@
 
 describe('Service: Utils', function() {
 
-  beforeEach(module('climbingMemo.core'))
+  beforeEach(module('siurana.core'))
 
   // instantiate service
   var myService

@@ -2,18 +2,18 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.app:Module
+  * @modulesiurana
+  * @name siurana.app:Module
   * @description
   * Module creation and set dependencies
   */
-  angular.module('climbingMemo', [
-    'climbingMemo.users',
-    'climbingMemo.routes',
-    'climbingMemo.charts',
-    'climbingMemo.map',
-    'climbingMemo.timeline',
-    'climbingMemo.table',
+  angular.module('siurana', [
+    'siurana.users',
+    'siurana.routes',
+    'siurana.charts',
+    'siurana.map',
+    'siurana.timeline',
+    'siurana.table',
     'ngRoute',
     'ui.bootstrap',
     'jlareau.pnotify',

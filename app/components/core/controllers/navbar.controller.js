@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.controller:navbarCtrl
+  * @module siuranaCore
+  * @name siuranaCore.controller:navbarCtrl
   * @description
   * # navbarCtrl
-  * Controller of the climbingMemoCore
+  * Controller of the siuranaCore
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .controller('navbarCtrl', navbarController)
 
   navbarController.$inject = [

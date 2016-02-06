@@ -2,14 +2,14 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.service:RoutesCache
+  * @module siuranaRoutes
+  * @name siuranaRoutes.service:RoutesCache
   * @description
   * # RoutesCache
-  * Service in the climbingMemoRoutes
+  * Service in the siuranaRoutes
   * @TODO Handle localStorage logic in this service
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .service('RoutesCache', RoutesCacheService)
 
   RoutesCacheService.$inject = [

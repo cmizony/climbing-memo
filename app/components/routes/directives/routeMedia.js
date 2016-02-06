@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoRoutes
-  * @name climbingMemoRoutes.directive:routeMedia
+  * @module siuranaRoutes
+  * @name siuranaRoutes.directive:routeMedia
   * @description
   * Angular directive which represent summary of a
   * route display on a card
   */
-  angular.module('climbingMemo.routes')
+  angular.module('siurana.routes')
   .directive('routeMedia', routeMediaDirective)
 
   routeMediaDirective.$inject = [

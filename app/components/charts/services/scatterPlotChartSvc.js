@@ -2,13 +2,13 @@
   'use strict'
 
   /**
-  * @module climbingMemoCharts
-  * @name climbingMemoCharts.service:scatterPlotChartSvc
+  * @module siuranaCharts
+  * @name siuranaCharts.service:scatterPlotChartSvc
   * @description
   * # scatterPlotChartSvc
-  * Service of the climbingMemoCharts
+  * Service of the siuranaCharts
   */
-  angular.module('climbingMemo.charts')
+  angular.module('siurana.charts')
   .service('scatterPlotChartSvc', scatterPlotChartService)
 
   scatterPlotChartService.$inject = [

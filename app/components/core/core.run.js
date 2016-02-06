@@ -2,12 +2,12 @@
   'use strict'
 
   /**
-  * @module climbingMemoCore
-  * @name climbingMemoCore.app:Run
+  * @module siuranaCore
+  * @name siuranaCore.app:Run
   * @description
   * Run function to handle routes events
   */
-  angular.module('climbingMemo.core')
+  angular.module('siurana.core')
   .run(routesEventsRun)
 
   routesEventsRun.$inject = ['$rootScope', '$location', 'Auth']

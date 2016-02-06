@@ -1,7 +1,7 @@
 'use strict'
 
 describe('Service: RoutesSyncSvc', function() {
-  beforeEach(module('climbingMemo.routes', function($provide) {
+  beforeEach(module('siurana.routes', function($provide) {
     RoutesPersistSvc = {
       getRoutes:              function() {},
       updateRoute:            function() {},

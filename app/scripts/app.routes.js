@@ -2,10 +2,10 @@
   'use strict'
 
   /**
-  * @module climbingMemo
-  * @name climbingMemo.app:Routes
+  * @modulesiurana
+  * @name siurana.app:Routes
   * @description
-  * Routes for climbingMemo app:
+  * Routes for siurana app:
   * <ul>
   *   <li>`/table` Table view of routes</li>
   *   <li>`/timeline` Timeline view of routes</li>
@@ -14,7 +14,7 @@
   * </ul>
   * Default route is `/timeline`
   */
-  angular.module('climbingMemo')
+  angular.module('siurana')
   .config(function($routeProvider) {
     $routeProvider
     .when('/', {
@@ -30,6 +30,46 @@
           }
           return deferred.promise
         }
+      }
+    })
+    .when('/charts', {
+      controller: 'chartsCtrl',
+      templateUrl: 'views/chartsLayout.html',
+      controllerAs: 'chartsVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
+    })
+    .when('/map', {
+      controller: 'mapCtrl',
+      templateUrl: 'views/mapLayout.html',
+      controllerAs: 'mapVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
+    })
+    .when('/table', {
+      controller: 'tableCtrl',
+      templateUrl: 'views/tableLayout.html',
+      controllerAs: 'tableVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
+      }
+    })
+    .when('/timeline', {
+      templateUrl: 'views/timelineLayout.html',
+      controller: 'TimelineCtrl',
+      controllerAs: 'timelineVm',
+      resolve: {
+        ResolvedRoutes: ['RoutesSvc', function(RoutesSvc) {
+          return RoutesSvc.getRoutes()
+        }]
       }
     })
     .otherwise({

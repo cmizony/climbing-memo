@@ -1,10 +1,10 @@
 'use strict'
 
 describe('Service: RoutesPersistSvc', function() {
-  beforeEach(module('climbingMemo.routes'))
-  beforeEach(angular.mock.module('climbingMemo.routes'))
+  beforeEach(module('siurana.routes'))
+  beforeEach(angular.mock.module('siurana.routes'))
 
-  beforeEach(angular.mock.module('climbingMemo.routes', function($provide) {
+  beforeEach(angular.mock.module('siurana.routes', function($provide) {
     $provide.constant('APP_CONFIG', {
       url: 'test.mock/'
     })

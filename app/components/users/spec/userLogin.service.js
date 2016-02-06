@@ -2,7 +2,7 @@
 
 describe('Service: userLogin', function() {
 
-  beforeEach(angular.mock.module('climbingMemo.users', function($provide) {
+  beforeEach(angular.mock.module('siurana.users', function($provide) {
     $provide.service('Auth', function() {
       return {
         createSession: jasmine.createSpy('createSession'),
