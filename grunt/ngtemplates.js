@@ -9,40 +9,20 @@ module.exports = {
     src: 'views/**/*.html',
     dest: '.tmp/templateCache.js'
   },
-  bundleTimeline: {
+  bundle: {
     options: {
-      module: 'siurana.timeline',
-      htmlmin: '<%= options.htmlmin %>'
+      module: 'siurana',
+      htmlmin: '<%= options.htmlmin %>',
+      bootstrap:  function(module, script) {
+        return '(function() {' +
+          'angular.module("' + module + '",' +
+          '["siurana.table", "siurana.timeline", "siurana.map", "siurana.charts"])' +
+          '.run([\'$templateCache\', function($templateCache) {' +
+          script + '}])' + '})()'
+      }
     },
     cwd: '<%= path.app %>',
-    src: 'components/timeline/views/**/*.html',
-    dest: '.tmp/templateCache/timeline.js'
-  },
-  bundleTable: {
-    options: {
-      module: 'siurana.table',
-      htmlmin: '<%= options.htmlmin %>'
-    },
-    cwd: '<%= path.app %>',
-    src: 'components/table/views/**/*.html',
-    dest: '.tmp/templateCache/table.js'
-  },
-  bundleMap: {
-    options: {
-      module: 'siurana.map',
-      htmlmin: '<%= options.htmlmin %>'
-    },
-    cwd: '<%= path.app %>',
-    src: 'components/map/views/**/*.html',
-    dest: '.tmp/templateCache/map.js'
-  },
-  bundleCharts: {
-    options: {
-      module: 'siurana.charts',
-      htmlmin: '<%= options.htmlmin %>'
-    },
-    cwd: '<%= path.app %>',
-    src: 'components/charts/views/**/*.html',
-    dest: '.tmp/templateCache/charts.js'
-  },
+    src: 'components/**/*.html',
+    dest: '.tmp/templateCache/siurana.js'
+  }
 }
