@@ -3,6 +3,143 @@
 
   /**
   * @module siuranaCharts
+  * @name siuranaCharts.app:Module
+  * @description
+  * Module creation for charts and set dependencies
+  */
+  angular.module('siurana.charts', [
+    'siurana.routes',
+    'ngRoute',
+    'ui.bootstrap'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaCore
+  * @name siuranaCore.app:Module
+  * @description
+  * Module creation for core
+  * Constain APP_CONFIG that is being generated on the build
+  */
+  angular.module('siurana.core', [
+    'ngStorage'
+  ])
+
+  angular.module('siurana.core')
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor')
+  }])
+
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaMap
+  * @name siuranaMap.app:Module
+  * @description
+  * Module creation for map
+  */
+  angular.module('siurana.map', [
+    'siurana.core',
+    'siurana.charts',
+    'siurana.routes',
+    'ngRoute',
+    'uiGmapgoogle-maps',
+    'ui.bootstrap'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaRoutes
+  * @name siuranaRoutes.app:Module
+  * @description
+  * Module creation for routes
+  */
+  angular.module('siurana.routes', [
+    'siurana.core',
+    'siurana.users',
+    'hc.marked',
+    'jlareau.pnotify',
+    'ui.bootstrap',
+    'ngRoute',
+    'ngStorage'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaTable
+  * @name siuranaTable.app:Module
+  * @description
+  * Module creation for table
+  */
+  angular.module('siurana.table', [
+    'siurana.core',
+    'siurana.routes',
+    'siurana.charts',
+    'datatables',
+    'datatables.bootstrap',
+    'ngRoute',
+    'ui.bootstrap'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaTimeline
+  * @name siuranaTimeline.app:Module
+  * @description
+  * Module creation for timeline
+  */
+  angular.module('siurana.timeline', [
+    'siurana.core',
+    'siurana.routes',
+    'siurana.charts',
+    'ngRoute',
+    'angular-timeline',
+    'ui.bootstrap'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaUsers
+  * @name siuranaUsers.app:Module
+  * @description
+  * Module creation for utils
+  */
+  angular.module('siurana.users', [
+    'siurana.core',
+    'jlareau.pnotify'
+  ])
+// jscs:disable disallowSemicolons
+})();
+
+(function() {
+  'use strict'
+
+  /**
+  * @module siuranaCharts
   * @name siuranaCharts.controller:chartsCtrl
   * @description
   * # chartsCtrl
@@ -33,23 +170,6 @@
     vm.initController(ResolvedRoutes)
     RoutesSvc.subscribeForUpdates(vm.initController)
   }
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaCharts
-  * @name siuranaCharts.app:Module
-  * @description
-  * Module creation for charts and set dependencies
-  */
-  angular.module('siurana.charts', [
-    'siurana.routes',
-    'ngRoute',
-    'ui.bootstrap'
-  ])
 // jscs:disable disallowSemicolons
 })();
 
@@ -2110,28 +2230,6 @@ angular.module('siurana.core')
 
   /**
   * @module siuranaCore
-  * @name siuranaCore.app:Module
-  * @description
-  * Module creation for core
-  * Constain APP_CONFIG that is being generated on the build
-  */
-  angular.module('siurana.core', [
-    'ngStorage'
-  ])
-
-  angular.module('siurana.core')
-  .config(['$httpProvider', function($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptor')
-  }])
-
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaCore
   * @name siuranaCore.app:Run
   * @description
   * Run function to handle routes events
@@ -2524,26 +2622,6 @@ angular.module('siurana.core')
     vm.initController(ResolvedRoutes)
     RoutesSvc.subscribeForUpdates(vm.initController)
   }
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaMap
-  * @name siuranaMap.app:Module
-  * @description
-  * Module creation for map
-  */
-  angular.module('siurana.map', [
-    'siurana.core',
-    'siurana.charts',
-    'siurana.routes',
-    'ngRoute',
-    'uiGmapgoogle-maps',
-    'ui.bootstrap'
-  ])
 // jscs:disable disallowSemicolons
 })();
 
@@ -3155,27 +3233,6 @@ angular.module('siurana.core')
   angular.module('siurana.routes')
   .constant('DATABASE_URL', 'https://climbing-memo.firebaseio.com/')
 
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaRoutes
-  * @name siuranaRoutes.app:Module
-  * @description
-  * Module creation for routes
-  */
-  angular.module('siurana.routes', [
-    'siurana.core',
-    'siurana.users',
-    'hc.marked',
-    'jlareau.pnotify',
-    'ui.bootstrap',
-    'ngRoute',
-    'ngStorage'
-  ])
 // jscs:disable disallowSemicolons
 })();
 
@@ -4064,27 +4121,6 @@ angular.module('siurana.core')
   'use strict'
 
   /**
-  * @module siuranaTable
-  * @name siuranaTable.app:Module
-  * @description
-  * Module creation for table
-  */
-  angular.module('siurana.table', [
-    'siurana.core',
-    'siurana.routes',
-    'siurana.charts',
-    'datatables',
-    'datatables.bootstrap',
-    'ngRoute',
-    'ui.bootstrap'
-  ])
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
   * @module siuranaTimeline
   * @name siuranaTimeline.directive:routesTimeline
   * @description
@@ -4217,26 +4253,6 @@ angular.module('siurana.core')
     vm.initController(ResolvedRoutes)
     RoutesSvc.subscribeForUpdates(vm.initController)
   }
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaTimeline
-  * @name siuranaTimeline.app:Module
-  * @description
-  * Module creation for timeline
-  */
-  angular.module('siurana.timeline', [
-    'siurana.core',
-    'siurana.routes',
-    'siurana.charts',
-    'ngRoute',
-    'angular-timeline',
-    'ui.bootstrap'
-  ])
 // jscs:disable disallowSemicolons
 })();
 
@@ -4534,22 +4550,6 @@ angular.module('siurana.core')
 
   /**
   * @module siuranaUsers
-  * @name siuranaUsers.app:Module
-  * @description
-  * Module creation for utils
-  */
-  angular.module('siurana.users', [
-    'siurana.core',
-    'jlareau.pnotify'
-  ])
-// jscs:disable disallowSemicolons
-})();
-
-(function() {
-  'use strict'
-
-  /**
-  * @module siuranaUsers
   * @name siuranaUsers.service:UsersSvc
   * @description
   * # UsersSvc
@@ -4607,8 +4607,7 @@ angular.module('siurana.core')
 // jscs:disable disallowSemicolons
 })();
 
-angular.module('siurana.charts').run(['$templateCache', function($templateCache) {
-  'use strict';
+(function() {angular.module("siurana",["siurana.table", "siurana.timeline", "siurana.map", "siurana.charts"]).run(['$templateCache', function($templateCache) {  'use strict';
 
   $templateCache.put('components/charts/views/_gridCharts.html',
     "<div class=\"row\"> <div class=\"col-md-6\"> <!-- Panel Scatter plot --> <div class=\"panel panel-success\"> <div class=\"panel-heading\"> <h3 class=\"panel-title\"><span class=\"fa fa-star-o\"></span> Sector quality</h3> </div> <div class=\"panel-body\"> <scatter-plot-chart routes=\"routes\"></scatter-plot-chart> </div> </div> </div> <div class=\"col-md-6\"> <!-- Panel Vertical Chart --> <div class=\"panel panel-success\"> <div class=\"panel-heading\"> <h3 class=\"panel-title\"><span class=\"fa fa-bar-chart\"></span> Climb quantity</h3> </div> <div class=\"panel-body\"> <vertical-bar-chart routes=\"routes\"></vertical-bar-chart> </div> </div> </div> </div> <div class=\"row\"> <div class=\"col-md-6\"> <!-- Panel Horizontal Chart --> <div class=\"panel panel-success\"> <div class=\"panel-heading\"> <h3 class=\"panel-title\"><span class=\"fa fa-bar-chart\"></span> Favorite climb type difficulty</h3> </div> <div class=\"panel-body\"> <horizontal-bar-chart routes=\"routes\"></horizontal-bar-chart> </div> </div> </div> <div class=\"col-md-6\"> <!-- Panel Treemap Chart --> <div class=\"panel panel-success\"> <div class=\"panel-heading\"> <h3 class=\"panel-title\"><span class=\"fa fa-th-large\"></span> Climb diversity</h3> </div> <div class=\"panel-body\"> <treemap-chart routes=\"routes\"></treemap-chart> </div> </div> </div> </div>"
@@ -4629,31 +4628,145 @@ angular.module('siurana.charts').run(['$templateCache', function($templateCache)
     "<div class=\"slider-unstyled slider-charts\"> <uib-carousel> <uib-slide ng-repeat=\"slide in slides\" active=\"slide.active\"> <div class=\"panel panel-default panel-unstyled\"> <div class=\"panel-heading\"> <h3 class=\"panel-title\"><span class=\"fa {{slide.icon}}\"></span> {{slide.title}}</h3> </div> <div class=\"panel-body\"> <div class=\"chart-{{slide.type}}\"></div> </div> </div> </uib-slide> </uib-carousel> </div>"
   );
 
-}]);
 
-angular.module('siurana.map').run(['$templateCache', function($templateCache) {
-  'use strict';
+  $templateCache.put('components/core/views/_mainNavbar.html',
+    "<nav class=\"navbar navbar-default\"> <div class=\"container\"> <div class=\"navbar-header\"> <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse\"> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> </button> <a class=\"navbar-brand\" href=\"#/\"><i class=\"fa fa-book\"></i> Memo App</a> </div> <div class=\"navbar-collapse collapse navbar-responsive-collapse\"> <ul class=\"nav navbar-nav\"> <li ng-class=\"{ active: isActive('/timeline')}\" ng-if=\"isLoggedIn()\"> <a href=\"#/timeline\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse.in\"> <i class=\"fa fa fa-clock-o\"></i> Timeline </a> </li> <li ng-class=\"{ active: isActive('/table')}\" ng-if=\"isLoggedIn()\"> <a href=\"#/table\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse.in\"> <i class=\"fa fa-table\"></i> Table </a> </li> <li ng-class=\"{ active: isActive('/map')}\" ng-if=\"isLoggedIn()\"> <a href=\"#/map\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse.in\"> <i class=\"fa fa-globe\"></i> Map </a> </li> <li ng-class=\"{ active: isActive('/charts')}\" ng-if=\"isLoggedIn()\"> <a href=\"#/charts\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse.in\"> <i class=\"fa fa-bar-chart\"></i> Charts </a> </li> </ul> <div class=\"navbar-right\"> <user-login></user-login> </div> </div> </div> </nav>"
+  );
+
 
   $templateCache.put('components/map/views/_windowLocationMap.html',
     "<div class=\"gm-pro-popup windowLocationMap\"> <h4><i class=\"fa fa-map-marker\"></i> {{parameter.name}}</h4> <sectors-metrics metrics=\"parameter.metrics\"></sectors-metrics> <br> <a href=\"https://www.google.com/maps/dir/Current+Location/{{ parameter.coords.latitude }}, {{ parameter.coords.longitude }}\" target=\"_blank\"> <i class=\"fa fa-car\"></i> Get directions </a> </div>"
   );
 
-}]);
 
-angular.module('siurana.table').run(['$templateCache', function($templateCache) {
-  'use strict';
+  $templateCache.put('components/routes/views/_cardRoute.html',
+    "<div class=\"card-header\"> <div class=\"text-center actions\"> <button uib-tooltip=\"Edit\" ng-if=\"!route.$editMode\" ng-click=\"editRoute(route)\" tooltip-placement=\"bottom\" class=\"btn btn-default\" tooltip-animation=\"false\"> <i class=\"fa fa-pencil text-info fa-lg\"></i> </button> <button uib-tooltip=\"Delete\" ng-if=\"!route.$editMode\" ng-click=\"deleteRoute(route)\" tooltip-placement=\"bottom\" class=\"btn btn-default\" tooltip-animation=\"false\"> <i class=\"fa fa-trash text-danger fa-lg\"></i> </button> <button uib-tooltip=\"Save\" ng-if=\"route.$editMode\" class=\"btn btn-default\" ng-click=\"saveRoute(route)\" tooltip-placement=\"bottom\" tooltip-animation=\"false\"> <i class=\"fa fa-check text-success fa-lg\"></i> </button> <button uib-tooltip=\"Cancel\" ng-if=\"route.$editMode\" class=\"btn btn-default\" ng-click=\"cancelEdit(route)\" tooltip-placement=\"bottom\" tooltip-animation=\"false\"> <i class=\"fa fa-times text-danger fa-lg\"></i> </button> </div> </div> <div class=\"card card-route\"> <div class=\"front\"> <div class=\"content\"> <div class=\"main\"> <route-summary route=\"route\"></route-summary> </div> </div> </div> <!-- end front panel --> <div class=\"back\"> <div class=\"content\"> <div class=\"main\"> <uib-tabset justified=\"true\"> <uib-tab ng-repeat=\"tab in tabs\" vertical=\"true\"> <uib-tab-heading> <i class=\"fa fa-{{tab.icon}}\"></i> <span class=\"hidden-xs\">{{tab.text}}</span> </uib-tab-heading> <div class=\"panel panel-default\"> <div class=\"panel-body\"> <div ng-switch=\"tab.type\"> <route-notes route=\"route\" ng-switch-when=\"notes\"></route-notes> <route-media route=\"route\" ng-switch-when=\"media\"></route-media> <route-ascents route=\"route\" ng-switch-when=\"ascents\"></route-ascents> <route-builder route=\"route\" ng-switch-when=\"builder\"></route-builder> </div> </div> </div> </uib-tab> </uib-tabset> </div> </div> </div> <!-- end back panel --> </div> <!-- end card -->"
+  );
+
+
+  $templateCache.put('components/routes/views/_markdownReference.html',
+    "<h2>Headers</h2> <pre><code># Level one header #</code></pre> <pre><code>### Level three header ###</code></pre> <p>Headers continue as you&#8217;d imagine, with extra hashes.</p> <h2>Links</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>[This is a link](http://cmizony.com)</code></pre> </div> <div class=\"col-md-6\"> <p><a href=\"http://cmizony.com\">This is a link</a></p> </div> </div> <h2>Blockquote</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>&gt; This is quoted\n" +
+    "</code></pre> </div> <div class=\"col-md-6\"> <blockquote> <p>This is quoted</p> </blockquote> </div> </div> <h2>Code</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>Inline code is `escaped` with backticks</code></pre> </div> <div class=\"col-md-6\"> <p>Inline code is <code>escaped</code> with backticks</p> </div> </div> <h2>BlockCode</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>```\n" +
+    "Blockcode is inside three backticks\n" +
+    "```</code></pre> </div> <div class=\"col-md-6\"> <pre>Blockcode in inside three backticks</pre> </div> </div> <h2>Lists</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>* This\n" +
+    "* is\n" +
+    "* a list</code></pre> </div> <div class=\"col-md-6\"> <ul> <li>This</li> <li>is</li> <li>a list</li> </ul> </div> </div> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>1. with\n" +
+    "1. numbers</code></pre> </div> <div class=\"col-md-6\"> <ol> <li>with</li> <li>numbers</li> </ol> </div> </div> <h2>Horizontal lines</h2> <div class=\"row\"> <div class=\"col-md-6\"> <p>Three or more dashes</p> <pre><code>---- </code></pre> </div> <div class=\"col-md-6\"> <hr> </div> </div> <h2>Emphasis</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>_italic_ or *italic*</code></pre> </div> <div class=\"col-md-6\"> <p><em>italic</em> or <em>italic</em></p> </div> </div> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>__bold__ or **bold**</code></pre> </div> <div class=\"col-md-6\"> <p><strong>bold</strong> or <strong>bold</strong></p> </div> </div> <h2>Escaping</h2> <div class=\"row\"> <div class=\"col-md-6\"> <pre><code>This is \\*\\*not\\*\\* in bold.</code></pre> </div> <div class=\"col-md-6\"> <p>This is &#42;&#42;not&#42;&#42; in bold.</p> </div> </div> <h2>More markdown</h2> <p>See full <a href=\"http://daringfireball.net/projects/markdown/syntax\" target=\"_blank\" class=\"external\">Markdown syntax</a></p>"
+  );
+
+
+  $templateCache.put('components/routes/views/_markdownReferenceSummary.html',
+    "<pre>\n" +
+    "  <code># Level one header #</code>\n" +
+    "  <code>### Level three header ###</code>\n" +
+    "  <code>[This is a link](http://cmizony.com)</code>\n" +
+    "  <code>![alt description](http://cmizony.com/img/technologies/d3js.png)</code>\n" +
+    "  <code>&gt; This is quoted\n" +
+    "  </code>\n" +
+    "  <code>Inline code is `escaped` with backticks</code>\n" +
+    "  <code>```\n" +
+    "  Blockcode is inside three backticks\n" +
+    "  ```</code>\n" +
+    "  <code>* This\n" +
+    "  * is\n" +
+    "  * a list</code>\n" +
+    "  <code>1. with\n" +
+    "  1. numbers</code>\n" +
+    "  <code>---- </code>\n" +
+    "  <code>_italic_ or *italic*</code>\n" +
+    "  <code>__bold__ or **bold**</code>\n" +
+    "  <code>This is \\*\\*not\\*\\* in bold.</code>\n" +
+    "</pre> <p>See full <a href=\"http://daringfireball.net/projects/markdown/syntax\" target=\"_blank\" class=\"external\">Markdown syntax</a></p>"
+  );
+
+
+  $templateCache.put('components/routes/views/_modalAddRoute.html',
+    "<div class=\"route-modal\"> <div class=\"modal-body\"> <div> <div class=\"card-container manual-flip\" ng-class=\"{hover: route.$hover}\"> <card-route></card-route> </div> <div class=\"modal-footer\"> <button class=\"btn btn-success\" ng-click=\"flipCard()\"><i class=\"fa fa-undo fa-flip-vertical\"></i> Flip</button> <button class=\"btn btn-primary\" ng-click=\"cancelEdit()\"><i class=\"fa fa-times\"></i></button> </div> </div> </div> </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/_routeAscents.html',
+    "<div class=\"alert alert-dismissible alert-info\"> Ascents routes not yet implemented </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/_routeBuilder.html',
+    "<div class=\"alert alert-dismissible alert-info\"> Routes builder not yet implemented </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/_routeMedia.html',
+    "<div class=\"text-left\"> <div ng-if=\"!route.$editMode\"> <div ng-if=\"medias.length === 0\"> <div class=\"panel-body\"> <div class=\"row\"> <div class=\"col-xs-3\"> <span class=\"fa-stack fa-2x text-muted\"> <i class=\"fa fa-circle fa-stack-2x\"></i> <i class=\"fa fa-camera fa-stack-1x fa-inverse\"></i> </span> </div> <div class=\"col-xs-9\"> <b>No medias</b> <i class=\"fa fa-lg fa-youtube text-danger\" uib-tooltip=\"Youtube\"></i>&nbsp; <i class=\"fa fa-lg fa-instagram text-primary\" uib-tooltip=\"Instagram\"></i>&nbsp; <i class=\"fa fa-lg fa-vimeo text-success\" uib-tooltip=\"Vimeo\"></i>&nbsp; <i class=\"fa fa-lg fa-flickr\" uib-tooltip=\"Flickr\"></i> <p style=\"margin-top:7px\" class=\"text-muted\"> Edit route to add external links </p> </div> </div> </div> </div> <div ng-repeat=\"media in medias\" class=\"route-media panel panel-default\"> <div ng-if=\"isValidMedia(media.link)\" class=\"panel-body\" ng-click=\"openMedia(media)\"> <div class=\"row\"> <div class=\"col-xs-3\"> <i class=\"fa fa-3x fa-fw fa-{{media.provider}} {{media.color}}\"></i> </div> <div class=\"col-xs-9\"> <b>{{media.header}}</b> <p class=\"visible-xs text-muted\">{{media.link | prettyUrl:20}}</p> <p class=\"hidden-xs text-muted\">{{media.link | prettyUrl:50}}</p> </div> </div> </div> </div> </div> <div ng-if=\"route.$editMode\"> <div ng-repeat=\"link in newMedias track by $index\" class=\"route-media-edit panel panel-default\"> <div class=\"panel-body\"> <div class=\"row\"> <div class=\"col-xs-3\"> <i class=\"fa fa-3x fa-fw fa-{{getMedia(link).provider}} {{getMedia(link).color}}\"></i> </div> <div class=\"col-xs-9\"> <div class=\"input-group\" ng-if=\"!getMedia(link).header\"> <div class=\"input-group-addon\"> <i class=\"fa fa-lg fa-plus\" uib-tooltip=\"Accepted sites\"></i> </div> <i class=\"fa fa-lg fa-youtube text-danger\" uib-tooltip=\"Youtube\"></i>&nbsp; <i class=\"fa fa-lg fa-instagram text-primary\" uib-tooltip=\"Instagram\"></i>&nbsp; <i class=\"fa fa-lg fa-vimeo text-success\" uib-tooltip=\"Vimeo\"></i>&nbsp; <i class=\"fa fa-lg fa-flickr\" uib-tooltip=\"Flickr\"></i> </div> <b>{{getMedia(link).header}}</b> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-globe\"></i> </div> <input type=\"url\" ng-model=\"newMedias[$index]\" class=\"form-control\" placeholder=\"URL\"> </div> </div> </div> </div> </div> <div ng-repeat=\"media in medias\" class=\"route-media-edit panel panel-default\"> <div ng-if=\"isValidMedia(media.link)\" class=\"panel-body\"> <div class=\"row\"> <div class=\"col-xs-3\"> <button uib-tooltip=\"Delete media link\" ng-click=\"deleteMedia(media.link)\" tooltip-placement=\"bottom\" class=\"btn btn-default ng-scope\" tooltip-animation=\"false\"> <i class=\"fa fa-trash text-danger fa-2x\"></i> </button> </div> <div class=\"col-xs-9\"> <i class=\"fa fa-lg fa-fw fa-{{media.provider}} {{media.color}}\"></i> <b>{{media.header}}</b> <p class=\"visible-xs text-muted\">{{media.link | prettyUrl:20}}</p> <p class=\"hidden-xs text-muted\">{{media.link | prettyUrl:50}}</p> </div> </div> </div> </div> </div> </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/_routeNotes.html',
+    "<div ng-if=\"!route.$editMode\"> <div marked=\"route.notes\"></div> </div> <div ng-if=\"route.$editMode\"> <uib-tabset type=\"pills\"> <uib-tab> <uib-tab-heading> <span style=\"cursor:pointer\"><i class=\"fa fa-pencil-square-o\"></i> <span class=\"hidden-xs\">Markdown</span></span> </uib-tab-heading> <textarea rows=\"12\" ng-trim=\"false\" maxlength=\"2000\" class=\"form-control\" ng-model=\"route.notes\"></textarea> <span class=\"text-muted\" ng-show=\"route.notes.length > 1000\"> <i class=\"fa fa-pencil\"></i> {{2001 - route.notes.length - route.notes.split(\"\\n\").length}} characters left </span> </uib-tab> <uib-tab> <uib-tab-heading> <span style=\"cursor:pointer\"><i class=\"fa fa-search\"></i> <span class=\"hidden-xs\">Preview</span></span> </uib-tab-heading> <div marked=\"route.notes\"></div> </uib-tab> <uib-tab> <uib-tab-heading> <span style=\"cursor:pointer\"><i class=\"fa fa-question-circle\"></i> <span class=\"hidden-xs\">Help</span></span> </uib-tab-heading> <div class=\"hidden-xs hidden-sm\" ng-include src=\"'components/routes/views/_markdownReference.html'\"></div> <div class=\"visible-xs visible-sm\" ng-include src=\"'components/routes/views/_markdownReferenceSummary.html'\"></div> </uib-tab> </uib-tabset> </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/_routeSummary.html',
+    "<div ng-if=\"!route.$editMode\"> <span class=\"fa-stack fa-3x\" uib-tooltip=\"{{getIndoorLabel(route)}} {{route.type}}\" tooltip-placement=\"bottom\"> <i class=\"fa fa-circle fa-stack-2x\" style=\"color:{{getTypeColor(route)}}\"></i> <i class=\"fa {{getIconRock(route)}} fa-stack-1x fa-inverse\"></i> </span> <h3 class=\"name\"> {{ route.name }} <i ng-if=\"route.$sync\" class=\"fa fa-refresh text-info\" uib-tooltip=\"Offline {{route.$sync}}\"></i> </h3> <div class=\"header\"> <span>- {{ route.grade }} -</span> <div class=\"rating\"> <span ng-repeat=\"t in getTimes(route.rating) track by $index\"> <i class=\"fa fa-star\"></i> </span> <span class=\"hidden-xs\" ng-repeat=\"t in getTimes(5 - route.rating) track by $index\"> <i class=\"fa fa-star-o\"></i> </span> </div> </div> <h5><i class=\"fa fa-map-marker fa-fw text-muted\"></i> {{route.location}}</h5> <h5><i class=\"fa fa-map-o fa-fw text-muted\"></i> {{route.sector}}</h5> <h5><i class=\"fa fa-calendar-o fa-fw text-muted\"></i> {{route.date}}</h5> <h5><i class=\"fa {{getIconRock(route)}} fa-fw text-muted\"></i> {{route.rock}} </h5> <h5><i class=\"fa {{getIconStatus(route)}} fa-fw text-muted\"></i> {{route.status}} </h5> </div> <div ng-if=\"route.$editMode\"> <form name=\"form\" novalidate> <span class=\"fa-stack fa-3x\"> <i class=\"fa fa-circle fa-stack-2x\" style=\"color:{{getTypeColor(route)}}\"></i> <i class=\"fa {{getIconRock(route)}} fa-stack-1x fa-inverse\"></i> </span> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-fw\" uib-tooltip=\"{{ form.name.$error.required ?  'Name is required' : '' }}\" ng-class=\"{\n" +
+    "            'fa-pencil'           : !form.name.$pending,\n" +
+    "            'fa-spinner fa-pulse' : form.name.$pending,\n" +
+    "            'text-muted'          : form.name.$pristine,\n" +
+    "            'text-success'        : form.name.$valid && form.name.$dirty,\n" +
+    "            'text-danger'         : form.name.$invalid && form.name.$dirty,\n" +
+    "          }\"></i> </div> <input name=\"name\" autocomplete=\"off\" placeholder=\"Name\" class=\"form-control\" type=\"required\" required ng-model=\"route.name\"> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-user fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.grade.$pristine,\n" +
+    "            'text-success' :  form.grade.$valid && form.grade.$dirty,\n" +
+    "            'text-danger' :   form.grade.$invalid && form.grade.$dirty,\n" +
+    "          }\"></i> </div> <input placeholder=\"Grade\" autocomplete=\"off\" class=\"form-control\" type=\"text\" name=\"grade\" ng-model=\"route.grade\"> </div> <uib-rating ng-model=\"route.rating\" state-on=\"'fa fa-star fa-lg'\" state-off=\"'fa fa-star-o fa-lg'\"></uib-rating> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa {{getIconStatus(route)}} fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.status.$pristine,\n" +
+    "            'text-success' :  form.status.$valid && form.status.$dirty,\n" +
+    "            'text-danger' :   form.status.$invalid && form.status.$dirty,\n" +
+    "          }\"></i> </div> <select class=\"form-control\" name=\"status\" ng-model=\"route.status\"> <option>Attempt</option> <option>Redpoint</option> <option>Flash</option> <option>Onsight</option> </select> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-calendar-o fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.date.$pristine,\n" +
+    "            'text-success' :  form.date.$valid && form.date.$dirty,\n" +
+    "            'text-danger' :   form.date.$invalid && form.date.$dirty,\n" +
+    "          }\"></i> </div> <input type=\"date\" class=\"form-control\" required name=\"date\" ng-model=\"route.$date\"> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-map-o fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.sector.$pristine,\n" +
+    "            'text-success' :  form.sector.$valid && form.sector.$dirty,\n" +
+    "            'text-danger' :   form.sector.$invalid && form.sector.$dirty,\n" +
+    "          }\"></i> </div> <input placeholder=\"Sector\" autocomplete=\"off\" uib-typeahead=\"sector for sector in sectors | filter:$viewValue\" typeahead-on-select=\"sectorPopulatePlaceholder($item,route)\" class=\"form-control\" type=\"text\" name=\"sector\" ng-model=\"route.sector\"> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-connectdevelop fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.type.$pristine,\n" +
+    "            'text-success' :  form.type.$valid && form.type.$dirty,\n" +
+    "            'text-danger' :   form.type.$invalid && form.type.$dirty,\n" +
+    "          }\"></i> </div> <select class=\"form-control\" ng-model=\"route.type\" name=\"type\"> <option>Sport lead</option> <option>Boulder</option> <option>Traditional</option> <option>Multi-pitch</option> <option>Top rope</option> </select> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa {{getIconRock(route)}} fa-fw\" ng-class=\"{\n" +
+    "            'text-muted' :    form.rock.$pristine,\n" +
+    "            'text-success' :  form.rock.$valid && form.rock.$dirty,\n" +
+    "            'text-danger' :   form.rock.$invalid && form.rock.$dirty,\n" +
+    "          }\"></i> </div> <select class=\"form-control\" ng-model=\"route.rock\" name=\"rock\"> <option>Granite</option> <option>Sandstone</option> <option>Limestone</option> <option>Indoor</option> <option>Conglomerate</option> <option>Basalt</option> <option>Volcanic</option> </select> </div> <div class=\"input-group\"> <div class=\"input-group-addon\"> <i class=\"fa fa-map-marker fa-fw\" uib-tooltip=\"{{ form.location.$error.routeLocation ? 'Sorry, location not found' : '' }}\" ng-class=\"{\n" +
+    "            'fa-pencil'           : !form.location.$pending,\n" +
+    "            'fa-spinner fa-pulse' : form.location.$dirty && form.location.$pending,\n" +
+    "            'text-muted' :    form.location.$pristine,\n" +
+    "            'text-success' :  form.location.$valid && form.location.$dirty,\n" +
+    "            'text-danger' :   form.location.$invalid && form.location.$dirty,\n" +
+    "          }\"></i> </div> <input placeholder=\"Location\" class=\"form-control\" name=\"location\" type=\"text\" route-location ng-model-options=\"{ debounce: 500 }\" ng-model=\"route.location\" autocomplete=\"off\" uib-typeahead=\"location for location in locations | filter:$viewValue\">  </div> </form> </div>"
+  );
+
+
+  $templateCache.put('components/routes/views/sliderModal.html',
+    "<div class=\"modal-unstyled slider-unstyled\"> <div class=\"modal-body\"> <div> <uib-carousel interval=\"myInterval\" no-wrap=\"noWrapSlides\"> <uib-slide ng-repeat=\"slide in slides\" active=\"slide.active\"> <div class=\"card-container manual-flip\" ng-class=\"{hover: slide.$hover}\" ng-init=\"route = slide.content\"> <card-route></card-route> </div> </uib-slide> </uib-carousel> </div> </div> <div class=\"modal-footer\"> <button class=\"btn btn-success\" ng-click=\"flipCard()\"> <i class=\"fa fa-undo fa-flip-vertical\"></i> Flip </button> <button class=\"btn btn-primary\" ng-click=\"closeModal()\"> <i class=\"fa fa-times\"></i> </button> </div> </div>"
+  );
+
 
   $templateCache.put('components/table/views/_routesTable.html',
     "<p class=\"hidden-xs\"> <button uib-tooltip=\"Add route\" class=\"btn btn-fab btn-raised btn-success\" ng-click=\"tableVm.addRoute()\"><i class=\"fa fa-plus\"></i></button> </p> <div ng-swipe-left=\"tableVm.nextPage()\" ng-swipe-right=\"tableVm.previousPage()\"> <table data-datatable=\"ng\" data-dt-options=\"tableVm.dtOptions\" dt-instance=\"tableVm.dtInstance\" class=\"table table-condensed table-hover\"> <thead> <tr> <th class=\"\">Name</th> <th class=\"\">Grade</th> <th class=\"hidden-xs hidden-sm\">Rating</th> <th class=\"hidden-xs\">Status</th> <th class=\"hidden-xs\">Date</th> <th class=\"\">Sector</th> <th class=\"hidden-xs\">Type</th> <th class=\"hidden-xs hidden-sm\">Rock</th> <th class=\"hidden-xs\">Location</th> </tr> </thead> <tbody> <tr ng-repeat=\"route in tableVm.routes\" ng-click=\"tableVm.openRouteModal(route)\" style=\"cursor:pointer\"> <td> <i class=\"fa {{tableVm.getIconStatus(route)}} text-muted\"></i> <a title=\"Route Details\"> {{route.name}} </a> <i ng-if=\"route.$sync\" class=\"fa fa-refresh text-info\" uib-tooltip=\"Offline {{route.$sync}}\"></i> </td> <td class=\"\"> <span>{{route.grade}}</span> </td> <td class=\"hidden-xs hidden-sm\"> <uib-rating readonly ng-model=\"route.rating\"></uib-rating> </td> <td class=\"hidden-xs\"> <span>{{route.status}}</span> </td> <td class=\"hidden-xs\"> <span>{{route.date}}</span> </td> <td class=\"\"> <span>{{route.sector}}</span> </td> <td class=\"hidden-xs\"> <span class=\"label label-success\" style=\"background-color:{{getTypeColor(route)}}\"> {{route.type}} </span> </td> <td class=\"hidden-xs hidden-sm\"> <span>{{route.rock}}</span> </td> <td class=\"hidden-xs\"> <span>{{route.location}}</span> </td> </tr> </tbody> </table> </div>"
   );
 
-}]);
-
-angular.module('siurana.timeline').run(['$templateCache', function($templateCache) {
-  'use strict';
 
   $templateCache.put('components/timeline/views/_routesTimeline.html',
     "<div> <timeline> <timeline-event ng-repeat=\"event in timelineVm.events\"> <timeline-badge style=\"background-color:{{ timelineVm.getTypeColor(event) }}\" uib-tooltip=\"{{ timelineVm.getBadgeTooltip(event) }}\"> <i class=\"fa {{ timelineVm.getBadgeIcon(event) }}\"></i> </timeline-badge> <timeline-panel> <timeline-heading> <h4><i class=\"fa fa-map-marker\"></i> {{event.content.areaLocation}}</h4> <p> <small class=\"text-muted\"> <span class=\"hidden-xs\"> <i class=\"fa fa-calendar\"></i> From {{event.content.start }} to {{event.content.end}}</span> <span class=\"visible-xs\"> {{event.content.start | date:'shortdate' }} to {{event.content.end | date:'shortdate'}} </span> </small> </p> </timeline-heading> <div ng-repeat=\"routes in event.content.sectors\"> <p> <i class=\"fa fa-map-o\"></i> {{ routes[0].sector }} <span class=\"badge\">{{ routes.length }}</span> </p> <span ng-repeat=\"route in routes\"> <i class=\"fa {{timelineVm.getIconStatus(route)}} text-muted\"></i> <span class=\"text-muted\">{{route.grade}}</span> <a style=\"cursor:pointer\" title=\"Route Details\" ng-click=\"timelineVm.openRouteModal(route, routes)\"> {{route.name}} </a> <i ng-if=\"route.$sync\" class=\"fa fa-refresh text-info\" uib-tooltip=\"Offline {{route.$sync}}\"></i> <br> </span> </div> </timeline-panel> </timeline-event> </timeline> </div>"
   );
 
-}]);
+
+  $templateCache.put('components/users/views/_profileSummary.html',
+    "<div class=\"panel panel-default\"> <div class=\"panel-body text-center\"> <div class=\"hidden-sm\"> <img ng-if=\"profile.picture\" width=\"112\" height=\"112\" alt=\"Profile picture\" class=\"img-circle\" ng-src=\"{{profile.picture}}\"> <span ng-if=\"!profile.picture\" class=\"fa-stack fa-4x\"> <i class=\"fa fa-circle fa-stack-2x\"></i> <i class=\"fa fa-book fa-stack-1x fa-inverse\"></i> </span> <h3> {{ profile.name }} </h3> <hr> <ul class=\"list-unstyled\"> <li ng-if=\"profile.email\"> <i class=\"fa fa-fw fa-envelope-o\"></i> <a href=\"mailto:{{profile.email}}\">{{ profile.email }}</a> </li> <li ng-if=\"profile.provider\"> <i class=\"fa fa-fw fa-{{ profile.provider }}\"></i> <a ng-href=\"{{ profile.link  }}\" target=\"_blank\"> {{ profile.name }} </a> </li> </ul> </div> <div class=\"visible-sm\"> <div class=\"row\"> <div class=\"col-sm-3\"> <img ng-if=\"profile.picture\" width=\"112\" height=\"112\" class=\"img-circle\" alt=\"Profile picture\" ng-src=\"{{profile.picture}}\"> <span ng-if=\"!profile.picture\" class=\"fa-stack fa-4x\"> <i class=\"fa fa-circle fa-stack-2x\"></i> <i class=\"fa fa-book fa-stack-1x fa-inverse\"></i> </span> </div> <div class=\"col-sm-9\"> <h3> {{ profile.name }} </h3> <ul class=\"list-unstyled\"> <li ng-if=\"profile.email\"> <i class=\"fa fa-fw fa-envelope-o\"></i> <a href=\"mailto:{{profile.email}}\">{{ profile.email }}</a> </li> <li ng-if=\"profile.provider\"> <i class=\"fa fa-fw fa-{{ profile.provider }}\"></i> <a ng-href=\"{{ profile.link  }}\" target=\"_blank\"> {{ profile.name }} </a> </li> </ul> </div> </div> </div> </div> </div>"
+  );
+
+
+  $templateCache.put('components/users/views/_userLogin.html',
+    "<div ng-if=\"!isLoggedIn()\"> <ul class=\"nav navbar-nav\"> <li class=\"dropdown\"> <a href=\"\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"> <i class=\"fa fa-sign-in\"></i> Log In <span class=\"caret\"></span> </a> <ul class=\"dropdown-menu\"> <li> <a href=\"\" ng-click=\"signIn('google')\"> <i class=\"fa fa-fw fa-google text-danger\"></i>Google</a> </li> <li class=\"disabled\"> <a href=\"\"> <i class=\"fa fa-fw fa-twitter text-info\"></i>Twitter</a> </li> <li class=\"disabled\"> <a href=\"\"> <i class=\"fa fa-fw fa-facebook text-info\"></i>Facebook</a> </li> </ul> </li> </ul> </div> <div ng-if=\"isLoggedIn()\"> <ul class=\"nav navbar-nav\"> <li class=\"dropdown\"> <a href=\"\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"> <i class=\"fa fa-user\"></i> {{name}} <span class=\"caret\"></span> <ul class=\"dropdown-menu\"> <li> <a href=\"\" ng-click=\"logOut()\"> <i class=\"fa fa-fw fa-sign-out\"></i> Log out</a> </li> </ul> </a></li> </ul> </div>"
+  );
+}])})()

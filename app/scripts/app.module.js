@@ -18,8 +18,7 @@
     'ui.bootstrap',
     'jlareau.pnotify',
     'ngStorage',
-    'ngTouch',
-    'angular-scroll-animate'
+    'ngTouch'
   ])
 // jscs:disable disallowSemicolons
 })();

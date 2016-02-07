@@ -34,11 +34,9 @@ module.exports = {
   ],
   'bundle': [
     'clean:bundle',
+    'ngconstant',
     'copy:bundle',
-    'ngtemplates:bundleTimeline',
-    'ngtemplates:bundleTable',
-    'ngtemplates:bundleMap',
-    'ngtemplates:bundleCharts',
+    'ngtemplates:bundle',
     'concat:bundle',
     'uglify:bundle',
     'compass',
